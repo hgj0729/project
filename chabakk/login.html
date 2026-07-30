@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cambak Login</title>
+
+<style>
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    background:#FFFFFF;
+
+    font-family:Pretendard,sans-serif;
+
+}
+
+body{
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   App
+========================== */
+
+.app{
+
+    width:100%;
+    height:100vh;
+
+    background:#FFFFFF;
+
+    padding:52px 24px 40px;
+
+}
+
+
+/* ==========================
+   Logo
+========================== */
+
+.logo{
+
+    text-align:center;
+
+    margin-bottom:48px;
+
+}
+
+.logo img{
+
+    width:150px;
+
+}
+
+
+/* ==========================
+   Form
+========================== */
+
+.form{
+
+    width:100%;
+
+}
+
+.input-box{
+
+    margin-bottom:28px;
+
+}
+
+.input-box label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#5A73BC;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    height:50px;
+
+    padding:0 4px;
+
+    border:none;
+
+    border-bottom:1px solid #D9DCE2;
+
+    background:#FFFFFF;
+
+    outline:none;
+
+    font-size:17px;
+
+    color:#1C1E21;
+
+    font-family:inherit;
+
+    transition:.2s;
+
+}
+
+.input-box input::placeholder{
+
+    color:#B8C2E3;
+
+}
+
+.input-box input:focus{
+
+    border-bottom:2px solid #5A73BC;
+
+}
+
+
+/* ==========================
+   Button
+========================== */
+
+.login-btn{
+
+    width:100%;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#5A73BC;
+
+    color:#FFFFFF;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-top:8px;
+
+}
+
+.join-btn{
+
+    width:100%;
+
+    height:50px;
+
+    margin-top:10px;
+
+    border:1.5px solid #5A73BC;
+
+    border-radius:14px;
+
+    background:#FFFFFF;
+
+    color:#5A73BC;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+
+/* ==========================
+   Link
+========================== */
+
+.link{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-top:24px;
+
+}
+
+.link a{
+
+    text-decoration:none;
+
+    color:#5A73BC;
+
+    font-size:15px;
+
+}
+
+.link span{
+
+    color:#B5B5B5;
+
+}
+
+
+/* ==========================
+   SNS
+========================== */
+
+.sns{
+
+    margin-top:42px;
+
+}
+
+.sns-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+}
+
+.line{
+
+    width:120px;
+
+    height:1px;
+
+    background:#8CA0D7;
+
+}
+
+.sns-title p{
+
+    color:#5A73BC;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+.sns-list{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:28px;
+
+}
+
+.sns-list img{
+
+    width:24px;
+
+    height:24px;
+
+    object-fit:contain;
+
+    cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="logo">
+
+        <img
+            src="./images/logo.svg"
+            alt="Cambak Logo">
+
+    </div>
+
+
+    <form class="form">
+
+    <div class="input-box">
+
+        <label for="userId">
+
+            아이디
+
+        </label>
+
+        <input
+            id="userId"
+            type="text"
+            placeholder="아이디를 입력해주세요">
+
+    </div>
+
+    <div class="input-box">
+
+        <label for="userPw">
+
+            비밀번호
+
+        </label>
+
+        <input
+            id="userPw"
+            type="password"
+            placeholder="비밀번호를 입력해주세요">
+
+    </div>
+
+    <button
+        type="button"
+        class="login-btn">
+
+        로그인
+
+    </button>
+
+    <button
+        type="button"
+        class="join-btn">
+
+        회원가입
+
+    </button>
+
+</form>
+
+
+    <div class="link">
+
+        <a href="#">아이디 찾기</a>
+
+        <span>|</span>
+
+        <a href="#">비밀번호 찾기</a>
+
+        <span>|</span>
+
+        <a href="#">둘러보기</a>
+
+    </div>
+
+
+    <div class="sns">
+
+        <div class="sns-title">
+
+            <div class="line"></div>
+
+            <p>간편로그인</p>
+
+            <div class="line"></div>
+
+        </div>
+
+        <div class="sns-list">
+
+            <img
+                src="./images/kakao.png"
+                alt="카카오">
+
+            <img
+                src="./images/naver.png"
+                alt="네이버">
+
+            <img
+                src="./images/google.png"
+                alt="구글">
+
+            <img
+                src="./images/facebook.png"
+                alt="페이스북">
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Onboarding 03</title>
+
+<style>
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    font-family:Pretendard,sans-serif;
+
+    background:#FFFFFF;
+
+}
+
+.app{
+
+    width:100%;
+    height:100vh;
+
+    background:#FFFFFF;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================
+   Contents
+=========================== */
+
+.contents{
+
+    padding:76px 24px 0;
+
+}
+
+
+/* ===========================
+   Title
+=========================== */
+
+.title{
+
+    font-size:29px;
+
+    line-height:1.35;
+
+    letter-spacing:-1px;
+
+    font-weight:800;
+
+    color:#32457E;
+
+}
+
+.title .light{
+
+    color:#7D97DF;
+
+    font-weight:500;
+
+}
+
+
+/* ===========================
+   Description
+=========================== */
+
+.description{
+
+    margin-top:30px;
+
+    font-size:16px;
+
+    line-height:1.55;
+
+    color:#A8B5D8;
+
+    font-weight:500;
+
+}
+
+
+/* ===========================
+   Image
+=========================== */
+
+.image{
+
+    margin-top:72px;
+
+    text-align:center;
+
+}
+
+.image img{
+
+    width:315px;
+
+    display:block;
+
+    margin:0 auto;
+
+}
+
+
+/* ===========================
+   Indicator
+=========================== */
+
+.indicator{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:118px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.indicator span{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#D9DCE2;
+
+}
+
+.indicator .active{
+
+    background:#4F6FDC;
+
+}
+
+
+/* ===========================
+   Button
+=========================== */
+
+.bottom{
+
+    position:absolute;
+
+    left:24px;
+
+    right:24px;
+
+    bottom:34px;
+
+}
+
+.start-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    height:50px;
+
+    background:#5A73BC;
+
+    border-radius:14px;
+
+    color:#FFFFFF;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+.start-btn:hover{
+
+    background:#4D67B2;
+
+}
+
+.start-btn:active{
+
+    transform:scale(.98);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="contents">
+
+        <h1 class="title">
+
+            <span class="light">일상이 바쁠땐 실시간</span><br>
+
+            라이브로 대리만족 <span class="light">하세요</span>
+
+        </h1>
+
+        <p class="description">
+
+            라이브로 나를 뽐내고 시청자들과 소통하는<br>
+
+            즐거움!
+
+        </p>
+
+        <div class="image">
+
+            <img
+                src="./images/work 14.svg"
+                alt="라이브 방송">
+
+        </div>
+
+    </div>
+
+
+    <div class="indicator">
+
+        <span></span>
+
+        <span></span>
+
+        <span class="active"></span>
+
+    </div>
+
+
+    <div class="bottom">
+
+    <a href="./login.html" class="start-btn">
+
+        시작하기
+
+    </a>
+
+</div>
+
+</div>
+<script>
+
+window.addEventListener("load", function () {
+
+    setTimeout(function () {
+
+        window.location.href = "./login.html";
+
+    }, 3000);
+
+});
+
+</script>
+</body>
+
+</html>

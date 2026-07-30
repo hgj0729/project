@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Onboarding 01</title>
+
+<style>
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    font-family:Pretendard,sans-serif;
+
+    background:#FFFFFF;
+
+}
+
+.app{
+
+    width:100%;
+
+    height:100vh;
+
+    background:#FFFFFF;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================
+   Contents
+========================= */
+
+.contents{
+
+    padding:78px 24px 0;
+
+}
+
+
+/* =========================
+   Title
+========================= */
+
+.title{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    line-height:1.25;
+
+    letter-spacing:-1px;
+
+    color:#30447C;
+
+}
+
+.title span{
+
+    color:#7E9BE8;
+
+    font-weight:500;
+
+}
+
+
+/* =========================
+   Description
+========================= */
+
+.description{
+
+    margin-top:34px;
+
+    font-size:16px;
+
+    line-height:1.55;
+
+    color:#AAB6D9;
+
+    font-weight:500;
+
+}
+
+
+/* =========================
+   Image
+========================= */
+
+.image{
+
+    margin-top:60px;
+
+    text-align:center;
+
+}
+
+.image img{
+
+    width:305px;
+
+    display:block;
+
+    margin:0 auto;
+
+}
+
+
+/* =========================
+   Indicator
+========================= */
+
+.indicator{
+
+    width:100%;
+
+    position:absolute;
+
+    bottom:118px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+.indicator span{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#D9DCE2;
+
+}
+
+.indicator .active{
+
+    background:#4D6EDB;
+
+}
+
+
+/* =========================
+   Button
+========================= */
+
+.bottom{
+
+    position:absolute;
+
+    left:24px;
+
+    right:24px;
+
+    bottom:34px;
+
+}
+
+.start-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    height:50px;
+
+    background:#5A73BC;
+
+    border-radius:14px;
+
+    color:#FFFFFF;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+.start-btn:hover{
+
+    background:#4D67B2;
+
+}
+
+.start-btn:active{
+
+    transform:scale(.98);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="contents">
+
+        <h1 class="title">
+
+            차박<br>
+
+            어디로 <span>떠나야 할지 모르겠나요</span>
+
+        </h1>
+
+        <p class="description">
+
+            지도기반 위치 앱 및 키워드 검색으로 내가 원하는 장소를 한번에
+
+        </p>
+
+        <div class="image">
+
+            <img
+                src="./images/work 12.svg"
+                alt="온보딩">
+
+        </div>
+
+    </div>
+
+
+    <div class="indicator">
+
+        <span class="active"></span>
+
+        <span></span>
+
+        <span></span>
+
+    </div>
+
+<div class="bottom">
+
+    <a href="./login.html" class="start-btn">
+
+        시작하기
+
+    </a>
+
+</div>
+
+</div>
+<script>
+
+window.addEventListener("load", function () {
+
+    setTimeout(function () {
+
+        window.location.href = "./onboard2.html";
+
+    }, 3000);
+
+});
+
+</script>
+</body>
+
+</html>

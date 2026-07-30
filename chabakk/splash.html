@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cambak Splash</title>
+
+<style>
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    background:#FFFFFF;
+
+    font-family:Pretendard,sans-serif;
+
+}
+
+/* Mobile App */
+
+.app{
+
+    width:100%;
+
+    height:100vh;
+
+    background:#FFFFFF;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* 중앙 정렬 */
+
+.contents{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+/* 로고 */
+
+.logo{
+
+    width:150px;
+
+    display:block;
+
+}
+
+
+/* 로고가 조금 더 자연스럽게 보이도록 */
+
+.logo img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="contents">
+
+        <div class="logo">
+
+            <img
+                src="./images/logo.svg"
+                alt="Cambak Logo">
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+
+window.addEventListener("load", function () {
+
+    setTimeout(function () {
+
+        window.location.href = "./onbard1.html";
+
+    }, 3000);
+
+});
+
+</script>
+</body>
+
+</html>

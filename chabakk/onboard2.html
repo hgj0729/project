@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Onboarding 02</title>
+
+<style>
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    background:#FFFFFF;
+
+    font-family:Pretendard,sans-serif;
+
+}
+
+.app{
+
+    width:100%;
+
+    height:100vh;
+
+    background:#FFFFFF;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================
+   Contents
+========================= */
+
+.contents{
+
+    padding:78px 24px 0;
+
+}
+
+
+/* =========================
+   Title
+========================= */
+
+.title{
+
+    font-size:28px;
+
+    line-height:1.32;
+
+    letter-spacing:-1px;
+
+    color:#30447C;
+
+    font-weight:800;
+
+}
+
+.title .light{
+
+    color:#7F98DF;
+
+    font-weight:500;
+
+}
+
+
+/* =========================
+   Description
+========================= */
+
+.description{
+
+    margin-top:34px;
+
+    font-size:16px;
+
+    line-height:1.55;
+
+    color:#AAB6D9;
+
+    font-weight:500;
+
+}
+
+
+/* =========================
+   Image
+========================= */
+
+.image{
+
+    margin-top:78px;
+
+    text-align:center;
+
+}
+
+.image img{
+
+    width:325px;
+
+    display:block;
+
+    margin:0 auto;
+
+}
+
+
+/* =========================
+   Indicator
+========================= */
+
+.indicator{
+
+    width:100%;
+
+    position:absolute;
+
+    bottom:118px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+.indicator span{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#D9DCE2;
+
+}
+
+.indicator .active{
+
+    background:#4D6EDB;
+
+}
+
+
+/* =========================
+   Button
+========================= */
+
+.bottom{
+
+    position:absolute;
+
+    left:24px;
+
+    right:24px;
+
+    bottom:34px;
+
+}
+
+.start-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    height:50px;
+
+    background:#5A73BC;
+
+    border-radius:14px;
+
+    color:#FFFFFF;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+.start-btn:hover{
+
+    background:#4D67B2;
+
+}
+
+.start-btn:active{
+
+    transform:scale(.98);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="contents">
+
+        <h1 class="title">
+
+            <span class="light">차만 있다면</span><br>
+
+            장비는 <span class="light">부담적은</span> 렌탈로
+
+        </h1>
+
+        <p class="description">
+
+            차박에 필요한 물품들을 용도별로 둘러봐요
+
+        </p>
+
+        <div class="image">
+
+            <img
+                src="./images/work 13.svg"
+                alt="차박 장비 렌탈">
+
+        </div>
+
+    </div>
+
+
+    <div class="indicator">
+
+        <span></span>
+
+        <span class="active"></span>
+
+        <span></span>
+
+    </div>
+
+
+ <div class="bottom">
+
+    <a href="./login.html" class="start-btn">
+
+        시작하기
+
+    </a>
+
+</div>
+
+</div>
+<script>
+
+window.addEventListener("load", function () {
+
+    setTimeout(function () {
+
+        window.location.href = "./onboard3.html";
+
+    }, 3000);
+
+});
+
+</script>
+</body>
+
+</html>
