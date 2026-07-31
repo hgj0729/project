@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WASHGO Onboarding 03</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Pretendard,sans-serif;
+    background:#FFFFFF;
+
+}
+
+/* ==========================
+   Mobile App
+========================== */
+
+.app{
+
+    width:100%;
+    height:100vh;
+
+    background:#FFFFFF;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ==========================
+   Contents
+========================== */
+
+.contents{
+
+    padding:72px 20px 0;
+
+}
+
+
+/* Title */
+
+.contents h1{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#1C1E21;
+
+    line-height:1.3;
+
+    letter-spacing:-0.6px;
+
+}
+
+
+/* Description */
+
+.contents p{
+
+    margin-top:36px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#7B8391;
+
+    line-height:1.45;
+
+}
+
+
+/* ==========================
+   Image
+========================== */
+
+.image{
+
+    width:100%;
+
+    margin-top:110px;
+
+    text-align:center;
+
+}
+
+.image img{
+
+    width:230px;
+
+    display:block;
+
+    margin:0 auto;
+
+}
+
+
+/* ==========================
+   Page Indicator
+========================== */
+
+.indicator{
+
+    width:100%;
+
+    text-align:center;
+
+    position:absolute;
+
+    bottom:112px;
+
+}
+
+.indicator span{
+
+    width:10px;
+
+    height:10px;
+
+    display:inline-block;
+
+    margin:0 7px;
+
+    border-radius:50%;
+
+    background:#D9DCE2;
+
+}
+
+.indicator .active{
+
+    background:#2D7FF9;
+
+}
+
+
+/* ==========================
+   Bottom Button
+========================== */
+
+.bottom{
+
+    position:absolute;
+
+    left:20px;
+
+    right:20px;
+
+    bottom:38px;
+
+}
+
+.bottom button{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#2D7FF9;
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.bottom button:active{
+
+    background:#5B9CFA;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="contents">
+
+        <h1>
+
+            세탁 완료 알림으로<br>
+            놓치지 않아요
+
+        </h1>
+
+        <p>
+
+            세탁 완료 알림을 받고<br>
+            여유롭게 이용하세요!
+
+        </p>
+
+        <div class="image">
+
+            <img
+            src="./icons/onboardbell.svg"
+            alt="세탁 완료 알림">
+
+        </div>
+
+    </div>
+
+
+    <div class="indicator">
+
+        <span></span>
+
+        <span></span>
+
+        <span class="active"></span>
+
+    </div>
+
+<div class="bottom">
+
+    <button
+        type="button"
+        onclick="location.href='./login.html'">
+
+        시작하기
+
+    </button>
+
+</div>
+
+</div>
+<script>
+
+window.addEventListener("load", function () {
+
+    setTimeout(function () {
+
+        window.location.href = "login.html";
+
+    }, 3000);
+
+});
+
+</script>
+</body>
+
+</html>

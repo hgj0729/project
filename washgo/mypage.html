@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>마이페이지</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#FFFFFF;
+    color:#171B24;
+    font-family:Pretendard, Arial, sans-serif;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    padding:0;
+    border:0;
+    background:none;
+    font:inherit;
+    cursor:pointer;
+}
+
+img{
+    display:block;
+}
+
+
+/* 모바일 앱 전체 영역 */
+
+.app{
+
+    width:100%;
+    height:100svh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#FFFFFF;
+
+}
+
+
+/* 세로 스크롤 영역 */
+
+.scroll-area{
+
+    width:100%;
+    height:100%;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    padding-bottom:78px;
+
+    scrollbar-width:none;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.scroll-area::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* 본문 */
+
+.content{
+
+    padding:76px 20px 40px;
+
+}
+
+
+/* 프로필 영역 */
+
+.profile-section{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+}
+
+.profile-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.profile-image{
+
+    width:80px;
+    height:80px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    object-fit:contain;
+
+    background:#DDE1E7;
+
+}
+
+.profile-text{
+
+    padding-top:2px;
+
+}
+
+.profile-name{
+
+    color:#171B24;
+
+    font-size:25px;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+}
+
+.profile-message{
+
+    margin-top:3px;
+
+    color:#747D8B;
+
+    font-size:19px;
+
+    font-weight:500;
+
+    line-height:1.35;
+
+}
+
+.setting-button{
+
+    width:36px;
+    height:36px;
+
+    margin-top:3px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+}
+
+.setting-button img{
+
+    width:28px;
+    height:28px;
+
+    object-fit:contain;
+
+}
+
+
+/* 바로가기 메뉴 */
+
+.quick-menu{
+
+    margin-top:31px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4, 1fr);
+
+    gap:8px;
+
+}
+
+.quick-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    gap:9px;
+
+    color:#252B35;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    text-align:center;
+
+}
+
+.quick-item img{
+
+    width:25px;
+    height:25px;
+
+    object-fit:contain;
+
+}
+
+
+/* 구분선 */
+
+.divider{
+
+    width:100%;
+    height:1px;
+
+    margin-top:19px;
+
+    background:#D9DCE2;
+
+}
+
+
+/* 설정 메뉴 */
+
+.menu-list{
+
+    width:100%;
+
+}
+
+.menu-item{
+
+    min-height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.menu-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+    min-width:0;
+
+}
+
+.menu-icon{
+
+    width:24px;
+    height:24px;
+
+    flex-shrink:0;
+
+    object-fit:contain;
+
+}
+
+.menu-label{
+
+    color:#1D2430;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+.arrow-icon{
+
+    width:13px;
+    height:21px;
+
+    flex-shrink:0;
+
+    object-fit:contain;
+
+}
+
+
+/* 공통 하단 탭바 */
+
+.bottom-navigation{
+
+    width:100%;
+    height:78px;
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    z-index:30;
+
+    display:grid;
+
+    grid-template-columns:repeat(4, 1fr);
+
+    border-top:1px solid #D9DCE2;
+
+    background:#FFFFFF;
+
+}
+
+.nav-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    color:#7A8391;
+
+    font-size:11px;
+
+    font-weight:500;
+
+}
+
+.nav-item img{
+
+    width:23px;
+    height:23px;
+
+    object-fit:contain;
+
+}
+
+.nav-item.active{
+
+    color:#2D7FF9;
+
+}
+
+.nav-item.active span{
+
+    font-weight:700;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <main class="scroll-area">
+
+        <section class="content">
+
+
+            <!-- 프로필 -->
+            <div class="profile-section">
+
+                <div class="profile-left">
+
+                    <img
+                        src="./images/user.png"
+                        alt="프로필"
+                        class="profile-image">
+
+                    <div class="profile-text">
+
+                        <h1 class="profile-name">
+                            홍길동님
+                        </h1>
+
+                        <p class="profile-message">
+                            환영합니다!
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="./settings.html"
+                    class="setting-button"
+                    aria-label="설정">
+
+                    <img
+                        src="./icons/set.svg"
+                        alt="">
+
+                </a>
+
+            </div>
+
+
+            <!-- 관심 매장 / 예약 내역 / 이용 내역 / 쿠폰함 -->
+            <nav class="quick-menu">
+
+                <a
+                    href="./storelist.html"
+                    class="quick-item">
+
+                    <img
+                        src="./icons/heart2.svg"
+                        alt="">
+
+                    <span>
+                        관심 매장
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="./complete.html"
+                    class="quick-item">
+
+                    <img
+                        src="./icons/calendar.svg"
+                        alt="">
+
+                    <span>
+                        예약 내역
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="./history.html"
+                    class="quick-item">
+
+                    <img
+                        src="./icons/document.svg"
+                        alt="">
+
+                    <span>
+                        이용 내역
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="./coupons.html"
+                    class="quick-item">
+
+                    <img
+                        src="./icons/coupon.svg"
+                        alt="">
+
+                    <span>
+                        쿠폰함
+                    </span>
+
+                </a>
+
+            </nav>
+
+
+            <div class="divider"></div>
+
+
+            <!-- 설정 메뉴 목록 -->
+            <nav class="menu-list">
+
+
+                <a
+                    href="./payment-methods.html"
+                    class="menu-item">
+
+                    <div class="menu-left">
+
+                        <img
+                            src="./icons/card.svg"
+                            alt=""
+                            class="menu-icon">
+
+                        <span class="menu-label">
+                            결제 수단 관리
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./icons/arrow-right.svg"
+                        alt=""
+                        class="arrow-icon">
+
+                </a>
+
+
+                <a
+                    href="./faq.html"
+                    class="menu-item">
+
+                    <div class="menu-left">
+
+                        <img
+                            src="./icons/faq.svg"
+                            alt=""
+                            class="menu-icon">
+
+                        <span class="menu-label">
+                            FAQ
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./icons/arrow-right.svg"
+                        alt=""
+                        class="arrow-icon">
+
+                </a>
+
+
+                <a
+                    href="./customer-service.html"
+                    class="menu-item">
+
+                    <div class="menu-left">
+
+                        <img
+                            src="./icons/time.svg"
+                            alt=""
+                            class="menu-icon">
+
+                        <span class="menu-label">
+                            고객센터
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./icons/arrow-right.svg"
+                        alt=""
+                        class="arrow-icon">
+
+                </a>
+
+
+                <a
+                    href="./notification-settings.html"
+                    class="menu-item">
+
+                    <div class="menu-left">
+
+                        <img
+                            src="./icons/bell.svg"
+                            alt=""
+                            class="menu-icon">
+
+                        <span class="menu-label">
+                            알림설정
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./icons/arrow-right.svg"
+                        alt=""
+                        class="arrow-icon">
+
+                </a>
+
+
+                <a
+                    href="./login.html"
+                    class="menu-item">
+
+                    <div class="menu-left">
+
+                        <img
+                            src="./icons/logout.svg"
+                            alt=""
+                            class="menu-icon">
+
+                        <span class="menu-label">
+                            로그아웃
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./icons/arrow-right.svg"
+                        alt=""
+                        class="arrow-icon">
+
+                </a>
+
+            </nav>
+
+
+            <div class="divider"></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- 공통 하단 탭바 -->
+    <nav class="bottom-navigation">
+
+        <a
+            href="./home.html"
+            class="nav-item">
+
+            <img
+                src="./icons/homeblack.svg"
+                alt="">
+
+            <span>
+                홈
+            </span>
+
+        </a>
+
+
+        <a
+            href="./storelist.html"
+            class="nav-item">
+
+            <img
+                src="./icons/search.svg"
+                alt="">
+
+            <span>
+                매장찾기
+            </span>
+
+        </a>
+
+
+        <a
+            href="./alarm.html"
+            class="nav-item">
+
+            <img
+                src="./icons/bell.svg"
+                alt="">
+
+            <span>
+                알림
+            </span>
+
+        </a>
+
+
+        <a
+            href="./mypage.html"
+            class="nav-item active">
+
+            <img
+                src="./icons/personblue.svg"
+                alt="">
+
+            <span>
+                마이페이지
+            </span>
+
+        </a>
+
+    </nav>
+
+</div>
+
+</body>
+
+</html>

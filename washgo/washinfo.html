@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>기기 현황</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#FFFFFF;
+    color:#171B24;
+    font-family:Pretendard, Arial, sans-serif;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    padding:0;
+    border:0;
+    background:none;
+    font:inherit;
+    cursor:pointer;
+}
+
+img{
+    display:block;
+}
+
+
+/* 모바일 앱 전체 */
+
+.app{
+
+    width:100%;
+    height:100svh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#FFFFFF;
+
+}
+
+
+/* 세로 스크롤 영역 */
+
+.scroll-area{
+
+    width:100%;
+    height:100%;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    padding-bottom:112px;
+
+    scrollbar-width:none;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.scroll-area::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* 상단 내비게이션 */
+
+.top-navigation{
+
+    width:100%;
+    height:105px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    padding-bottom:6px;
+
+    background:#FFFFFF;
+
+}
+
+.back-button{
+
+    width:44px;
+    height:44px;
+
+    position:absolute;
+
+    left:10px;
+    bottom:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.back-button img{
+
+    width:21px;
+    height:21px;
+
+    object-fit:contain;
+
+}
+
+.page-title{
+
+    color:#171B24;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+
+/* 업데이트 시간 */
+
+.update-time{
+
+    margin-top:8px;
+
+    text-align:center;
+
+    color:#8B95A1;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+}
+
+
+/* 세탁기 / 건조기 탭 */
+
+.machine-tabs{
+
+    margin-top:24px;
+
+    padding:0 20px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    border-bottom:1px solid #D9DCE2;
+
+}
+
+.machine-tab{
+
+    height:56px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#737C8B;
+
+    font-size:21px;
+
+    font-weight:700;
+
+}
+
+.machine-tab.active{
+
+    color:#2D6BF2;
+
+}
+
+.machine-tab.active::after{
+
+    content:"";
+
+    width:100%;
+    height:2px;
+
+    position:absolute;
+
+    left:0;
+    bottom:-1px;
+
+    background:#2D6BF2;
+
+}
+
+
+/* 기기 목록 */
+
+.machine-list{
+
+    width:100%;
+
+}
+
+.machine-card{
+
+    min-height:102px;
+
+    padding:20px 20px 20px 28px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:21px;
+
+    border-bottom:1px solid #D9DCE2;
+
+    background:#FFFFFF;
+
+}
+
+.machine-icon{
+
+    width:53px;
+    height:64px;
+
+    flex-shrink:0;
+
+    object-fit:contain;
+
+}
+
+.machine-info{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.machine-name{
+
+    color:#171B24;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    line-height:1.45;
+
+}
+
+.status-badge{
+
+    min-width:79px;
+    height:44px;
+
+    padding:0 12px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:1px solid;
+
+    border-radius:999px;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    white-space:nowrap;
+
+}
+
+
+/* 상태별 배지 */
+
+.status-green{
+
+    border-color:#B8E8D3;
+
+    background:#EAF9F3;
+
+    color:#16B877;
+
+}
+
+.status-blue{
+
+    border-color:#C7D9F7;
+
+    background:#EFF5FF;
+
+    color:#2D6BF2;
+
+}
+
+.status-orange{
+
+    border-color:#F4D7A7;
+
+    background:#FFF4DF;
+
+    color:#F59E0B;
+
+}
+
+.status-red{
+
+    border-color:#F3C3C7;
+
+    background:#FFE9EA;
+
+    color:#EF4444;
+
+}
+
+
+/* 하단 예약 버튼 영역 */
+
+.bottom-action{
+
+    width:100%;
+
+    height:100px;
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    z-index:20;
+
+    padding:18px 20px 30px;
+
+    border-top:1px solid #ECEEF2;
+
+    background:#FFFFFF;
+
+}
+
+.reserve-button{
+
+    width:100%;
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:#2D6BF2;
+
+    color:#FFFFFF;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.reserve-button:active{
+
+    background:#5B9CFA;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <main class="scroll-area">
+
+
+        <!-- 상단 내비게이션 -->
+        <header class="top-navigation">
+
+            <a
+                href="./washtown.html"
+                class="back-button"
+                aria-label="매장 상세 화면으로 돌아가기">
+
+                <img
+                    src="./icons/back.svg"
+                    alt="이전">
+
+            </a>
+
+            <h1 class="page-title">
+                기기 현황
+            </h1>
+
+        </header>
+
+
+        <p class="update-time">
+            마지막 업데이트 10:30
+        </p>
+
+
+        <!-- 세탁기 / 건조기 탭 -->
+        <nav class="machine-tabs">
+
+            <a
+                href="./machine-status.html"
+                class="machine-tab active">
+
+                세탁기 (6)
+
+            </a>
+
+            <a
+                href="./dryer-status.html"
+                class="machine-tab">
+
+                건조기 (6)
+
+            </a>
+
+        </nav>
+
+
+        <!-- 기기 현황 목록 -->
+        <section class="machine-list">
+
+
+            <!-- 세탁기 1 -->
+            <article class="machine-card">
+
+                <img
+                    src="./icons/wash6.svg"
+                    alt="세탁기 1"
+                    class="machine-icon">
+
+                <div class="machine-info">
+
+                    <h2 class="machine-name">
+                        세탁기 1 (20kg)
+                    </h2>
+
+                </div>
+
+                <span class="status-badge status-green">
+                    사용 가능
+                </span>
+
+            </article>
+
+
+            <!-- 세탁기 2 -->
+            <article class="machine-card">
+
+                <img
+                    src="./icons/wash.2.svg"
+                    alt="세탁기 2"
+                    class="machine-icon">
+
+                <div class="machine-info">
+
+                    <h2 class="machine-name">
+                        세탁기 2 (27kg)
+                    </h2>
+
+                </div>
+
+                <span class="status-badge status-blue">
+                    사용 가능
+                </span>
+
+            </article>
+
+
+            <!-- 세탁기 3 -->
+            <article class="machine-card">
+
+                <img
+                    src="./icons/wash3.svg"
+                    alt="세탁기 3"
+                    class="machine-icon">
+
+                <div class="machine-info">
+
+                    <h2 class="machine-name">
+                        세탁기 3 (27kg)
+                    </h2>
+
+                </div>
+
+                <span class="status-badge status-orange">
+                    예약됨
+                </span>
+
+            </article>
+
+
+            <!-- 세탁기 4 -->
+            <article class="machine-card">
+
+                <img
+                    src="./icons/wash4.svg"
+                    alt="세탁기 4"
+                    class="machine-icon">
+
+                <div class="machine-info">
+
+                    <h2 class="machine-name">
+                        세탁기 4 (20kg)
+                    </h2>
+
+                </div>
+
+                <span class="status-badge status-red">
+                    점검 중
+                </span>
+
+            </article>
+
+
+            <!-- 추가 기기 예시 -->
+            <article class="machine-card">
+
+                <img
+                    src="./icons/wash.5.svg"
+                    alt="세탁기 5"
+                    class="machine-icon">
+
+                <div class="machine-info">
+
+                    <h2 class="machine-name">
+                        세탁기 5 (20kg)
+                    </h2>
+
+                </div>
+
+                <span class="status-badge status-green">
+                    사용 가능
+                </span>
+
+            </article>
+
+
+            <article class="machine-card">
+
+                <img
+                    src="./icons/wash1.svg"
+                    alt="세탁기 6"
+                    class="machine-icon">
+
+                <div class="machine-info">
+
+                    <h2 class="machine-name">
+                        세탁기 6 (27kg)
+                    </h2>
+
+                </div>
+
+                <span class="status-badge status-blue">
+                    사용 가능
+                </span>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- 하단 고정 예약 버튼 -->
+    <div class="bottom-action">
+
+        <a
+            href="./pay.html"
+            class="reserve-button">
+
+            예약하기
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>추천 매장 목록</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#FFFFFF;
+    font-family:Pretendard, Arial, sans-serif;
+    color:#1C1E21;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    border:0;
+    padding:0;
+    background:none;
+    font:inherit;
+    cursor:pointer;
+}
+
+img{
+    display:block;
+}
+
+
+/* =========================
+   모바일 앱 전체 영역
+========================= */
+
+.app{
+
+    width:100%;
+    height:100svh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#FFFFFF;
+
+}
+
+
+/* =========================
+   상단 네비게이션
+========================= */
+
+.top-navigation{
+
+    width:100%;
+    height:118px;
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    z-index:20;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    padding-bottom:17px;
+
+    background:#FFFFFF;
+
+}
+
+.back-button{
+
+    width:44px;
+    height:44px;
+
+    position:absolute;
+
+    left:10px;
+    bottom:6px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.back-button img{
+
+    width:21px;
+    height:21px;
+
+    object-fit:contain;
+
+}
+
+.page-title{
+
+    color:#171B24;
+
+    font-size:21px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+
+/* =========================
+   세로 스크롤 영역
+========================= */
+
+.scroll-area{
+
+    width:100%;
+    height:100%;
+
+    padding-top:118px;
+    padding-bottom:82px;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    scrollbar-width:none;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.scroll-area::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* =========================
+   본문
+========================= */
+
+.content{
+
+    padding:0 20px 40px;
+
+}
+
+
+/* =========================
+   지도 / 목록 탭
+========================= */
+
+.view-tabs{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+
+}
+
+.view-tab{
+
+    height:36px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:1px solid #D5DAE2;
+
+    border-radius:9px;
+
+    background:#FFFFFF;
+
+    color:#7B8391;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.view-tab.active{
+
+    border-color:#BCD2F4;
+
+    background:#DCE9FB;
+
+    color:#2D6BF2;
+
+}
+
+
+/* =========================
+   매장 목록
+========================= */
+
+.store-list{
+
+    margin-top:32px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:31px;
+
+}
+
+
+/* =========================
+   매장 카드
+========================= */
+
+.store-card{
+
+    min-height:110px;
+
+    padding:17px 16px 17px 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    border:1px solid #D5DAE2;
+
+    border-radius:17px;
+
+    background:#FFFFFF;
+
+}
+
+.store-image{
+
+    width:72px;
+    height:72px;
+
+    flex-shrink:0;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    background:#F5F6F8;
+
+}
+
+.store-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.store-content{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.store-heading{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+}
+
+.store-name{
+
+    color:#1D222C;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+.favorite-button{
+
+    width:25px;
+    height:25px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.favorite-button img{
+
+    width:22px;
+    height:22px;
+
+    object-fit:contain;
+
+}
+
+.store-meta{
+
+    margin-top:6px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#788291;
+
+    font-size:15px;
+
+    line-height:1.4;
+
+}
+
+.store-status{
+
+    margin-top:7px;
+
+    color:#788291;
+
+    font-size:15px;
+
+    line-height:1.4;
+
+}
+
+.available-count{
+
+    color:#22C77A;
+
+    font-weight:600;
+
+}
+
+
+/* =========================
+   공통 하단 탭바
+========================= */
+
+.bottom-navigation{
+
+    width:100%;
+    height:78px;
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    z-index:30;
+
+    display:grid;
+
+    grid-template-columns:repeat(4, 1fr);
+
+    border-top:1px solid #D9DCE2;
+
+    background:#FFFFFF;
+
+}
+
+.nav-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    color:#7A8391;
+
+    font-size:11px;
+
+    font-weight:500;
+
+}
+
+.nav-item img{
+
+    width:23px;
+    height:23px;
+
+    object-fit:contain;
+
+}
+
+.nav-item.active{
+
+    color:#2D7FF9;
+
+}
+
+.nav-item.active span{
+
+    font-weight:700;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <!-- 상단 네비게이션 -->
+    <header class="top-navigation">
+
+        <button
+            type="button"
+            class="back-button"
+            aria-label="이전 화면"
+            onclick="history.back()">
+
+            <img
+                src="./icons/back.svg"
+                alt="">
+
+        </button>
+
+        <h1 class="page-title">
+            검색 결과 25개
+        </h1>
+
+    </header>
+
+
+    <!-- 스크롤 영역 -->
+    <main class="scroll-area">
+
+        <div class="content">
+
+
+            <!-- 지도 / 목록 탭 -->
+            <div class="view-tabs">
+
+                <a
+                    href="./store-map.html"
+                    class="view-tab">
+
+                    지도
+
+                </a>
+
+                <a
+                    href="./store-list.html"
+                    class="view-tab active">
+
+                    목록
+
+                </a>
+
+            </div>
+
+
+            <!-- 추천 매장 목록 -->
+            <section class="store-list">
+
+
+                <!-- 매장 1 -->
+              <!-- 매장 1 -->
+<a
+    href="./washtown.html"
+    style="text-decoration:none; color:inherit; display:block;">
+
+    <article class="store-card">
+
+        <div class="store-image">
+
+            <img
+                src="./images/card1.png"
+                alt="워셔타운 강남점">
+
+        </div>
+
+        <div class="store-content">
+
+            <div class="store-heading">
+
+                <h2 class="store-name">
+                    워셔타운 강남점
+                </h2>
+
+                <button
+                    type="button"
+                    class="favorite-button"
+                    aria-label="즐겨찾기">
+
+                    <img
+                        src="./icons/heart.svg"
+                        alt="">
+
+                </button>
+
+            </div>
+
+            <div class="store-meta">
+
+                <span>50m</span>
+
+                <span>운영중</span>
+
+            </div>
+
+            <p class="store-status">
+
+                사용 가능
+                <strong class="available-count">
+                    6대
+                </strong>
+
+            </p>
+
+        </div>
+
+    </article>
+
+</a>
+
+                <!-- 매장 2 -->
+                <article class="store-card">
+
+                    <div class="store-image">
+
+                        <img
+                            src="./images/card2.png"
+                            alt="클린업 역삼점">
+
+                    </div>
+
+                    <div class="store-content">
+
+                        <div class="store-heading">
+
+                            <h2 class="store-name">
+                                클린업 역삼점
+                            </h2>
+
+                        </div>
+
+                        <div class="store-meta">
+
+                            <span>
+                                800m
+                            </span>
+
+                            <span>
+                                운영중
+                            </span>
+
+                        </div>
+
+                        <p class="store-status">
+
+                            사용 가능
+                            <strong class="available-count">
+                                3대
+                            </strong>
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 매장 3 -->
+                <article class="store-card">
+
+                    <div class="store-image">
+
+                        <img
+                            src="./images/card3.png"
+                            alt="워시프렌즈 선릉점">
+
+                    </div>
+
+                    <div class="store-content">
+
+                        <div class="store-heading">
+
+                            <h2 class="store-name">
+                                워시프렌즈 선릉점
+                            </h2>
+
+                        </div>
+
+                        <div class="store-meta">
+
+                            <span>
+                                1.2km
+                            </span>
+
+                            <span>
+                                운영중
+                            </span>
+
+                        </div>
+
+                        <p class="store-status">
+
+                            사용 가능
+                            <strong class="available-count">
+                                1대
+                            </strong>
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- 공통 하단 탭바 -->
+    <nav class="bottom-navigation">
+
+        <a
+            href="home.html"
+            class="nav-item">
+
+            <img
+                src="./icons/homeblack.svg"
+                alt="">
+
+            <span>
+                홈
+            </span>
+
+        </a>
+
+
+        <a
+            href="./storelist.html"
+            class="nav-item active">
+
+            <img
+                src="./icons/searchblue.svg"
+                alt="">
+
+            <span>
+                매장찾기
+            </span>
+
+        </a>
+
+
+        <a
+            href="./alarm.html"
+            class="nav-item">
+
+            <img
+                src="./icons/bell.svg"
+                alt="">
+
+            <span>
+                알림
+            </span>
+
+        </a>
+
+
+        <a
+            href="./mypage.html"
+            class="nav-item">
+
+            <img
+                src="./icons/person.svg"
+                alt="">
+
+            <span>
+                마이페이지
+            </span>
+
+        </a>
+
+    </nav>
+
+</div>
+
+</body>
+
+</html>

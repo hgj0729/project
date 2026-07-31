@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WASHGO Onboarding 02</title>
+
+<style>
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:Pretendard,sans-serif;
+    background:#ffffff;
+
+}
+
+/* 모바일 전용 */
+
+.app{
+
+    width:100%;
+    height:100vh;
+
+    background:#ffffff;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* 컨텐츠 */
+
+.contents{
+
+    padding:78px 20px 0;
+
+}
+
+
+/* 제목 */
+
+.contents h1{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+    color:#1C1E21;
+
+    letter-spacing:-0.5px;
+
+}
+
+
+/* 설명 */
+
+.contents p{
+
+    margin-top:34px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    line-height:1.45;
+
+    color:#7E8695;
+
+}
+
+
+/* 이미지 */
+
+.image{
+
+    margin-top:88px;
+
+    text-align:center;
+
+}
+
+.image img{
+
+    width:285px;
+
+}
+
+
+/* 페이지 인디케이터 */
+
+.indicator{
+
+    width:100%;
+
+    position:absolute;
+
+    bottom:108px;
+
+    text-align:center;
+
+}
+
+.indicator span{
+
+    width:10px;
+
+    height:10px;
+
+    display:inline-block;
+
+    margin:0 7px;
+
+    border-radius:50%;
+
+    background:#D9DCE2;
+
+}
+
+.indicator .active{
+
+    background:#2D7FF9;
+
+}
+
+
+/* 버튼 */
+
+.button{
+
+    position:absolute;
+
+    left:20px;
+
+    right:20px;
+
+    bottom:38px;
+
+}
+
+.button button{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#2D7FF9;
+
+    color:#ffffff;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+}
+
+.button button:active{
+
+    background:#5B9CFA;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="contents">
+
+        <h1>
+            원하는 시간에 예약하고<br>
+            간편하게 결제하세요
+        </h1>
+
+        <p>
+            대기 없이 바로 이용하고<br>
+            간편하게 결제까지!
+        </p>
+
+        <div class="image">
+
+            <img
+                src="./icons/phone&card.svg"
+                alt="예약 및 간편결제">
+
+        </div>
+
+    </div>
+
+
+    <div class="indicator">
+
+        <span></span>
+
+        <span class="active"></span>
+
+        <span></span>
+
+    </div>
+
+<div class="button">
+
+    <button
+        type="button"
+        onclick="location.href='./onboard3.html'">
+
+        다음
+
+    </button>
+
+</div>
+
+    </div>
+
+</div>
+<script>
+
+window.addEventListener("load", function () {
+
+    setTimeout(function () {
+
+        window.location.href = "onboard3.html";
+
+    }, 3000);
+
+});
+
+</script>
+</body>
+
+</html>

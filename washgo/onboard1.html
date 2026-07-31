@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WASHGO Onboarding 01</title>
+
+<style>
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    font-family:Pretendard,sans-serif;
+
+    background:#FFFFFF;
+
+}
+
+/* 모바일 앱 */
+
+.app{
+
+    width:100%;
+    height:100vh;
+
+    background:#FFFFFF;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* 컨텐츠 */
+
+.contents{
+
+    padding:82px 20px 0;
+
+}
+
+
+/* 타이틀 */
+
+.title{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    line-height:1.28;
+
+    letter-spacing:-0.6px;
+
+    color:#1C1E21;
+
+}
+
+
+/* 설명 */
+
+.description{
+
+    margin-top:38px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    line-height:1.45;
+
+    color:#7D8695;
+
+}
+
+
+/* 이미지 */
+
+.image{
+
+    width:100%;
+
+    margin-top:92px;
+
+    text-align:center;
+
+}
+
+.image img{
+
+    width:300px;
+
+    display:block;
+
+    margin:0 auto;
+
+}
+
+
+/* 페이지 인디케이터 */
+
+.indicator{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:112px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.indicator span{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#D9DCE2;
+
+}
+
+.indicator .active{
+
+    background:#2D7FF9;
+
+}
+
+
+/* 버튼 */
+
+.bottom{
+
+    position:absolute;
+
+    left:20px;
+
+    right:20px;
+
+    bottom:38px;
+
+}
+
+.start-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    height:52px;
+
+    border-radius:16px;
+
+    background:#2D7FF9;
+
+    color:#FFFFFF;
+
+    text-decoration:none;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    font-family:inherit;
+
+}
+
+.start-btn:active{
+
+    background:#5B9CFA;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="contents">
+
+        <h1 class="title">
+
+            방문 전에<br>
+
+            기기 현황을 확인하세요
+
+        </h1>
+
+        <p class="description">
+
+            실시간으로 사용 가능한<br>
+
+            세탁기와 건조기를 한눈에!
+
+        </p>
+
+        <div class="image">
+
+            <img
+                src="./icons/washr 1.svg"
+                alt="실시간 기기 현황">
+
+        </div>
+
+    </div>
+
+
+    <div class="indicator">
+
+        <span class="active"></span>
+
+        <span></span>
+
+        <span></span>
+
+    </div>
+
+
+    <div class="bottom">
+
+    <a href="./login.html" class="start-btn">
+
+        시작하기
+
+    </a>
+
+</div>
+
+</div>
+<script>
+
+window.addEventListener("load", function () {
+
+    setTimeout(function () {
+
+        window.location.href = "onboard2.html";
+
+    }, 3000);
+
+});
+
+</script>
+</body>
+
+</html>
