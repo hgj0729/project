@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>차박 APP - 홈</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; width: 100%; min-height: 100%; font-family: Arial, "Noto Sans KR", sans-serif; background: #fff; color: #111; }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    button { border: 0; background: none; padding: 0; cursor: pointer; }
+
+    :root {
+      --primary: #5572bd;
+      --primary-light: #eef2fb;
+      --line: #ececec;
+      --text-sub: #777;
+    }
+
+    .app {
+      width: 100%;
+      min-height: 100svh;
+      background: #fff;
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 78px;
+    }
+
+    .topbar {
+      width: 100%;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .topbar__icon { width: 28px; height: 28px; object-fit: contain; display: block; }
+    .topbar__logo { width: 84px; height: 30px; object-fit: contain; display: block; }
+
+    .hero { width: 100%; height: 286px; overflow: hidden; background: #e9eef5; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .section { padding: 24px 24px 0; }
+    .section-title { margin: 0 0 22px; font-size: 20px; line-height: 1.3; font-weight: 800; color: var(--primary); }
+
+    .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 10px; row-gap: 24px; }
+    .category-item { text-align: center; }
+    .category-item img { width: 42px; height: 42px; object-fit: contain; display: block; margin: 0 auto 8px; }
+    .category-item span { display: block; font-size: 14px; color: #555; }
+
+    .quick-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .quick-button { height: 42px; border-radius: 10px; background: var(--primary-light); color: var(--primary); font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .quick-button img { width: 22px; height: 22px; object-fit: contain; }
+
+    .ranking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .ranking-grid img { width: 100%; height: 205px; object-fit: cover; display: block; }
+    .ranking-grid .wide { grid-column: 1 / -1; height: 195px; }
+
+    .place-card { margin: 0 24px 28px; padding-top: 24px; }
+    .place-card__title-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .place-card h2 { margin: 0; font-size: 18px; font-weight: 800; }
+    .place-card__save { width: 24px; height: 24px; object-fit: contain; }
+    .place-card p { margin: 22px 0 20px; color: var(--text-sub); font-size: 14px; }
+    .place-card__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .action-btn { height: 50px; border-radius: 10px; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .action-btn--primary { background: var(--primary); color: #fff; }
+    .action-btn--outline { border: 1px solid var(--primary); color: #222; background: #fff; }
+
+    .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; height: 78px; background: #fff; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(5, 1fr); }
+    .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 13px; }
+    .nav-item img { width: 25px; height: 25px; object-fit: contain; }
+    .nav-item.active { color: var(--primary); font-weight: 700; }
+
+    .dim { position: fixed; inset: 0; background: rgba(0,0,0,.58); opacity: 0; visibility: hidden; transition: opacity .28s ease, visibility .28s ease; z-index: 40; }
+    .side-menu { position: fixed; left: 0; top: 0; bottom: 0; width: 80%; max-width: 300px; min-height: 100svh; background: #fff; z-index: 50; transform: translateX(-100%); transition: transform .32s ease; overflow-y: auto; padding: 24px 24px 34px; }
+    body.menu-open { overflow: hidden; }
+    body.menu-open .dim { opacity: 1; visibility: visible; }
+    body.menu-open .side-menu { transform: translateX(0); }
+
+    .profile { display: flex; align-items: center; gap: 14px; }
+    .profile img { width: 66px; height: 66px; border-radius: 50%; object-fit: cover; }
+    .profile__title { margin: 0 0 8px; font-size: 16px; font-weight: 800; }
+    .profile__title strong { color: var(--primary); }
+    .profile__sub { margin: 0; font-size: 12px; color: #888; }
+
+    .login-btn { width: 100%; height: 48px; margin: 24px 0 26px; border-radius: 12px; background: var(--primary); color: #fff; font-weight: 800; }
+    .menu-block { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 18px; }
+    .menu-block h3 { margin: 0 0 14px; font-size: 14px; }
+    .shortcut-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .shortcut { height: 68px; border: 1px solid #ededed; border-radius: 9px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font-size: 11px; }
+    .shortcut img { width: 23px; height: 23px; object-fit: contain; }
+    .menu-list { display: grid; gap: 8px; }
+    .menu-link { min-height: 46px; display: grid; grid-template-columns: 28px 1fr 18px; align-items: center; column-gap: 12px; font-size: 14px; font-weight: 700; }
+    .menu-link img { width: 23px; height: 23px; object-fit: contain; }
+    .menu-link .arrow { width: 16px; height: 16px; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <button id="menuOpen" type="button" aria-label="메뉴 열기">
+        <img class="topbar__icon" src="./images/icons/ci_hamburger-lg.svg" alt="메뉴" />
+      </button>
+      <img class="topbar__logo" src="./images/icons/logo.svg" alt="차박 앱 로고" />
+    </header>
+
+    <main>
+      <section class="hero">
+        <img src="./images/121.png" alt="차박 자동차 메인 이미지" />
+      </section>
+
+      <section class="section">
+        <h1 class="section-title">테마별 카테고리</h1>
+        <div class="category-grid">
+          <div class="category-item"><img src="./images/icons/flowers.svg" alt="꽃놀이" /><span>꽃놀이</span></div>
+          <div class="category-item"><img src="./images/icons/fire.svg" alt="불멍" /><span>불멍</span></div>
+          <div class="category-item"><img src="./images/icons/city.svg" alt="도심" /><span>도심</span></div>
+          <div class="category-item"><img src="./images/icons/Frame 21.svg" alt="별감상" /><span>별감상</span></div>
+          <div class="category-item"><img src="./images/icons/dog.svg" alt="반려견" /><span>반려견</span></div>
+          <div class="category-item"><img src="./images/icons/mountain.svg" alt="오지" /><span>오지</span></div>
+          <div class="category-item"><img src="./images/icons/bbq.svg" alt="바베큐" /><span>바베큐</span></div>
+          <div class="category-item"><img src="./images/icons/camp.svg" alt="장비" /><span>장비</span></div>
+        </div>
+
+        <div class="quick-buttons">
+          <a href="#" class="quick-button"><img src="./images/icons/coupon.svg" alt="" />쿠폰</a>
+          <a href="#" class="quick-button"><img src="./images/icons/event.svg" alt="" />이벤트</a>
+          <a href="#" class="quick-button"><img src="./images/icons/gift.svg" alt="" />혜택</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">장소 랭킹 Top 10</h2> 
+        <div class="ranking-grid">
+          <img src="./images/Frame 24.png" alt="차박 장소 1" />
+          <img src="./images/Frame 23.png" alt="차박 장소 2" />
+          <img class="wide" src="./images/Frame 22.png" alt="차박 장소 3" />
+        </div>
+      </section>
+
+      <section class="place-card">
+        <div class="place-card__title-row">
+          <h2>테마별 카테고리</h2>
+          <button type="button" aria-label="저장하기"><img class="place-card__save" src="./images/icons/material-symbols_bookmark-outline.svg" alt="저장" /></button>
+        </div>
+        <p>강원도 원주시 치악면 치악산 1번지</p>
+        <div class="place-card__actions">
+          <button class="action-btn action-btn--primary" type="button">길찾기</button>
+          <button class="action-btn action-btn--outline" type="button">해제하기</button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="하단 메뉴">
+      <a href="home.html" class="nav-item active"><img src="./images/icons/home.svg" alt="" /><span>홈</span></a>
+      <a href="serch.html" class="nav-item"><img src="./images/icons/search.svg" alt="" /><span>검색</span></a>
+      <a href="#" class="nav-item"><img src="./images/icons/community.svg" alt="" /><span>모임</span></a>
+      <a href="#" class="nav-item"><img src="./images/icons/live.svg" alt="" /><span>LIVE</span></a>
+      <a href="#" class="nav-item"><img src="./images/icons/user.svg" alt="" /><span>MY</span></a>
+    </nav>
+  </div>
+
+  <div id="dim" class="dim" aria-hidden="true"></div>
+
+  <aside id="sideMenu" class="side-menu" aria-label="모바일 메뉴" aria-hidden="true">
+    <div class="profile">
+      <img src="./images/prof.png" alt="프로필 이미지" />
+      <div>
+        <p class="profile__title">안녕하세요, <strong>차박러님</strong></p>
+        <p class="profile__sub">나만의 차박 여행을 시작해보세요</p>
+      </div>
+    </div>
+
+    <button class="login-btn" type="button">로그인/회원가입</button>
+
+    <section class="menu-block">
+      <h3>바로가기</h3>
+      <div class="shortcut-grid">
+        <a class="shortcut" href="home.html"><img src="./images/icons/material-symbols_home-outline.svg" alt="" /><span>홈</span></a>
+        <a class="shortcut" href="serch.html"><img src="./images/icons/mingcute_search-line.svg" alt="" /><span>검색</span></a>
+        <a class="shortcut" href="#"><img src="./images/icons/material-symbols_bookmark-outline.svg" alt="" /><span>저장</span></a>
+        <a class="shortcut" href="#"><img src="./images/icons/boxicons_user.svg" alt="" /><span>MY</span></a>
+      </div>
+    </section>
+
+    <section class="menu-block">
+      <h3>테마로 찾기</h3>
+      <div class="shortcut-grid">
+        <a class="shortcut" href="#"><img src="./images/icons/camp.svg" alt="" /><span>차박</span></a>
+        <a class="shortcut" href="#"><img src="./images/icons/city.svg" alt="" /><span>오지</span></a>
+        <a class="shortcut" href="#"><img src="./images/icons/bbq.svg" alt="" /><span>바베큐</span></a>
+        <a class="shortcut" href="#"><img src="./images/icons/dog.svg" alt="" /><span>반려견</span></a>
+      </div>
+    </section>
+
+    <section class="menu-block">
+      <h3>바로가기</h3>
+      <div class="menu-list">
+        <a class="menu-link" href="#"><img src="./images/icons/heroicons-outline_speakerphone.svg" alt="" /><span>공지사항</span><img class="arrow" src="./images/icons/weui_arrow-outlined.svg" alt="" /></a>
+        <a class="menu-link" href="#"><img src="./images/icons/material-symbols_headset-mic-outline-rounded.svg" alt="" /><span>고객센터</span><img class="arrow" src="./images/icons/weui_arrow-outlined.svg" alt="" /></a>
+        <a class="menu-link" href="#"><img src="./images/icons/uil_setting.svg" alt="" /><span>설정</span><img class="arrow" src="./images/icons/weui_arrow-outlined.svg" alt="" /></a>
+      </div>
+    </section>
+  </aside>
+
+  <script>
+    const body = document.body;
+    const menuOpen = document.getElementById('menuOpen');
+    const sideMenu = document.getElementById('sideMenu');
+    const dim = document.getElementById('dim');
+
+    function openMenu() {
+      body.classList.add('menu-open');
+      sideMenu.setAttribute('aria-hidden', 'false');
+      dim.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeMenu() {
+      body.classList.remove('menu-open');
+      sideMenu.setAttribute('aria-hidden', 'true');
+      dim.setAttribute('aria-hidden', 'true');
+    }
+
+    menuOpen.addEventListener('click', openMenu);
+    dim.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeMenu();
+    });
+  </script>
+</body>
+</html>
