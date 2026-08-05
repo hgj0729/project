@@ -425,6 +425,25 @@
       white-space: nowrap;
     }
 
+
+    .selected-route-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 44px;
+      margin-top: 14px;
+      border-radius: 10px;
+      background: #5575bd;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .selected-route-button:active {
+      opacity: 0.86;
+    }
+
     /* 카카오 지도 커스텀 오버레이 */
     .map-label {
       position: relative;
@@ -553,7 +572,7 @@
         class="current-location-button"
         aria-label="현재 위치 보기"
       >
-        <img src="./images/icon-current-location.png" alt="">
+        <img src="./images/place.svg" alt="">
       </button>
 
       <article class="selected-place-card">
@@ -595,6 +614,15 @@
               11.1km
             </strong>
           </div>
+
+          <button
+            id="selectedRouteButton"
+            type="button"
+            class="selected-route-button"
+            aria-label="선택한 장소 길찾기"
+          >
+            길찾기
+          </button>
         </div>
       </article>
     </section>
@@ -605,7 +633,7 @@
     카카오 개발자 사이트에서 발급받은 JavaScript 키로 변경하세요.
   -->
   <script
-    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=df248d44c279e1becb804df0b4f68a1d&autoload=false"
+    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=df248d44c279e1becb804df0b4f68a1d&autoload=false"
   ></script>
 
   <script>
@@ -924,6 +952,24 @@
       placeOverlay.setMap(kakaoMap);
     }
 
+
+    function openKakaoRoute() {
+      if (!selectedPlace) {
+        alert("선택한 장소 정보가 없습니다.");
+        return;
+      }
+
+      const routeUrl =
+        "https://map.kakao.com/link/to/" +
+        encodeURIComponent(selectedPlace.name) +
+        "," +
+        selectedPlace.latitude +
+        "," +
+        selectedPlace.longitude;
+
+      window.location.href = routeUrl;
+    }
+
     function moveToCurrentLocation() {
       if (!navigator.geolocation) {
         alert("현재 위치 기능을 지원하지 않는 환경입니다.");
@@ -969,6 +1015,11 @@
       .addEventListener("click", () => {
         closeMapScreen(true);
       });
+
+
+    document
+      .getElementById("selectedRouteButton")
+      .addEventListener("click", openKakaoRoute);
 
     document
       .getElementById("currentLocationButton")
