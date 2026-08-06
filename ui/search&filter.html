@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>WASHGO 검색 / 필터</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#FFFFFF;
+    font-family:Pretendard, Arial, sans-serif;
+    color:#1C1E21;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    padding:0;
+    border:0;
+    background:none;
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    display:block;
+}
+
+
+/* =========================
+   모바일 앱
+========================= */
+
+.app{
+
+    width:100%;
+    height:100svh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#FFFFFF;
+
+}
+
+
+/* =========================
+   스크롤 영역
+========================= */
+
+.scroll-area{
+
+    width:100%;
+    height:100%;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    padding-bottom:150px;
+
+    scrollbar-width:none;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.scroll-area::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* =========================
+   상단 네비게이션
+========================= */
+
+.top-navigation{
+
+    width:100%;
+    height:124px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    padding-bottom:22px;
+
+    background:#FFFFFF;
+
+}
+
+.back-button{
+
+    width:44px;
+    height:44px;
+
+    position:absolute;
+
+    left:10px;
+    bottom:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.back-button img{
+
+    width:22px;
+    height:22px;
+
+    object-fit:contain;
+
+}
+
+.page-title{
+
+    color:#151922;
+
+    font-size:21px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+
+/* =========================
+   본문
+========================= */
+
+.content{
+
+    padding:0 20px;
+
+}
+
+
+/* =========================
+   검색창
+========================= */
+
+.search-box{
+
+    width:100%;
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:0 18px;
+
+    border:1px solid #D5DAE2;
+
+    border-radius:14px;
+
+    background:#FFFFFF;
+
+}
+
+.search-box img{
+
+    width:18px;
+    height:18px;
+
+    object-fit:contain;
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    min-width:0;
+    height:100%;
+
+    border:0;
+    outline:none;
+
+    background:transparent;
+
+    color:#1C1E21;
+
+    font-size:15px;
+
+}
+
+.search-box input::placeholder{
+
+    color:#8B95A1;
+
+}
+
+
+/* =========================
+   필터 제목
+========================= */
+
+.filter-header{
+
+    margin-top:32px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.filter-title{
+
+    color:#111318;
+
+    font-size:21px;
+
+    font-weight:700;
+
+}
+
+.reset-button{
+
+    color:#2D6BF2;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+
+/* =========================
+   정렬 필터 버튼
+========================= */
+
+.sort-buttons{
+
+    margin-top:34px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:17px;
+
+}
+
+.sort-button{
+
+    min-width:95px;
+    height:36px;
+
+    padding:0 22px;
+
+    border:1px solid #D5DAE2;
+
+    border-radius:9px;
+
+    background:#FFFFFF;
+
+    color:#1C1E21;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+.sort-button.active{
+
+    border-color:#2D6BF2;
+
+    background:#2D6BF2;
+
+    color:#FFFFFF;
+
+}
+
+
+/* =========================
+   토글 리스트
+========================= */
+
+.filter-list{
+
+    margin-top:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:31px;
+
+}
+
+.filter-item{
+
+    min-height:31px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+.filter-label{
+
+    color:#20252F;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+
+/* =========================
+   토글 스위치
+========================= */
+
+.switch{
+
+    width:50px;
+    height:26px;
+
+    position:relative;
+
+    flex-shrink:0;
+
+    display:inline-block;
+
+}
+
+.switch input{
+
+    width:0;
+    height:0;
+
+    opacity:0;
+
+}
+
+.switch-track{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:999px;
+
+    background:#727B8B;
+
+    transition:0.2s;
+
+}
+
+.switch-track::after{
+
+    content:"";
+
+    width:20px;
+    height:20px;
+
+    position:absolute;
+
+    left:3px;
+    top:3px;
+
+    border-radius:50%;
+
+    background:#FFFFFF;
+
+    box-shadow:0 1px 3px rgba(0,0,0,0.18);
+
+    transition:0.2s;
+
+}
+
+.switch input:checked + .switch-track{
+
+    background:#2D6BF2;
+
+}
+
+.switch input:checked + .switch-track::after{
+
+    transform:translateX(24px);
+
+}
+
+
+/* =========================
+   적용 버튼
+========================= */
+
+.apply-wrap{
+
+    margin-top:67px;
+
+}
+
+.apply-button{
+
+    width:100%;
+    height:52px;
+
+    border-radius:14px;
+
+    background:#2D6BF2;
+
+    color:#FFFFFF;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.apply-button:active{
+
+    background:#5B9CFA;
+
+}
+
+
+/* =========================
+   공통 하단 탭바
+========================= */
+
+.bottom-navigation{
+
+    width:100%;
+    height:78px;
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    z-index:30;
+
+    display:grid;
+
+    grid-template-columns:repeat(4, 1fr);
+
+    border-top:1px solid #E3E6EB;
+
+    background:#FFFFFF;
+
+}
+
+.nav-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    color:#7A8391;
+
+    font-size:11px;
+
+    font-weight:500;
+
+}
+
+.nav-item img{
+
+    width:23px;
+    height:23px;
+
+    object-fit:contain;
+
+}
+
+.nav-item.active{
+
+    color:#2D7FF9;
+
+}
+
+.nav-item.active span{
+
+    font-weight:700;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <main class="scroll-area">
+
+
+        <!-- 상단 네비게이션 -->
+        <header class="top-navigation">
+
+            <button
+                type="button"
+                class="back-button"
+                aria-label="이전 화면"
+                onclick="history.back()">
+
+                <img
+                    src="./icons/back.svg"
+                    alt="">
+
+            </button>
+
+            <h1 class="page-title">
+                검색 / 필터
+            </h1>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- 검색창 -->
+            <label class="search-box">
+
+                <img
+                    src="./icons/search.svg"
+                    alt="">
+
+                <input
+                    type="search"
+                    placeholder="지역, 매장명 검색">
+
+            </label>
+
+
+            <!-- 필터 제목 -->
+            <div class="filter-header">
+
+                <h2 class="filter-title">
+                    필터
+                </h2>
+
+                <button
+                    type="reset"
+                    class="reset-button">
+
+                    초기화
+
+                </button>
+
+            </div>
+
+
+            <!-- 기본값 / 혼잡도 낮은순 -->
+            <div class="sort-buttons">
+
+                <button
+                    type="button"
+                    class="sort-button active">
+
+                    기본값
+
+                </button>
+
+                <button
+                    type="button"
+                    class="sort-button">
+
+                    혼잡도 낮은순
+
+                </button>
+
+            </div>
+
+
+            <!-- 상세 필터 -->
+            <div class="filter-list">
+
+
+                <div class="filter-item">
+
+                    <span class="filter-label">
+                        운영 중 매장만 보기
+                    </span>
+
+                    <label class="switch">
+
+                        <input type="checkbox">
+
+                        <span class="switch-track"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="filter-item">
+
+                    <span class="filter-label">
+                        주차가능
+                    </span>
+
+                    <label class="switch">
+
+                        <input type="checkbox">
+
+                        <span class="switch-track"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="filter-item">
+
+                    <span class="filter-label">
+                        할인 매장
+                    </span>
+
+                    <label class="switch">
+
+                        <input type="checkbox">
+
+                        <span class="switch-track"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="filter-item">
+
+                    <span class="filter-label">
+                        대형 세탁기
+                    </span>
+
+                    <label class="switch">
+
+                        <input type="checkbox">
+
+                        <span class="switch-track"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="filter-item">
+
+                    <span class="filter-label">
+                        운동화 세탁 가능
+                    </span>
+
+                    <label class="switch">
+
+                        <input type="checkbox">
+
+                        <span class="switch-track"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- 적용 버튼 -->
+            <div class="apply-wrap">
+
+                <button
+                    type="button"
+                    class="apply-button"
+                    onclick="location.href='./storelist.html'">
+
+                    적용하기
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- 공통 하단 탭바 -->
+    <nav class="bottom-navigation">
+
+        <a
+            href="./home.html"
+            class="nav-item">
+
+            <img
+                src="./icons/homeblack.svg"
+                alt="">
+
+            <span>
+                홈
+            </span>
+
+        </a>
+
+
+        <a
+            href="./storelist.html"
+            class="nav-item active">
+
+            <img
+                src="./icons/searchblue.svg"
+                alt="">
+
+            <span>
+                매장찾기
+            </span>
+
+        </a>
+
+
+        <a
+            href="./notifications.html"
+            class="nav-item">
+
+            <img
+                src="./icons/bell.svg"
+                alt="">
+
+            <span>
+                알림
+            </span>
+
+        </a>
+
+
+        <a
+            href="./mypage.html"
+            class="nav-item">
+
+            <img
+                src="./icons/person.svg"
+                alt="">
+
+            <span>
+                마이페이지
+            </span>
+
+        </a>
+
+    </nav>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>예약 완료</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#FFFFFF;
+    color:#171B24;
+    font-family:Pretendard, Arial, sans-serif;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    padding:0;
+    border:0;
+    background:none;
+    font:inherit;
+    cursor:pointer;
+}
+
+img{
+    display:block;
+}
+
+
+/* 모바일 앱 전체 영역 */
+
+.app{
+
+    width:100%;
+    height:100svh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#FFFFFF;
+
+}
+
+
+/* 세로 스크롤 영역 */
+
+.scroll-area{
+
+    width:100%;
+    height:100%;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    padding-bottom:80px;
+
+    scrollbar-width:none;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.scroll-area::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* 완료 콘텐츠 */
+
+.complete-content{
+
+    padding:76px 20px 40px;
+
+}
+
+
+/* 완료 아이콘 */
+
+.complete-icon{
+
+    width:94px;
+    height:94px;
+
+    margin:0 auto;
+
+    object-fit:contain;
+
+}
+
+
+/* 완료 제목 */
+
+.complete-title{
+
+    margin-top:34px;
+
+    text-align:center;
+
+    color:#171B24;
+
+    font-size:27px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+    letter-spacing:-0.7px;
+
+}
+
+
+/* 구분선 */
+
+.divider{
+
+    width:100%;
+    height:1px;
+
+    margin-top:32px;
+
+    background:#D9DCE2;
+
+}
+
+
+/* 예약 정보 */
+
+.reservation-info{
+
+    margin-top:31px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+.info-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+.info-label{
+
+    color:#242A34;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+.info-value{
+
+    color:#171B24;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+    text-align:right;
+
+}
+
+
+/* 버튼 영역 */
+
+.button-group{
+
+    margin-top:36px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.primary-button,
+.secondary-button{
+
+    width:100%;
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.primary-button{
+
+    background:#2D6BF2;
+
+    color:#FFFFFF;
+
+}
+
+.primary-button:active{
+
+    background:#5B9CFA;
+
+}
+
+.secondary-button{
+
+    border:1px solid #D5DAE2;
+
+    background:#FFFFFF;
+
+    color:#171B24;
+
+}
+
+.secondary-button:active{
+
+    background:#F5F6F8;
+
+}
+
+
+/* 공통 하단 탭바 */
+
+.bottom-navigation{
+
+    width:100%;
+    height:78px;
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    z-index:30;
+
+    display:grid;
+
+    grid-template-columns:repeat(4, 1fr);
+
+    border-top:1px solid #D9DCE2;
+
+    background:#FFFFFF;
+
+}
+
+.nav-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    color:#7A8391;
+
+    font-size:11px;
+
+    font-weight:500;
+
+}
+
+.nav-item img{
+
+    width:23px;
+    height:23px;
+
+    object-fit:contain;
+
+}
+
+.nav-item.active{
+
+    color:#2D7FF9;
+
+}
+
+.nav-item.active span{
+
+    font-weight:700;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <main class="scroll-area">
+
+        <section class="complete-content">
+
+
+            <!-- 완료 아이콘 -->
+            <img
+                src="./icons/check.svg"
+                alt="예약 완료"
+                class="complete-icon">
+
+
+            <!-- 완료 문구 -->
+            <h1 class="complete-title">
+
+                예약이 완료되었습니다!
+
+            </h1>
+
+
+            <div class="divider"></div>
+
+
+            <!-- 예약 정보 -->
+            <div class="reservation-info">
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        매장
+                    </span>
+
+                    <span class="info-value">
+                        워셔타운 강남점
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        기기
+                    </span>
+
+                    <span class="info-value">
+                        세탁기 2 (27kg)
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        예약 시간
+                    </span>
+
+                    <span class="info-value">
+                        11:00 ~ 12:00
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        총 결제 금액
+                    </span>
+
+                    <span class="info-value">
+                        5,000원
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 버튼 -->
+            <div class="button-group">
+
+                <a
+                    href="./alarm.html"
+                    class="primary-button">
+
+                    진행 현황 보기
+
+                </a>
+
+                <a
+                    href="./home.html"
+                    class="secondary-button">
+
+                    홈으로 이동
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- 공통 하단 탭바 -->
+    <nav class="bottom-navigation">
+
+        <a
+            href="./home.html"
+            class="nav-item">
+
+            <img
+                src="./icons/homeblack.svg"
+                alt="">
+
+            <span>
+                홈
+            </span>
+
+        </a>
+
+
+        <a
+            href="./storelist.html"
+            class="nav-item active">
+
+            <img
+                src="./icons/searchblue.svg"
+                alt="">
+
+            <span>
+                매장찾기
+            </span>
+
+        </a>
+
+
+        <a
+            href="./alarm.html"
+            class="nav-item">
+
+            <img
+                src="./icons/bell.svg"
+                alt="">
+
+            <span>
+                알림
+            </span>
+
+        </a>
+
+
+        <a
+            href="./mypage.html"
+            class="nav-item">
+
+            <img
+                src="./icons/person.svg"
+                alt="">
+
+            <span>
+                마이페이지
+            </span>
+
+        </a>
+
+    </nav>
+
+</div>
+
+</body>
+
+</html>

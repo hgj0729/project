@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>워셔타운 강남점 상세</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#FFFFFF;
+    font-family:Pretendard, Arial, sans-serif;
+    color:#1C1E21;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    padding:0;
+    border:0;
+    background:none;
+    font:inherit;
+    cursor:pointer;
+}
+
+img{
+    display:block;
+}
+
+
+/* 모바일 앱 */
+
+.app{
+
+    width:100%;
+    height:100svh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#FFFFFF;
+
+}
+
+
+/* 세로 스크롤 */
+
+.scroll-area{
+
+    width:100%;
+    height:100%;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    padding-bottom:92px;
+
+    scrollbar-width:none;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.scroll-area::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* 상단 매장 이미지 */
+
+.store-visual{
+
+    width:100%;
+    height:252px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#F5F6F8;
+
+}
+
+.store-visual > img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+/* 상단 버튼 */
+
+.visual-button{
+
+    width:42px;
+    height:42px;
+
+    position:absolute;
+
+    top:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.88);
+
+}
+
+.visual-button img{
+
+    width:22px;
+    height:22px;
+
+    object-fit:contain;
+
+}
+
+.back-button{
+
+    left:10px;
+
+}
+
+.favorite-button{
+
+    right:54px;
+
+}
+
+.share-button{
+
+    right:10px;
+
+}
+
+
+/* 상세 카드 */
+
+.detail-panel{
+
+    position:relative;
+
+    margin-top:-34px;
+
+    padding:28px 20px 32px;
+
+    border-radius:28px 28px 0 0;
+
+    background:#FFFFFF;
+
+}
+
+.store-name{
+
+    color:#171B24;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    line-height:1.35;
+
+    letter-spacing:-0.7px;
+
+}
+
+
+/* 평점 정보 */
+
+.summary-row{
+
+    margin-top:32px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    color:#6F7888;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+.rating{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    color:#2D6BF2;
+
+}
+
+.rating img{
+
+    width:21px;
+    height:21px;
+
+    object-fit:contain;
+
+}
+
+.review-count{
+
+    color:#747D8B;
+
+}
+
+.operation{
+
+    color:#747D8B;
+
+}
+
+
+/* 탭 */
+
+.tab-menu{
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3, 1fr);
+
+    border-bottom:1px solid #D9DCE2;
+
+}
+
+.tab-button{
+
+    height:52px;
+
+    position:relative;
+
+    color:#747D8B;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.tab-button.active{
+
+    color:#2D6BF2;
+
+}
+
+.tab-button.active::after{
+
+    content:"";
+
+    width:100%;
+    height:2px;
+
+    position:absolute;
+
+    left:0;
+    bottom:-1px;
+
+    background:#2D6BF2;
+
+}
+
+
+/* 매장 정보 */
+
+.store-information{
+
+    margin-top:32px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:23px;
+
+}
+
+.information-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:17px;
+
+}
+
+.information-icon{
+
+    width:23px;
+    height:23px;
+
+    flex-shrink:0;
+
+    object-fit:contain;
+
+}
+
+.information-content{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.information-title{
+
+    color:#242A34;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    line-height:1.4;
+
+}
+
+.information-description{
+
+    margin-top:4px;
+
+    color:#20252F;
+
+    font-size:15px;
+
+    font-weight:400;
+
+    line-height:1.5;
+
+}
+
+
+/* 기기 현황 버튼 */
+
+.machine-button-wrap{
+
+    margin-top:34px;
+
+}
+
+.machine-button{
+
+    width:100%;
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:#2D6BF2;
+
+    color:#FFFFFF;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.machine-button:active{
+
+    background:#5B9CFA;
+
+}
+
+
+/* 공통 하단 탭바 */
+
+.bottom-navigation{
+
+    width:100%;
+    height:78px;
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    z-index:30;
+
+    display:grid;
+
+    grid-template-columns:repeat(4, 1fr);
+
+    border-top:1px solid #D9DCE2;
+
+    background:#FFFFFF;
+
+}
+
+.nav-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    color:#7A8391;
+
+    font-size:11px;
+
+    font-weight:500;
+
+}
+
+.nav-item img{
+
+    width:23px;
+    height:23px;
+
+    object-fit:contain;
+
+}
+
+.nav-item.active{
+
+    color:#2D7FF9;
+
+}
+
+.nav-item.active span{
+
+    font-weight:700;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <main class="scroll-area">
+
+
+        <!-- 매장 대표 이미지 -->
+        <section class="store-visual">
+
+            <img
+                src="./images/washtown.png"
+                alt="워셔타운 강남점 내부">
+
+            <!-- 이전 화면 -->
+            <button
+                type="button"
+                class="visual-button back-button"
+                aria-label="이전 화면"
+                onclick="history.back()">
+
+                <img
+                    src="./icons/back.svg"
+                    alt="">
+
+            </button>
+
+
+            <!-- 즐겨찾기 -->
+            <button
+                type="button"
+                class="visual-button favorite-button"
+                aria-label="즐겨찾기">
+
+                <img
+                    src="./icons/heart2.svg"
+                    alt="">
+
+            </button>
+
+
+            <!-- 공유 -->
+            <button
+                type="button"
+                class="visual-button share-button"
+                aria-label="공유하기">
+
+                <img
+                    src="./icons/share.svg"
+                    alt="">
+
+            </button>
+
+        </section>
+
+
+        <!-- 상세 정보 -->
+        <section class="detail-panel">
+
+            <h1 class="store-name">
+                워셔타운 강남점
+            </h1>
+
+
+            <!-- 평점 및 운영시간 -->
+            <div class="summary-row">
+
+                <div class="rating">
+
+                    <img
+                        src="./icons/star.svg"
+                        alt="평점">
+
+                    <span>
+                        4.6
+                    </span>
+
+                    <span class="review-count">
+                        (128)
+                    </span>
+
+                </div>
+
+                <span class="operation">
+                    운영중 · 24시간
+                </span>
+
+            </div>
+
+
+            <!-- 정보 탭 -->
+            <div class="tab-menu">
+
+                <button
+                    type="button"
+                    class="tab-button active">
+
+                    정보
+
+                </button>
+
+                <button
+                    type="button"
+                    class="tab-button">
+
+                    리뷰 (56)
+
+                </button>
+
+                <button
+                    type="button"
+                    class="tab-button">
+
+                    사진
+
+                </button>
+
+            </div>
+
+
+            <!-- 매장 상세 정보 -->
+            <div class="store-information">
+
+
+                <div class="information-item">
+
+                    <img
+                        src="./icons/placeblack.svg"
+                        alt=""
+                        class="information-icon">
+
+                    <div class="information-content">
+
+                        <h2 class="information-title">
+                            주소
+                        </h2>
+
+                        <p class="information-description">
+                            서울 강남구 테헤란로 123
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="information-item">
+
+                    <img
+                        src="./icons/parking.svg"
+                        alt=""
+                        class="information-icon">
+
+                    <div class="information-content">
+
+                        <h2 class="information-title">
+                            주차
+                        </h2>
+
+                        <p class="information-description">
+                            건물 지하 주차장 2시간 무료
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="information-item">
+
+                    <img
+                        src="./icons/train.svg"
+                        alt=""
+                        class="information-icon">
+
+                    <div class="information-content">
+
+                        <h2 class="information-title">
+                            교통
+                        </h2>
+
+                        <p class="information-description">
+                            2호선 강남역 3번 출구 도보 5분
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="information-item">
+
+                    <img
+                        src="./icons/store.svg"
+                        alt=""
+                        class="information-icon">
+
+                    <div class="information-content">
+
+                        <h2 class="information-title">
+                            시설
+                        </h2>
+
+                        <p class="information-description">
+                            대형 세탁기, 건조기, 운동화 세탁기
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 기기 현황 보기 -->
+            <div class="machine-button-wrap">
+
+                <a
+                    href="./washinfo.html"
+                    class="machine-button">
+
+                    기기 현황 보기
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- 공통 하단 탭바 -->
+    <nav class="bottom-navigation">
+
+        <a
+            href="./home.html"
+            class="nav-item">
+
+            <img
+                src="./icons/homeblack.svg"
+                alt="">
+
+            <span>
+                홈
+            </span>
+
+        </a>
+
+
+        <a
+            href="./storelist.html"
+            class="nav-item active">
+
+            <img
+                src="./icons/searchblue.svg"
+                alt="">
+
+            <span>
+                매장찾기
+            </span>
+
+        </a>
+
+
+        <a
+            href="./notifications.html"
+            class="nav-item">
+
+            <img
+                src="./icons/bell.svg"
+                alt="">
+
+            <span>
+                알림
+            </span>
+
+        </a>
+
+
+        <a
+            href="./mypage.html"
+            class="nav-item">
+
+            <img
+                src="./icons/person.svg"
+                alt="">
+
+            <span>
+                마이페이지
+            </span>
+
+        </a>
+
+    </nav>
+
+</div>
+
+</body>
+
+</html>
