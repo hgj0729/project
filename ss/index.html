@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>추천 매장 찾기</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ========================================
+         화면 1: 추천 매장 목록
+    ========================================= -->
+    <section
+        id="storeListScreen"
+        class="screen store-list-screen active">
+
+        <!-- 상태바 -->
+        <div class="status-bar">
+
+            <strong class="status-time">
+                9:41
+            </strong>
+
+            <div class="status-icons">
+
+                <img
+                    src="./images/signal.svg"
+                    alt="통신 상태">
+
+                <img
+                    src="./images/wifi.svg"
+                    alt="와이파이">
+
+                <img
+                    src="./images/battery.svg"
+                    alt="배터리">
+
+            </div>
+
+        </div>
+
+
+        <!-- 상단 네비게이션 -->
+        <header class="list-header">
+
+            <button
+                type="button"
+                class="back-button"
+                aria-label="이전 화면"
+                onclick="location.href='./home.html'">
+
+                <img
+                    src="./images/back.svg"
+                    alt="이전">
+
+            </button>
+
+            <h1>
+                검색 결과 25개
+            </h1>
+
+        </header>
+
+
+        <!-- 지도 / 목록 -->
+        <div class="view-tab">
+
+            <button
+                type="button"
+                id="mapTabButton"
+                class="view-tab-button">
+
+                지도
+
+            </button>
+
+            <button
+                type="button"
+                class="view-tab-button active">
+
+                목록
+
+            </button>
+
+        </div>
+
+
+        <!-- 매장 목록 -->
+        <main class="store-scroll">
+
+            <div class="store-list">
+
+
+                <!-- 워셔타운 강남점 -->
+                <article
+                    class="store-card"
+                    data-store-id="gangnam"
+                    tabindex="0"
+                    role="button"
+                    aria-label="워셔타운 강남점 지도에서 보기">
+
+                    <div class="store-image">
+
+                        <img
+                            src="./images/card3.png"
+                            alt="워셔타운 강남점">
+
+                    </div>
+
+                    <div class="store-content">
+
+                        <div class="store-title-row">
+
+                            <h2>
+                                워셔타운 강남점
+                            </h2>
+
+                            <button
+                                type="button"
+                                class="favorite-button"
+                                aria-label="즐겨찾기"
+                                data-stop-card="true">
+
+                                <img
+                                    src="./images/heart.svg"
+                                    alt="즐겨찾기">
+
+                            </button>
+
+                        </div>
+
+                        <div class="store-meta">
+
+                            <span>
+                                50m
+                            </span>
+
+                            <span>
+                                운영중
+                            </span>
+
+                        </div>
+
+                        <p class="store-status">
+
+                            사용 가능
+                            <strong>
+                                6대
+                            </strong>
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 클린업 역삼점 -->
+                <article
+                    class="store-card"
+                    data-store-id="yeoksam"
+                    tabindex="0"
+                    role="button"
+                    aria-label="클린업 역삼점 지도에서 보기">
+
+                    <div class="store-image">
+
+                        <img
+                            src="./images/card2.png"
+                            alt="클린업 역삼점">
+
+                    </div>
+
+                    <div class="store-content">
+
+                        <div class="store-title-row">
+
+                            <h2>
+                                클린업 역삼점
+                            </h2>
+
+                        </div>
+
+                        <div class="store-meta">
+
+                            <span>
+                                800m
+                            </span>
+
+                            <span>
+                                운영중
+                            </span>
+
+                        </div>
+
+                        <p class="store-status">
+
+                            사용 가능
+                            <strong>
+                                3대
+                            </strong>
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 워시프렌즈 선릉점 -->
+                <article
+                    class="store-card"
+                    data-store-id="seolleung"
+                    tabindex="0"
+                    role="button"
+                    aria-label="워시프렌즈 선릉점 지도에서 보기">
+
+                    <div class="store-image">
+
+                        <img
+                            src="./images/card1.png"
+                            alt="워시프렌즈 선릉점">
+
+                    </div>
+
+                    <div class="store-content">
+
+                        <div class="store-title-row">
+
+                            <h2>
+                                워시프렌즈 선릉점
+                            </h2>
+
+                        </div>
+
+                        <div class="store-meta">
+
+                            <span>
+                                1.2km
+                            </span>
+
+                            <span>
+                                운영중
+                            </span>
+
+                        </div>
+
+                        <p class="store-status">
+
+                            사용 가능
+                            <strong>
+                                1대
+                            </strong>
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </main>
+
+
+        <!-- 공통 하단 탭바 -->
+        <nav class="bottom-navigation">
+
+            <a
+                href="./home.html"
+                class="nav-item">
+
+                <img
+                    src="./images/homeblack.svg"
+                    alt="">
+
+                <span>
+                    홈
+                </span>
+
+            </a>
+
+            <a
+                href="./search.html"
+                class="nav-item active">
+
+                <img
+                    src="./images/searchblue.svg"
+                    alt="">
+
+                <span>
+                    매장찾기
+                </span>
+
+            </a>
+
+            <a
+                href="./notification.html"
+                class="nav-item">
+
+                <img
+                    src="./images/bell.svg"
+                    alt="">
+
+                <span>
+                    알림
+                </span>
+
+            </a>
+
+            <a
+                href="./mypage.html"
+                class="nav-item">
+
+                <img
+                    src="./images/person.svg"
+                    alt="">
+
+                <span>
+                    마이페이지
+                </span>
+
+            </a>
+
+        </nav>
+
+    </section>
+
+
+    <!-- ========================================
+         화면 2: 매장 지도
+    ========================================= -->
+    <section
+        id="mapScreen"
+        class="screen map-screen">
+
+        <!-- 지도 영역 -->
+        <div
+            id="kakaoMap"
+            class="kakao-map">
+        </div>
+
+
+        <!-- 지도 상단 상태바 -->
+        <div class="map-status-bar">
+
+            <strong>
+                9:41
+            </strong>
+
+            <div>
+
+                <img
+                    src="./images/signal.svg"
+                    alt="통신 상태">
+
+                <img
+                    src="./images/wifi.svg"
+                    alt="와이파이">
+
+                <img
+                    src="./images/battery.svg"
+                    alt="배터리">
+
+            </div>
+
+        </div>
+
+
+        <!-- 이전 버튼 -->
+        <button
+            type="button"
+            id="mapBackButton"
+            class="map-back-button"
+            aria-label="목록으로 돌아가기">
+
+            <img
+                src="./images/back.svg"
+                alt="이전">
+
+        </button>
+
+
+        <!-- 현재 위치 버튼 -->
+        <button
+            type="button"
+            id="currentLocationButton"
+            class="current-location-button"
+            aria-label="현재 위치">
+
+            <img
+                src="./images/place.svg"
+                alt="현재 위치">
+
+        </button>
+
+
+        <!-- 하단 매장 카드 -->
+        <article class="map-store-sheet">
+
+            <div class="sheet-handle"></div>
+
+            <div class="map-store-card">
+
+                <div class="map-store-image">
+
+                    <img
+                        id="selectedStoreImage"
+                        src="./images/card3.png"
+                        alt="선택 매장">
+
+                </div>
+
+                <div class="map-store-content">
+
+                    <div class="map-store-heading">
+
+                        <h2 id="selectedStoreName">
+                            워셔타운 강남점
+                        </h2>
+
+                        <button
+                            type="button"
+                            class="map-bookmark-button"
+                            aria-label="북마크">
+
+                            <img
+                                src="./images/bookmark.svg"
+                                alt="북마크">
+
+                        </button>
+
+                    </div>
+
+                    <p
+                        id="selectedStoreAddress"
+                        class="map-store-address">
+
+                        서울 강남구 강남대로 382
+
+                    </p>
+
+                    <div class="map-store-bottom">
+
+                        <div class="map-tags">
+
+                            <span id="selectedStoreStatus">
+                                운영중
+                            </span>
+
+                            <span>
+                                사용 가능
+                                <strong id="selectedStoreMachines">
+                                    6대
+                                </strong>
+                            </span>
+
+                        </div>
+
+                        <strong
+                            id="selectedStoreDistance"
+                            class="map-distance">
+
+                            50m
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+</div>
+
+
+<!--
+    YOUR_KAKAO_JAVASCRIPT_KEY 부분을
+    본인의 카카오 JavaScript 키로 변경하세요.
+-->
+<script
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=df248d44c279e1becb804df0b4f68a1d&autoload=false">
+</script>
+
+<script src="./js/script.js"></script>
+
+</body>
+
+</html>

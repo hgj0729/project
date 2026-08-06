@@ -1,0 +1,546 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #ffffff;
+    color: #171b24;
+    font-family: Pretendard, Arial, sans-serif;
+}
+
+button {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+}
+
+
+/* ========================================
+   앱 전체
+======================================== */
+
+.app {
+    width: 100%;
+    height: 100svh;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.screen {
+    width: 100%;
+    height: 100svh;
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: #ffffff;
+}
+
+.screen.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* ========================================
+   화면 1: 목록
+======================================== */
+
+.store-list-screen {
+    padding-bottom: 78px;
+}
+
+
+/* 상태바 */
+
+.status-bar {
+    width: 100%;
+    height: 45px;
+    padding: 12px 31px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: #ffffff;
+}
+
+.status-time {
+    color: #111111;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.status-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.status-icons img {
+    width: auto;
+    height: 13px;
+    object-fit: contain;
+}
+
+
+/* 상단 제목 */
+
+.list-header {
+    width: 100%;
+    height: 73px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-header h1 {
+    color: #171b24;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.back-button {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    left: 10px;
+    top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-button img {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+}
+
+
+/* 지도 / 목록 탭 */
+
+.view-tab {
+    padding: 16px 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+.view-tab-button {
+    height: 36px;
+    border: 1px solid #d5dae2;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #7b8391;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.view-tab-button.active {
+    border-color: #bfd2ef;
+    background: #dce9fb;
+    color: #2d6bf2;
+}
+
+
+/* 목록 스크롤 */
+
+.store-scroll {
+    width: 100%;
+    height: calc(100svh - 248px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 32px 20px 40px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.store-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.store-list {
+    display: flex;
+    flex-direction: column;
+    gap: 31px;
+}
+
+
+/* 매장 카드 */
+
+.store-card {
+    min-height: 110px;
+    padding: 17px 16px 17px 15px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border: 1px solid #d5dae2;
+    border-radius: 17px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.store-card:active {
+    background: #f7f9fc;
+    transform: scale(0.99);
+}
+
+.store-card:focus-visible {
+    outline: 2px solid #2d6bf2;
+    outline-offset: 3px;
+}
+
+.store-image {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f5f6f8;
+}
+
+.store-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.store-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.store-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.store-title-row h2 {
+    overflow: hidden;
+    color: #1d222c;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.favorite-button {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-button img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.store-meta {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #788291;
+    font-size: 15px;
+}
+
+.store-status {
+    margin-top: 7px;
+    color: #788291;
+    font-size: 15px;
+}
+
+.store-status strong {
+    color: #1fc67a;
+    font-weight: 500;
+}
+
+
+/* 하단 탭 */
+
+.bottom-navigation {
+    width: 100%;
+    height: 78px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 20;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #d9dce2;
+    background: #ffffff;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #7a8391;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.nav-item img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+}
+
+.nav-item.active {
+    color: #2d6bf2;
+}
+
+
+/* ========================================
+   화면 2: 지도
+======================================== */
+
+.map-screen {
+    overflow: hidden;
+}
+
+.kakao-map {
+    width: 100%;
+    height: 100%;
+    background: #dce9e7;
+}
+
+
+/* 지도 상태바 */
+
+.map-status-bar {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 30;
+    padding: 12px 31px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.map-status-bar strong {
+    color: #111111;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.map-status-bar div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.map-status-bar img {
+    width: auto;
+    height: 13px;
+    object-fit: contain;
+}
+
+
+/* 지도 이전 버튼 */
+
+.map-back-button {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    left: 10px;
+    top: 58px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-back-button img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+
+/* 현재 위치 버튼 */
+
+.current-location-button {
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    right: 18px;
+    bottom: 200px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(15, 31, 55, 0.18);
+}
+
+.current-location-button img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+
+/* 하단 매장 시트 */
+
+.map-store-sheet {
+    width: 100%;
+    min-height: 177px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 35;
+    padding: 8px 24px 22px;
+    border-radius: 22px 22px 0 0;
+    background: #ffffff;
+    box-shadow: 0 -5px 18px rgba(15, 31, 55, 0.08);
+}
+
+.sheet-handle {
+    width: 46px;
+    height: 5px;
+    margin: 0 auto 18px;
+    border-radius: 999px;
+    background: #d9dce2;
+}
+
+.map-store-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.map-store-image {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f5f6f8;
+}
+
+.map-store-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.map-store-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.map-store-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.map-store-heading h2 {
+    overflow: hidden;
+    color: #111827;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.map-bookmark-button {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-bookmark-button img {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+}
+
+.map-store-address {
+    margin-top: 4px;
+    overflow: hidden;
+    color: #252b35;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.map-store-bottom {
+    margin-top: 19px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.map-tags {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.map-tags span {
+    min-height: 25px;
+    padding: 0 9px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #5a73bc;
+    border-radius: 8px;
+    color: #5a73bc;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.map-tags strong {
+    margin-left: 3px;
+    color: #1fc67a;
+    font-weight: 600;
+}
+
+.map-distance {
+    color: #4f6fc3;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+}
