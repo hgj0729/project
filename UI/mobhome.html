@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>WASHGO Home</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- 스크롤 콘텐츠 -->
+    <main class="app-content">
+
+        <!-- 상단 앱 메뉴바 -->
+        <header class="app-header">
+
+            <button
+                type="button"
+                id="menuOpenButton"
+                class="header-button"
+                aria-label="메뉴 열기">
+
+                <img
+                    src="./images/icons/hamburger.svg"
+                    alt="메뉴">
+
+            </button>
+
+            <a
+                href="./home.html"
+                class="header-logo">
+
+                <img
+                    src="./images/icons/logo 4.svg"
+                    alt="WASHGO">
+
+            </a>
+
+        </header>
+
+
+        <!-- 현재 위치 -->
+        <section class="location-section">
+
+            <div class="location-box">
+
+                <img
+                    src="./images/icons/place.svg"
+                    alt=""
+                    class="location-icon">
+
+                <strong>
+                    서울 강남구 역삼동
+                </strong>
+
+            </div>
+
+            <a
+                href="./alarm.html"
+                class="notification-link"
+                aria-label="알림">
+
+                <img
+                    src="./images/icons/bell.svg"
+                    alt="알림">
+
+            </a>
+
+        </section>
+
+
+        <!-- 검색창 -->
+        <section class="search-section">
+
+            <a
+                href="./search&filter.html"
+                class="search-box">
+
+                <img
+                    src="./images/icons/search.svg"
+                    alt="검색">
+
+                <span>
+                    매장명 또는 지역을 입력하세요
+                </span>
+
+            </a>
+
+        </section>
+
+
+        <!-- 쿠폰 배너 -->
+        <a
+            href="./coupon.html"
+            class="coupon-banner">
+
+            <div class="coupon-copy">
+
+                <strong>
+                    첫 결제 10% 할인 쿠폰
+                </strong>
+
+                <span>
+                    지금 바로 받기
+                </span>
+
+            </div>
+
+            <img
+                src="./images/cupon.png"
+                alt="10% 할인 쿠폰"
+                class="coupon-image">
+
+        </a>
+
+
+        <!-- 추천 매장 -->
+        <section class="section">
+
+            <div class="section-header">
+
+                <h2>
+                    추천 매장
+                </h2>
+
+                <a
+                    href="./storelist.html"
+                    class="more-link">
+
+                    <span>
+                        더보기
+                    </span>
+
+                    <img
+                        src="./images/icon_arrow_right_gray.png"
+                        alt="">
+
+                </a>
+
+            </div>
+
+
+            <a
+                href="./washtown.html"
+                class="store-card">
+
+                <div class="store-thumbnail">
+
+                    <img
+                        src="./images/icons/person.svg"
+                        alt="워셔타운 강남점">
+
+                </div>
+
+                <div class="store-information">
+
+                    <div class="store-title-row">
+
+                        <h3>
+                            워셔타운 강남점
+                        </h3>
+
+                        <img
+                            src="./images/icons/heart.svg"
+                            alt="관심 매장"
+                            class="heart-icon">
+
+                    </div>
+
+                    <p class="store-meta">
+                        50m&nbsp;&nbsp; 운영중
+                    </p>
+
+                    <div class="store-status">
+
+                        <span>
+                            사용 가능
+                            <em class="available">
+                                6대
+                            </em>
+                        </span>
+
+                        <span>
+                            혼잡도
+                            <em class="normal">
+                                보통
+                            </em>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        </section>
+
+
+        <!-- 최근 이용 매장 -->
+        <section class="section recent-section">
+
+            <h2>
+                최근 이용 매장
+            </h2>
+
+            <a
+                href="./washtown.html"
+                class="store-card recent-card">
+
+                <div class="store-thumbnail">
+
+                    <img
+                        src="./images/icons/person.svg"
+                        alt="워셔타운 역삼점">
+
+                </div>
+
+                <div class="store-information">
+
+                    <h3>
+                        워셔타운 역삼점
+                    </h3>
+
+                    <p class="store-meta recent-date">
+                        22.05.20 이용
+                    </p>
+
+                </div>
+
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- 공통 하단 탭바 -->
+    <nav class="bottom-navigation">
+
+        <a
+            href="./home.html"
+            class="nav-item active">
+
+            <img
+                src="./images/icons/home.svg"
+                alt="홈">
+
+            <span>
+                홈
+            </span>
+
+        </a>
+
+        <a
+            href="./storelist.html"
+            class="nav-item">
+
+            <img
+                src="./images/icons/search.svg"
+                alt="매장찾기">
+
+            <span>
+                매장찾기
+            </span>
+
+        </a>
+
+        <a
+            href="./alarm.html"
+            class="nav-item">
+
+            <img
+                src="./images/icons/bell.svg"
+                alt="알림">
+
+            <span>
+                알림
+            </span>
+
+        </a>
+
+        <a
+            href="./mypage.html"
+            class="nav-item">
+
+            <img
+                src="./images/icons/person.svg"
+                alt="마이페이지">
+
+            <span>
+                마이페이지
+            </span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- 메뉴 열림 시 어두운 배경 -->
+    <div
+        id="menuOverlay"
+        class="menu-overlay">
+    </div>
+
+
+    <!-- 왼쪽 슬라이드 모바일 메뉴 -->
+    <aside
+        id="mobileMenu"
+        class="mobile-menu"
+        aria-hidden="true">
+
+        <div class="menu-scroll">
+
+            <!-- 메뉴 상단 -->
+            <div class="menu-top">
+
+                <button
+                    type="button"
+                    id="menuCloseButton"
+                    class="menu-close-button"
+                    aria-label="메뉴 닫기">
+
+                    <img
+                        src="./images/icons/back.svg"
+                        alt="닫기">
+
+                </button>
+
+
+                <div class="profile">
+
+                    <img
+                        src="./images/prof.png"
+                        alt="홍길동"
+                        class="profile-image">
+
+                    <div class="profile-copy">
+
+                        <strong>
+                            홍길동님
+                        </strong>
+
+                        <span>
+                            환영합니다!
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 빠른 메뉴 -->
+            <nav class="quick-menu">
+
+                <a href="./washtown.html" class="quick-item">
+
+                    <img
+                        src="./images/icons/heart2.svg"
+                        alt="관심매장">
+
+                    <span>
+                        관심매장
+                    </span>
+
+                </a>
+
+                <a href="./complete.html" class="quick-item">
+
+                    <img
+                        src="./images/icons/calnedar.svg"
+                        alt="예약 내역">
+
+                    <span>
+                        예약 내역
+                    </span>
+
+                </a>
+
+                <a href="./use-history.html" class="quick-item">
+
+                    <img
+                        src="./images/icons/store.svg"
+                        alt="이용 내역">
+
+                    <span>
+                        이용 내역
+                    </span>
+
+                </a>
+
+                <a href="./coupon.html" class="quick-item">
+
+                    <img
+                        src="./images/icons/coupon.svg"
+                        alt="쿠폰함">
+
+                    <span>
+                        쿠폰함
+                    </span>
+
+                </a>
+
+            </nav>
+
+
+            <div class="menu-divider"></div>
+
+
+            <!-- 메뉴 목록 -->
+            <nav class="menu-list">
+
+                <a
+                    href="./pay.html"
+                    class="menu-list-item">
+
+                    <div class="menu-item-left">
+
+                        <img
+                            src="./images/icons/card.svg"
+                            alt="카드">
+
+                        <span>
+                            결제 수단 관리
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./images/icons/next.svg"
+                        alt="바로가기"
+                        class="menu-arrow">
+
+                </a>
+
+
+                <a
+                    href="./faq.html"
+                    class="menu-list-item">
+
+                    <div class="menu-item-left">
+
+                        <img
+                            src="./images/icons/faq.svg"
+                            alt="faq">
+
+                        <span>
+                            FAQ
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./images/icons/next.svg"
+                        alt="바로가기"
+                        class="menu-arrow">
+
+                </a>
+
+
+                <a
+                    href="./customer-center.html"
+                    class="menu-list-item">
+
+                    <div class="menu-item-left">
+
+                        <img
+                            src="./images/icons/headset.svg"
+                            alt="고객센터">
+
+                        <span>
+                            고객센터
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./images/icons/next.svg"
+                        alt="바로가기"
+                        class="menu-arrow">
+
+                </a>
+
+
+                <a
+                    href="./alarm.html"
+                    class="menu-list-item">
+
+                    <div class="menu-item-left">
+
+                        <img
+                            src="./images/icons/bell.svg"
+                            alt="">
+
+                        <span>
+                            알림 설정
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./images/icons/next.svg"
+                        alt=""
+                        class="menu-arrow">
+
+                </a>
+
+
+                <a
+                    href="./login.html"
+                    class="menu-list-item">
+
+                    <div class="menu-item-left">
+
+                        <img
+                            src="./images/icons/logout.svg"
+                            alt="">
+
+                        <span>
+                            로그아웃
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="./images/icons/next.svg"
+                        alt=""
+                        class="menu-arrow">
+
+                </a>
+
+            </nav>
+
+
+            <!-- 메뉴 쿠폰 -->
+            <a
+                href="./coupon.html"
+                class="menu-coupon">
+
+                <div>
+
+                    <strong>
+                        첫 결제 10% 할인 쿠폰
+                    </strong>
+
+                    <span>
+                        지금 바로 받기
+                    </span>
+
+                </div>
+
+                <img
+                    src="./images/cupon.png"
+                    alt="10% 할인">
+
+            </a>
+
+        </div>
+
+
+        <!-- 메뉴 하단 탭바 -->
+        <nav class="menu-bottom-navigation">
+
+            <a
+                href="./home.html"
+                class="menu-nav-item">
+
+                <img
+                    src="./images/icons/homeblack.svg"
+                    alt="홈">
+
+                <span>
+                    홈
+                </span>
+
+            </a>
+
+            <a
+                href="./storelist.html"
+                class="menu-nav-item">
+
+                <img
+                    src="./images/icons/search.svg"
+                    alt="매장찾기">
+
+                <span>
+                    매장찾기
+                </span>
+
+            </a>
+
+            <a
+                href="./alarm.html"
+                class="menu-nav-item">
+
+                <img
+                    src="./images/icons/bell.svg"
+                    alt="알림">
+
+                <span>
+                    알림
+                </span>
+
+            </a>
+
+            <a
+                href="./mypage.html"
+                class="menu-nav-item active">
+
+                <img
+                    src="./images/icons/personblue.svg  "
+                    alt="마이페이지">
+
+                <span>
+                    마이페이지
+                </span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+</div>
+
+<script src="./js/script.js"></script>
+
+</body>
+
+</html>

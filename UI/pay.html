@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>예약 / 결제</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#FFFFFF;
+    color:#171B24;
+    font-family:Pretendard, Arial, sans-serif;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+select{
+    font:inherit;
+}
+
+button{
+    padding:0;
+    border:0;
+    background:none;
+    cursor:pointer;
+}
+
+img{
+    display:block;
+}
+
+
+/* 모바일 앱 전체 영역 */
+
+.app{
+
+    width:100%;
+    height:100svh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#FFFFFF;
+
+}
+
+
+/* 세로 스크롤 영역 */
+
+.scroll-area{
+
+    width:100%;
+    height:100%;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    padding-bottom:110px;
+
+    scrollbar-width:none;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.scroll-area::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* 상단 네비게이션 */
+
+.top-navigation{
+
+    width:100%;
+    height:112px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    padding-bottom:10px;
+
+    background:#FFFFFF;
+
+}
+
+.back-button{
+
+    width:44px;
+    height:44px;
+
+    position:absolute;
+
+    left:10px;
+    bottom:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.back-button img{
+
+    width:21px;
+    height:21px;
+
+    object-fit:contain;
+
+}
+
+.page-title{
+
+    color:#171B24;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+
+/* 본문 */
+
+.content{
+
+    padding:0 20px 40px;
+
+}
+
+
+/* 선택 기기 */
+
+.machine-summary{
+
+    margin-top:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.machine-icon{
+
+    width:62px;
+    height:62px;
+
+    flex-shrink:0;
+
+    object-fit:contain;
+
+}
+
+.machine-name{
+
+    color:#171B24;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+.machine-time{
+
+    margin-top:4px;
+
+    color:#7B8391;
+
+    font-size:15px;
+
+    line-height:1.4;
+
+}
+
+
+/* 시작 시간 */
+
+.time-section{
+
+    margin-top:34px;
+
+    padding-bottom:16px;
+
+    border-bottom:1px solid #D9DCE2;
+
+}
+
+.row-between{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+.section-label{
+
+    color:#1C1E21;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.select-box{
+
+    width:118px;
+    height:42px;
+
+    position:relative;
+
+}
+
+.select-box select{
+
+    width:100%;
+    height:100%;
+
+    padding:0 40px 0 14px;
+
+    border:1px solid #D5DAE2;
+
+    border-radius:14px;
+
+    outline:none;
+
+    appearance:none;
+
+    background:#FFFFFF;
+
+    color:#171B24;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.select-box img{
+
+    width:18px;
+    height:18px;
+
+    position:absolute;
+
+    right:14px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    pointer-events:none;
+
+    object-fit:contain;
+
+}
+
+
+/* 결제 정보 */
+
+.payment-info{
+
+    margin-top:34px;
+
+}
+
+.payment-info h2,
+.payment-method h2{
+
+    color:#1C1E21;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.price-list{
+
+    margin-top:24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.price-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+.price-label{
+
+    color:#242A34;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+.price-value{
+
+    color:#747D8B;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+.price-total{
+
+    margin-top:3px;
+
+}
+
+.price-total .price-label{
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.price-total .price-value{
+
+    color:#171B24;
+
+    font-size:22px;
+
+    font-weight:800;
+
+}
+
+
+/* 구분선 */
+
+.divider{
+
+    width:calc(100% + 40px);
+
+    height:1px;
+
+    margin:0 -20px;
+
+    background:#D9DCE2;
+
+}
+
+
+/* 결제수단 */
+
+.payment-method{
+
+    margin-top:24px;
+
+    padding-top:0;
+
+}
+
+.card-select{
+
+    width:100%;
+    height:46px;
+
+    position:relative;
+
+    margin-top:18px;
+
+}
+
+.card-select select{
+
+    width:100%;
+    height:100%;
+
+    padding:0 44px 0 14px;
+
+    border:1px solid #D5DAE2;
+
+    border-radius:14px;
+
+    outline:none;
+
+    appearance:none;
+
+    background:#FFFFFF;
+
+    color:#747D8B;
+
+    font-size:16px;
+
+}
+
+.card-select img{
+
+    width:18px;
+    height:18px;
+
+    position:absolute;
+
+    right:16px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    pointer-events:none;
+
+    object-fit:contain;
+
+}
+
+
+/* 하단 결제 버튼 */
+
+.bottom-action{
+
+    width:100%;
+    height:100px;
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    z-index:20;
+
+    padding:18px 20px 30px;
+
+    border-top:1px solid #ECEEF2;
+
+    background:#FFFFFF;
+
+}
+
+.pay-button{
+
+    width:100%;
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:#2D6BF2;
+
+    color:#FFFFFF;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.pay-button:active{
+
+    background:#5B9CFA;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <main class="scroll-area">
+
+
+        <!-- 상단 네비게이션 -->
+        <header class="top-navigation">
+
+            <a
+                href="./washinfo.html"
+                class="back-button"
+                aria-label="기기 현황 화면으로 돌아가기">
+
+                <img
+                    src="./icons/back.svg"
+                    alt="이전">
+
+            </a>
+
+            <h1 class="page-title">
+                예약 / 결제
+            </h1>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- 선택한 기기 -->
+            <section class="machine-summary">
+
+                <img
+                    src="./icons/wash.2.svg"
+                    alt="세탁기 2"
+                    class="machine-icon">
+
+                <div>
+
+                    <h2 class="machine-name">
+                        세탁기 2 (27kg)
+                    </h2>
+
+                    <p class="machine-time">
+                        남은 시간 32분
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- 시작 시간 -->
+            <section class="time-section">
+
+                <div class="row-between">
+
+                    <h2 class="section-label">
+                        시작 시간
+                    </h2>
+
+                    <div class="select-box">
+
+                        <select aria-label="시작 시간 선택">
+
+                            <option selected>
+                                11:00
+                            </option>
+
+                            <option>
+                                11:30
+                            </option>
+
+                            <option>
+                                12:00
+                            </option>
+
+                            <option>
+                                12:30
+                            </option>
+
+                        </select>
+
+                        <img
+                            src="./icons/down.svg"
+                            alt="">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- 결제 정보 -->
+            <section class="payment-info">
+
+                <h2>
+                    결제 정보
+                </h2>
+
+                <div class="price-list">
+
+                    <div class="price-row">
+
+                        <span class="price-label">
+                            이용 요금
+                        </span>
+
+                        <span class="price-value">
+                            6000원
+                        </span>
+
+                    </div>
+
+                    <div class="price-row">
+
+                        <span class="price-label">
+                            쿠폰 적용
+                        </span>
+
+                        <span class="price-value">
+                            -1000원
+                        </span>
+
+                    </div>
+
+                    <div class="price-row price-total">
+
+                        <span class="price-label">
+                            총 결제 금액
+                        </span>
+
+                        <span class="price-value">
+                            5,000원
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <div class="divider"></div>
+
+
+            <!-- 결제 수단 -->
+            <section class="payment-method">
+
+                <h2>
+                    결제 수단
+                </h2>
+
+                <div class="card-select">
+
+                    <select aria-label="결제 수단 선택">
+
+                        <option selected>
+                            **** 1234 (카드)
+                        </option>
+
+                        <option>
+                            카카오페이
+                        </option>
+
+                        <option>
+                            네이버페이
+                        </option>
+
+                        <option>
+                            다른 카드 등록
+                        </option>
+
+                    </select>
+
+                    <img
+                        src="./icons/down.svg"
+                        alt="">
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- 하단 고정 결제 버튼 -->
+    <div class="bottom-action">
+
+        <button
+            type="button"
+            class="pay-button"
+            onclick="location.href='./complete.html'">
+
+            결제하기
+
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
