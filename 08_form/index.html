@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+  <title>Mini Tetris</title>
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+  <main class="tetris-app">
+
+    <!-- 왼쪽 정보 -->
+    <aside class="left-panel">
+
+      <button
+        type="button"
+        id="pauseBtn"
+        class="pause-btn"
+        aria-label="일시정지"
+      >
+        Ⅱ
+      </button>
+
+      <div class="score-box">
+        <p>SCORE</p>
+        <strong id="score">0</strong>
+      </div>
+
+      <div class="score-box">
+        <p>BEST</p>
+        <strong id="bestScore">0</strong>
+      </div>
+
+    </aside>
+
+
+    <!-- 중앙 게임 -->
+    <section class="game-area">
+
+      <canvas
+        id="gameCanvas"
+        width="180"
+        height="360"
+      ></canvas>
+
+      <!-- 게임 시작 / 종료 -->
+      <div id="gameOverlay" class="game-overlay">
+
+        <div class="overlay-inner">
+          <h1 id="overlayTitle">TETRIS</h1>
+
+          <p id="overlayText">
+            블록을 쌓아<br>
+            줄을 완성하세요.
+          </p>
+
+          <button
+            type="button"
+            id="startBtn"
+            class="start-btn"
+          >
+            START
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- 오른쪽 블록 목록 -->
+    <aside class="right-panel">
+
+      <canvas
+        id="previewCanvas"
+        width="30"
+        height="350"
+      ></canvas>
+
+    </aside>
+
+  </main>
+
+
+  <!-- 모바일 조작 -->
+  <section class="controller">
+
+    <button
+      type="button"
+      data-control="left"
+      aria-label="왼쪽 이동"
+    >
+      ←
+    </button>
+
+    <button
+      type="button"
+      data-control="rotate"
+      aria-label="회전"
+    >
+      ↻
+    </button>
+
+    <button
+      type="button"
+      data-control="right"
+      aria-label="오른쪽 이동"
+    >
+      →
+    </button>
+
+    <button
+      type="button"
+      data-control="down"
+      aria-label="아래 이동"
+    >
+      ↓
+    </button>
+
+    <button
+      type="button"
+      data-control="drop"
+      class="drop-btn"
+    >
+      DROP
+    </button>
+
+  </section>
+
+
+  <script src="./js/main.js"></script>
+
+</body>
+</html>
