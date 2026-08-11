@@ -1,6 +1,6 @@
 const scriptURL =
 
-"https://script.google.com/macros/s/AKfycbyp5kzgnvw9SLqXrREaM_VU6re9YRnoDpoNRMnewNMaOk1xi2AbLvxrb7MoYO5gwnld/exec"; // 자신의 app스크립트 주소 링크 넣는 위치
+"https://script.google.com/macros/s/AKfycbxrkgknCLUr2w_6f52kNO22yl-S2J9ynOOOV3DP3LpGM9E8YUv74pf8EAo4lz9uD3wr/exec"; // 자신의 app스크립트 주소 링크 넣는 위치
 
 const form = document.forms["submit-to-google-sheet"];
 
