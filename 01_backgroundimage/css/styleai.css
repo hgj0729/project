@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, "Noto Sans KR", sans-serif;
+}
+
+
+/* =========================
+   전체 배너
+========================= */
+
+.quick-banner {
+  width: 100%;
+}
+
+.quick-banner .inner {
+  width: 1180px;
+  height: 160px;
+  margin: 0 auto;
+
+  display: flex;
+}
+
+
+/* =========================
+   공통 배너
+========================= */
+
+.banner {
+  width: calc(1180px / 3);
+  height: 160px;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  color: #fff;
+  overflow: hidden;
+}
+
+
+/* 배너 배경 컬러 */
+
+.reserve {
+  background-color: #9b7f5d;
+}
+
+.point {
+  background-color: #444444;
+}
+
+.delivery {
+  background-color: #cf0000;
+}
+
+
+/* =========================
+   텍스트
+========================= */
+
+.text-box {
+  height: 100%;
+
+  padding-top: 25px;
+  padding-left: 30px;
+
+  position: relative;
+  z-index: 2;
+}
+
+.text-box h2 {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.2;
+
+  color: #fff;
+}
+
+.text-box p {
+  margin-top: 3px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #fff;
+}
+
+
+/* =========================
+   화살표
+========================= */
+
+.arrow {
+  display: block;
+
+  margin-top: 31px;
+
+  font-size: 26px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  color: #fff;
+}
+
+
+/* =========================
+   배경 이미지
+========================= */
+
+.banner-image {
+  position: absolute;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+
+/* 예약 아이콘 */
+
+.reserve-image {
+  width: 95px;
+  height: 95px;
+
+  right: 72px;
+  top: 33px;
+
+  background-image: url("../images/speed_menu_icon_02.png");
+}
+
+
+/* 포인트 아이콘 */
+
+.point-image {
+  width: 95px;
+  height: 95px;
+
+  right: 70px;
+  top: 32px;
+
+  background-image: url("../images/speed_menu_icon_03.png");
+}
+
+
+/* 딜리버리 로고 */
+
+.delivery-image {
+  width: 145px;
+  height: 90px;
+
+  right: 37px;
+  top: 35px;
+
+  background-image: url("../images/speed_menu_icon_04.png");
+}
