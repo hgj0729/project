@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 8px;
+    font-family: Arial, sans-serif;
+}
+
+/* 제목 */
+h1 {
+    font-size: 30px;
+    margin-bottom: 24px;
+}
+
+/* 메서드 목록 */
+ol {
+    margin-bottom: 18px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+/* 버튼 */
+.btn-wrap {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+button {
+    height: 22px;
+    padding: 0 8px;
+    font-size: 13px;
+}
+
+/* 구분선 */
+hr {
+    margin-bottom: 10px;
+}
+
+/* 박스를 감싸는 부모 */
+.box-group {
+    width: 640px;
+    height: 210px;
+    border: 5px solid #ccc;
+
+    display: flex;
+    gap: 20px;
+
+    position: relative;
+}
+
+/* 첫 번째 박스 그룹 */
+.group01 {
+    margin-bottom: 50px;
+}
+
+/* 공통 박스 */
+.box {
+    width: 200px;
+    height: 200px;
+
+    flex-shrink: 0;
+
+    padding: 3px;
+    font-size: 16px;
+}
+
+/* fadeIn / fadeOut */
+.red-box {
+    background-color: red;
+}
+
+/* fadeToggle */
+.green-box {
+    background-color: green;
+}
+
+/* slideUp / slideDown */
+.orange-box {
+    background-color: #ffcc00;
+}
+
+/* slideToggle */
+.lime-box {
+    background-color: #c8ff00;
+}
+
+/* Animation */
+.blue-box {
+    background-color: #12bfe7;
+
+    position: relative;
+    left: 0;
+}
