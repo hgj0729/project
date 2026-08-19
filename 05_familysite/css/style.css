@@ -1,0 +1,268 @@
+@charset "UTF-8";
+
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial, "Noto Sans KR", sans-serif;
+    color: #777;
+}
+
+
+/* =========================
+   footer 위 여백
+========================= */
+
+.content-space {
+    height: 1000px;
+}
+
+
+/* =========================
+   footer
+========================= */
+
+.footer {
+    width: 100%;
+    height: 204px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #777;
+    background-color: #fff;
+}
+
+
+/* footer inner */
+.footer-inner {
+    width: 1140px;
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: flex-start;
+
+    position: relative;
+
+    padding-top: 38px;
+}
+
+
+/* =========================
+   logo
+========================= */
+
+.footer-logo {
+    width: 180px;
+    padding-top: 12px;
+}
+
+.footer-logo img {
+    display: block;
+    width: 145px;
+    height: auto;
+}
+
+
+/* =========================
+   가운데 정보
+========================= */
+
+.footer-info {
+    width: 570px;
+}
+
+
+/* footer 메뉴 */
+.footer-menu {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 22px;
+}
+
+.footer-menu li {
+    position: relative;
+
+    margin-right: 25px;
+}
+
+.footer-menu li::after {
+    content: "";
+    position: absolute;
+
+    right: -13px;
+    top: 50%;
+
+    width: 1px;
+    height: 11px;
+
+    background-color: #ddd;
+
+    transform: translateY(-50%);
+}
+
+.footer-menu li:last-child::after {
+    display: none;
+}
+
+.footer-menu li:last-child a {
+    font-weight: bold;
+    color: #333;
+}
+
+.footer-menu a {
+    font-size: 14px;
+    color: #555;
+}
+
+
+/* 회사 정보 */
+.company-info p {
+    font-size: 12px;
+    line-height: 18px;
+    color: #888;
+}
+
+.company-info .copyright {
+    margin-top: 6px;
+    color: #aaa;
+}
+
+
+/* =========================
+   오른쪽 영역
+========================= */
+
+.footer-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 35px;
+}
+
+
+/* SNS */
+.sns {
+    display: flex;
+    align-items: center;
+
+    gap: 24px;
+
+    padding-top: 10px;
+}
+
+.sns a {
+    display: block;
+}
+
+.sns img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+
+/* =========================
+   Family Site
+========================= */
+
+.family-wrap {
+    width: 240px;
+
+    position: relative;
+}
+
+
+/* Family Site 버튼 */
+.family-btn {
+    width: 240px;
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: 1px solid #ccc;
+
+    background-color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 12px;
+    color: #555;
+
+    cursor: pointer;
+}
+
+.family-btn .arrow {
+    font-size: 10px;
+    color: #999;
+}
+
+
+/* =========================
+   Family Site 리스트
+========================= */
+
+.family-list {
+    display: none;
+
+    position: absolute;
+
+    left: 0;
+    bottom: 42px;
+
+    width: 240px;
+
+    background-color: #fff;
+
+    border: 1px solid #ccc;
+    border-bottom: none;
+
+    z-index: 10;
+}
+
+.family-list li {
+    width: 100%;
+}
+
+.family-list a {
+    display: block;
+
+    width: 100%;
+
+    padding: 10px 18px;
+
+    font-size: 12px;
+
+    color: #555;
+
+    border-bottom: 1px solid #eee;
+
+    background-color: #fff;
+}
+
+.family-list li:last-child a {
+    border-bottom: none;
+}
+
+.family-list a:hover {
+    background-color: #f5f5f5;
+    color: #e9540d;
+}
