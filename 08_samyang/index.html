@@ -21,6 +21,53 @@
 </head>
 
 <body>
+  <!-- =========================
+       팝업 전체 영역
+  ========================== -->
+  <div class="popup-wrap" id="popup">
+
+    <!-- 팝업 박스 -->
+    <div class="popup">
+
+      <!-- 팝업 이미지 영역 -->
+      <div class="popup-image">
+        <!--
+          아래 이미지 파일명만
+          내 컴퓨터에 있는 실제 이미지명으로 변경해주세요.
+
+          예:
+          ./images/popup.jpg
+          ./images/event-popup.png
+        -->
+        <img
+          src="./images/popup.jpg"
+          alt="이벤트 팝업 이미지"
+        >
+      </div>
+
+
+      <!-- =========================
+           팝업 하단 영역
+      ========================== -->
+      <div class="popup-bottom">
+
+        <!-- 오늘 하루 보지 않기 -->
+        <label class="today-close">
+          <input type="checkbox" id="todayClose">
+          <span>오늘 하루 이 창을 열지 않음</span>
+        </label>
+
+        <!-- 팝업 닫기 버튼 -->
+        <button type="button" id="closeBtn">
+          [닫기]
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
 
   <!-- =========================
        HEADER
@@ -1059,5 +1106,20 @@
     crossorigin="anonymous"
     src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v23.0">
 </script>
+<!-- =========================
+     TOP 버튼 시작
+========================= -->
+<button type="button" id="topBtn" class="top-btn" aria-label="맨 위로 이동">
+
+  <!-- 위쪽 화살표 -->
+  <span class="top-arrow">▲</span>
+
+  <!-- TOP 글자 -->
+  <span class="top-text">TOP</span>
+
+</button>
+<!-- =========================
+     TOP 버튼 끝
+========================= -->
 </body>
 </html>
