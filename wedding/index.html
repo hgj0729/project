@@ -232,7 +232,7 @@
 
                 <button
                     class="gallery-item fade-up"
-                    data-image="./images/gallery01.jpg"
+                    data-image="./images/ss1.png"
                 >
                     <img
                         src="./images/ss1.png"
@@ -243,7 +243,7 @@
 
                 <button
                     class="gallery-item fade-up"
-                    data-image="./images/gallery02.jpg"
+                    data-image="./images/ss2.png"
                 >
                     <img
                         src="./images/ss2.png"
@@ -254,7 +254,7 @@
 
                 <button
                     class="gallery-item fade-up"
-                    data-image="./images/gallery03.jpg"
+                    data-image="./images/ss3.png"
                 >
                     <img
                         src="./images/ss3.png"
@@ -265,7 +265,7 @@
 
                 <button
                     class="gallery-item fade-up"
-                    data-image="./images/gallery04.jpg"
+                    data-image="./images/ss4.png"
                 >
                     <img
                         src="./images/ss4.png"
@@ -276,7 +276,7 @@
 
                 <button
                     class="gallery-item fade-up"
-                    data-image="./images/gallery05.jpg"
+                    data-image="./images/ss5.png"
                 >
                     <img
                         src="./images/ss5.png"
@@ -287,7 +287,7 @@
 
                 <button
                     class="gallery-item fade-up"
-                    data-image="./images/gallery06.jpg"
+                    data-image="./images/ss6.png"
                 >
                     <img
                         src="./images/ss6.png"
@@ -375,22 +375,29 @@
 
             </div>
 
-            <!-- 지도 대체 영역 -->
+            <!-- ========================================
+                 실제 카카오 지도
+            ========================================= -->
             <div class="map-box fade-up">
 
-                <div class="map-placeholder">
-                    <span>MAP</span>
-                    <p>서울 신라호텔 영빈관</p>
-                </div>
+                <!-- 카카오맵 JavaScript API가 이 영역에 지도를 생성합니다. -->
+                <div id="map" aria-label="서울 신라호텔 영빈관 위치 지도"></div>
+
+                <!-- API 키 또는 도메인 설정 오류가 있을 때만 표시 -->
+                <p id="mapError" class="map-error" hidden>
+                    지도를 불러오지 못했습니다.<br>
+                    카카오 JavaScript 키와 등록 도메인을 확인해주세요.
+                </p>
 
             </div>
 
             <a
                 href="https://map.kakao.com/link/search/서울%20신라호텔%20영빈관"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="main-button route-button fade-up"
             >
-                길찾기
+                카카오맵으로 길찾기
             </a>
 
 
@@ -658,7 +665,14 @@
     </div>
 
 
-    <!-- JavaScript -->
+    <!-- ========================================
+         카카오맵 JavaScript API
+         아래 YOUR_KAKAO_JAVASCRIPT_KEY를
+         본인의 카카오 JavaScript 키로 교체하세요.
+    ========================================= -->
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=df248d44c279e1becb804df0b4f68a1d&libraries=services"></script>
+
+    <!-- 모바일 청첩장 JavaScript -->
     <script src="./js/main.js"></script>
 
 </body>

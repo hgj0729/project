@@ -12,7 +12,7 @@
     생성되는 /exec 주소를 입력합니다.
 */
 const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzukKLjnvf29IEOga1Y1NsF_VLd7Lg1z_y-o_WPUXQ047yZXM9QcKVioNkXgAKr_JUdwg/exec";
+    "https://script.google.com/macros/s/AKfycbw3ZGpChj0szJShW11LyZpap_DKPa9I6N59SIC12bTjf0_9J9O9Ic4-tA5IGICfeFS0bw/exec";
 
 
 /*
@@ -253,7 +253,284 @@ fadeElements.forEach((element) => {
 
 
 /* =========================================
-   04. 신랑 · 신부 전화 버튼
+   04. 카카오 지도
+========================================= */
+
+/*
+    index.html의
+    YOUR_KAKAO_JAVASCRIPT_KEY 부분을
+    실제 카카오 JavaScript 키로 교체해야 합니다.
+
+    카카오 Developers에서
+    웹 플랫폼 도메인도 함께 등록해주세요.
+*/
+function initKakaoMap() {
+
+    const mapContainer =
+        document.getElementById("map");
+
+    const mapError =
+        document.getElementById("mapError");
+
+
+    /*
+        지도 요소가 없는 경우
+    */
+    if (!mapContainer) {
+
+        return;
+
+    }
+
+
+    /*
+        카카오맵 SDK 또는 services 라이브러리가
+        정상적으로 로드되지 않은 경우
+    */
+    if (
+        typeof kakao === "undefined" ||
+        !kakao.maps ||
+        !kakao.maps.services
+    ) {
+
+        console.error(
+            "카카오맵 JavaScript API를 불러오지 못했습니다."
+        );
+
+        mapContainer.style.display =
+            "none";
+
+        if (mapError) {
+
+            mapError.hidden = false;
+
+        }
+
+        return;
+
+    }
+
+
+    /*
+        주소 검색 전 임시 지도 중심
+        서울 중구 인근
+    */
+    const mapOption = {
+
+        center:
+            new kakao.maps.LatLng(
+                37.5580,
+                127.0050
+            ),
+
+        level: 4
+
+    };
+
+
+    /*
+        지도 생성
+    */
+    const map =
+        new kakao.maps.Map(
+            mapContainer,
+            mapOption
+        );
+
+
+    /*
+        주소 -> 좌표 변환 객체
+    */
+    const geocoder =
+        new kakao.maps.services.Geocoder();
+
+
+    /*
+        예식장 주소
+    */
+    const weddingAddress =
+        "서울특별시 중구 동호로 249";
+
+
+    /*
+        주소 검색
+    */
+    geocoder.addressSearch(
+
+        weddingAddress,
+
+        function(result, status) {
+
+            if (
+                status ===
+                kakao.maps.services.Status.OK
+            ) {
+
+                /*
+                    검색 결과 좌표 생성
+                */
+                const weddingPosition =
+                    new kakao.maps.LatLng(
+                        Number(result[0].y),
+                        Number(result[0].x)
+                    );
+
+
+                /*
+                    지도 중심 이동
+                */
+                map.setCenter(
+                    weddingPosition
+                );
+
+
+                /*
+                    예식장 마커
+                */
+                const marker =
+                    new kakao.maps.Marker({
+
+                        map: map,
+
+                        position:
+                            weddingPosition,
+
+                        title:
+                            "서울 신라호텔 영빈관"
+
+                    });
+
+
+                /*
+                    마커 위 정보창
+                */
+                const infoContent = `
+                    <div
+                        style="
+                            width:190px;
+                            padding:12px 10px;
+                            text-align:center;
+                            font-family:Pretendard, Noto Sans KR, Arial, sans-serif;
+                            line-height:1.5;
+                        "
+                    >
+                        <strong
+                            style="
+                                display:block;
+                                margin-bottom:5px;
+                                font-size:13px;
+                                color:#333;
+                            "
+                        >
+                            서울 신라호텔 영빈관
+                        </strong>
+
+                        <span
+                            style="
+                                display:block;
+                                font-size:11px;
+                                color:#777;
+                            "
+                        >
+                            영빈관 1층 · 낮 12시
+                        </span>
+                    </div>
+                `;
+
+
+                const infoWindow =
+                    new kakao.maps.InfoWindow({
+
+                        content:
+                            infoContent
+
+                    });
+
+
+                /*
+                    처음부터 정보창 표시
+                */
+                infoWindow.open(
+                    map,
+                    marker
+                );
+
+
+                /*
+                    마커 클릭 시 정보창 표시
+                */
+                kakao.maps.event.addListener(
+
+                    marker,
+
+                    "click",
+
+                    function() {
+
+                        infoWindow.open(
+                            map,
+                            marker
+                        );
+
+                    }
+
+                );
+
+
+                /*
+                    모바일 화면 회전이나 크기 변경 시
+                    지도 중심을 다시 예식장 위치로 맞춤
+                */
+                window.addEventListener(
+                    "resize",
+                    function() {
+
+                        map.relayout();
+
+                        map.setCenter(
+                            weddingPosition
+                        );
+
+                    }
+                );
+
+            } else {
+
+                console.error(
+                    "서울 신라호텔 영빈관 주소를 찾지 못했습니다."
+                );
+
+                mapContainer.style.display =
+                    "none";
+
+                if (mapError) {
+
+                    mapError.hidden = false;
+
+                }
+
+            }
+
+        }
+
+    );
+
+}
+
+
+/*
+    모든 페이지 리소스와 카카오맵 SDK가
+    준비된 뒤 지도 실행
+*/
+window.addEventListener(
+    "load",
+    initKakaoMap
+);
+
+
+
+/* =========================================
+   05. 신랑 · 신부 전화 버튼
 ========================================= */
 
 const callButtons =
@@ -303,7 +580,7 @@ callButtons.forEach((button) => {
 
 
 /* =========================================
-   05. 계좌번호 복사
+   06. 계좌번호 복사
 ========================================= */
 
 const copyButtons =
@@ -402,7 +679,7 @@ copyButtons.forEach((button) => {
 
 
 /* =========================================
-   06. Wedding Gallery Modal
+   07. Wedding Gallery Modal
 ========================================= */
 
 const galleryItems =
@@ -685,7 +962,7 @@ modal.addEventListener(
 
 
 /* =========================================
-   07. 방명록 Google Sheets 연동
+   08. 방명록 Google Sheets 연동
 ========================================= */
 
 const guestbookForm =
