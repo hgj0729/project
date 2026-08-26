@@ -1,0 +1,1086 @@
+/* =========================================
+   기본 설정
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Pretendard",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+
+    background: #eeeeee;
+    color: #333333;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+
+/* =========================================
+   모바일 청첩장 전체
+========================================= */
+.wedding-wrap {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100svh;
+
+    margin: 0 auto;
+
+    background: #fffcf8;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   공통 Section
+========================================= */
+.section {
+    position: relative;
+
+    padding: 90px 24px;
+
+    text-align: center;
+}
+
+.section-en-title {
+    margin-bottom: 10px;
+
+    font-family: Georgia, serif;
+
+    font-size: 11px;
+    letter-spacing: 4px;
+
+    color: #b99a7a;
+}
+
+.section h2 {
+    font-family:
+        Georgia,
+        "Noto Serif KR",
+        serif;
+
+    font-size: 25px;
+    font-weight: 500;
+
+    line-height: 1.5;
+}
+
+.section-description {
+    margin-top: 15px;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    color: #888;
+}
+
+
+/* =========================================
+   Scroll Fade Up
+========================================= */
+.fade-up {
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.85s ease,
+        transform 0.85s ease;
+}
+
+.fade-up.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* 순차적으로 나타나는 효과 */
+.fade-up:nth-child(2) {
+    transition-delay: 0.08s;
+}
+
+.fade-up:nth-child(3) {
+    transition-delay: 0.16s;
+}
+
+.fade-up:nth-child(4) {
+    transition-delay: 0.24s;
+}
+
+
+/* =========================================
+   Hero
+========================================= */
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 100svh;
+    min-height: 620px;
+
+    overflow: hidden;
+}
+
+.hero-image,
+.hero-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image img {
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.08),
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.5)
+        );
+}
+
+.hero-content {
+    position: absolute;
+
+    left: 25px;
+    right: 25px;
+    bottom: 70px;
+
+    text-align: center;
+
+    color: #fff;
+
+    animation: heroFade 1.5s ease forwards;
+}
+
+.hero-small {
+    margin-bottom: 20px;
+
+    font-family: Georgia, serif;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+}
+
+.hero h1 {
+    font-family:
+        Georgia,
+        "Noto Serif KR",
+        serif;
+
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.hero h1 span {
+    display: inline-block;
+
+    margin: 0 8px;
+
+    font-size: 16px;
+
+    color: #f6dace;
+}
+
+.hero-date {
+    margin-top: 18px;
+
+    font-size: 15px;
+    letter-spacing: 3px;
+}
+
+.hero-place {
+    margin-top: 10px;
+
+    font-size: 12px;
+}
+
+@keyframes heroFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   Invitation
+========================================= */
+.invitation {
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+
+.invitation-icon {
+    margin: 28px 0;
+
+    font-size: 13px;
+
+    color: #c7a990;
+}
+
+.invitation-text p {
+    margin-bottom: 30px;
+
+    font-size: 14px;
+    line-height: 2.2;
+
+    color: #666;
+}
+
+
+/* =========================================
+   Couple
+========================================= */
+.couple-section {
+    background: #f7f0e9;
+}
+
+.couple-photo {
+    overflow: hidden;
+
+    margin-bottom: 45px;
+
+    border-radius: 180px 180px 10px 10px;
+}
+
+.couple-photo img {
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+}
+
+.couple-info {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+}
+
+.person {
+    flex: 1;
+}
+
+.role {
+    font-family: Georgia, serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #b99a7a;
+}
+
+.parent {
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    color: #888;
+}
+
+.person h3 {
+    margin-top: 5px;
+
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.couple-heart {
+    font-size: 11px;
+
+    color: #b99a7a;
+}
+
+
+/* =========================================
+   Countdown
+========================================= */
+.countdown-section {
+    background: #fff;
+}
+
+.d-day {
+    margin-top: 35px;
+
+    font-family: Georgia, serif;
+
+    font-size: 42px;
+
+    color: #a78869;
+}
+
+.countdown {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 7px;
+
+    margin-top: 32px;
+}
+
+.count-item {
+    padding: 18px 4px;
+
+    background: #faf6f2;
+
+    border-radius: 8px;
+}
+
+.count-item strong {
+    display: block;
+
+    font-family: Georgia, serif;
+
+    font-size: 25px;
+    font-weight: 400;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.count-item strong.tick {
+    opacity: 0.3;
+
+    transform: translateY(-3px);
+}
+
+.count-item span {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 8px;
+    letter-spacing: 1px;
+
+    color: #999;
+}
+
+.count-message {
+    margin-top: 30px;
+
+    font-size: 13px;
+    line-height: 1.8;
+
+    color: #777;
+}
+
+
+/* =========================================
+   예식 정보
+========================================= */
+.wedding-info {
+    background: #f7f0e9;
+}
+
+.calendar-card {
+    width: 150px;
+
+    margin: 40px auto 25px;
+
+    padding: 25px 15px;
+
+    background: #fff;
+
+    border-radius: 80px 80px 10px 10px;
+
+    box-shadow:
+        0 15px 40px rgba(80, 55, 35, 0.08);
+}
+
+.calendar-month,
+.calendar-year {
+    font-family: Georgia, serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #9b8068;
+}
+
+.calendar-day {
+    display: block;
+
+    margin: 5px 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 48px;
+    font-weight: 400;
+}
+
+.wedding-info-text {
+    font-size: 15px;
+
+    line-height: 2;
+}
+
+.wedding-info-text strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 16px;
+}
+
+.wedding-info-text p {
+    color: #666;
+}
+
+
+/* =========================================
+   Gallery
+========================================= */
+.gallery-section {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.gallery {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 7px;
+
+    margin-top: 40px;
+}
+
+.gallery-item {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #eee;
+
+    border-radius: 2px;
+}
+
+.gallery-item img {
+    aspect-ratio: 1 / 1.15;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:active img {
+    transform: scale(1.03);
+}
+
+
+/* =========================================
+   공통 메인 버튼
+========================================= */
+.main-button {
+    display: flex;
+
+    width: 100%;
+    min-height: 52px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 18px;
+
+    background: #a78c73;
+
+    border-radius: 6px;
+
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.main-button:active {
+    opacity: 0.8;
+
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   연락하기
+========================================= */
+.contact-section {
+    background: #faf7f3;
+}
+
+.contact-card {
+    margin-top: 25px;
+
+    padding: 25px;
+
+    background: #fff;
+
+    border: 1px solid #eee4dc;
+
+    border-radius: 10px;
+}
+
+.contact-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-family: Georgia, serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #b99a7a;
+}
+
+.contact-card strong {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 19px;
+}
+
+
+/* =========================================
+   위치
+========================================= */
+.location-info {
+    margin-top: 35px;
+}
+
+.location-info h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.location-info p {
+    margin-top: 10px;
+
+    font-size: 13px;
+    line-height: 1.8;
+
+    color: #777;
+}
+
+.map-box {
+    margin-top: 25px;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+}
+
+.map-placeholder {
+    display: flex;
+
+    width: 100%;
+    height: 260px;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5e1db,
+            #f3f0ec
+        );
+
+    color: #8f8174;
+}
+
+.map-placeholder span {
+    font-family: Georgia, serif;
+
+    font-size: 22px;
+
+    letter-spacing: 5px;
+}
+
+.map-placeholder p {
+    margin-top: 10px;
+
+    font-size: 12px;
+}
+
+.route-button {
+    margin-top: 15px;
+}
+
+.traffic-info {
+    margin-top: 40px;
+
+    text-align: left;
+}
+
+.traffic-item {
+    padding: 20px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.traffic-item h4 {
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    color: #9c7e63;
+}
+
+.traffic-item p {
+    font-size: 12px;
+    line-height: 1.8;
+
+    color: #777;
+}
+
+
+/* =========================================
+   계좌
+========================================= */
+.account-section {
+    background: #f7f0e9;
+}
+
+.account-card {
+    margin-top: 20px;
+
+    padding: 25px;
+
+    background: #fff;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.account-card span {
+    display: block;
+
+    margin-bottom: 15px;
+
+    font-size: 12px;
+
+    color: #a48669;
+}
+
+.account-card strong {
+    display: block;
+
+    font-size: 14px;
+}
+
+.account-card p {
+    margin: 8px 0 18px;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+}
+
+.copy-button {
+    width: 100%;
+
+    padding: 12px;
+
+    background: #f2ece6;
+
+    border-radius: 5px;
+
+    color: #6f5b4b;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   방명록
+========================================= */
+.guestbook-section {
+    background: #fff;
+}
+
+.guestbook-form {
+    margin-top: 40px;
+
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 14px;
+
+    background: #faf8f5;
+
+    border: 1px solid #e8e1da;
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: border 0.2s ease;
+}
+
+.form-group input {
+    height: 49px;
+}
+
+.form-group textarea {
+    height: 130px;
+
+    resize: none;
+
+    line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #b99a7a;
+}
+
+.guestbook-list {
+    margin-top: 55px;
+
+    text-align: left;
+}
+
+.guestbook-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.guestbook-header h3 {
+    font-size: 16px;
+}
+
+.guestbook-header button {
+    padding: 8px;
+
+    background: transparent;
+
+    font-size: 11px;
+
+    color: #999;
+}
+
+.guestbook-item {
+    padding: 20px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.guestbook-item-head {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+.guestbook-item strong {
+    font-size: 13px;
+}
+
+.guestbook-item time {
+    font-size: 10px;
+
+    color: #aaa;
+}
+
+.guestbook-item p {
+    font-size: 13px;
+    line-height: 1.7;
+
+    color: #666;
+
+    word-break: break-word;
+}
+
+.empty-message {
+    padding: 30px 0;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #aaa;
+}
+
+
+/* =========================================
+   Footer
+========================================= */
+.footer {
+    padding: 80px 25px;
+
+    background: #5e544c;
+
+    text-align: center;
+
+    color: #fff;
+}
+
+.footer-heart {
+    margin-bottom: 20px;
+
+    color: #dfc9b8;
+}
+
+.footer h2 {
+    font-family: Georgia, serif;
+
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.footer > p:not(.footer-heart) {
+    margin-top: 20px;
+
+    font-size: 12px;
+    line-height: 2;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.footer small {
+    display: block;
+
+    margin-top: 30px;
+
+    font-family: Georgia, serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================================
+   Gallery Modal
+========================================= */
+.gallery-modal {
+    position: fixed;
+
+    z-index: 9999;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.92);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.gallery-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.gallery-modal img {
+    width: auto;
+    max-width: 100%;
+    max-height: 82svh;
+
+    object-fit: contain;
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    width: 44px;
+    height: 44px;
+
+    background: transparent;
+
+    color: #fff;
+
+    font-size: 32px;
+}
+
+.modal-nav {
+    position: absolute;
+
+    top: 50%;
+
+    width: 44px;
+    height: 60px;
+
+    transform: translateY(-50%);
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #fff;
+
+    font-size: 35px;
+}
+
+.modal-prev {
+    left: 5px;
+}
+
+.modal-next {
+    right: 5px;
+}
+
+
+/* =========================================
+   Toast
+========================================= */
+.toast {
+    position: fixed;
+
+    z-index: 10000;
+
+    left: 50%;
+    bottom: 30px;
+
+    width: calc(100% - 60px);
+    max-width: 400px;
+
+    padding: 14px;
+
+    transform:
+        translate(-50%, 20px);
+
+    background: rgba(40, 40, 40, 0.92);
+
+    border-radius: 7px;
+
+    text-align: center;
+
+    color: #fff;
+
+    font-size: 12px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translate(-50%, 0);
+}
+
+
+/* =========================================
+   접근성 - 애니메이션 최소화 설정
+========================================= */
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .fade-up {
+        opacity: 1;
+
+        transform: none;
+
+        transition: none;
+    }
+
+    .hero-content {
+        animation: none;
+    }
+
+}

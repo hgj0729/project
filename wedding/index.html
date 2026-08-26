@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- 모바일 전용 화면 설정 -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    >
+
+    <title>김민혁 ♥ 이서영 모바일 청첩장</title>
+
+    <!-- CSS 연결 -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- ========================================
+         모바일 청첩장 전체 영역
+    ========================================= -->
+    <main class="wedding-wrap">
+
+        <!-- ========================================
+             01. 메인 비주얼
+        ========================================= -->
+        <section class="hero">
+
+            <div class="hero-image">
+                <img
+                    src="./images/wedd1.png"
+                    alt="김민혁 이서영 웨딩 사진"
+                >
+            </div>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <p class="hero-small">WEDDING INVITATION</p>
+
+                <h1>
+                    김민혁
+                    <span>♥</span>
+                    이서영
+                </h1>
+
+                <p class="hero-date">2026. 09. 01</p>
+
+                <p class="hero-place">
+                    서울 신라호텔 영빈관 1층 · 낮 12시
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             02. 초대합니다
+        ========================================= -->
+        <section class="section invitation">
+
+            <div class="fade-up">
+                <p class="section-en-title">INVITATION</p>
+                <h2>초대합니다</h2>
+            </div>
+
+            <div class="invitation-icon fade-up">
+                ♥
+            </div>
+
+            <div class="invitation-text fade-up">
+                <p>
+                    저희의 영원한 사랑을<br>
+                    깨지지 않는 약속으로 하늘에 아로 새기어<br>
+                    서로의 동반자 되어<br>
+                    인생의 여정을 출발하고자 합니다.
+                </p>
+
+                <p>
+                    저희 두 사람의 약속이<br>
+                    더욱 빛날 수 있도록<br>
+                    부디 방문하시어 따뜻한 격려와<br>
+                    축복을 부탁드립니다.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             03. 신랑 · 신부 정보
+        ========================================= -->
+        <section class="section couple-section">
+
+            <div class="couple-photo fade-up">
+                <img
+                    src="./images/wedd2.png"
+                    alt="신랑 김민혁과 신부 이서영"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="couple-info">
+
+                <div class="person fade-up">
+                    <span class="role">GROOM</span>
+
+                    <p class="parent">
+                        김대성의 아들
+                    </p>
+
+                    <h3>김민혁</h3>
+                </div>
+
+                <span class="couple-heart fade-up">♥</span>
+
+                <div class="person fade-up">
+                    <span class="role">BRIDE</span>
+
+                    <p class="parent">
+                        이완성의 딸
+                    </p>
+
+                    <h3>이서영</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             04. 실시간 웨딩 카운트다운
+        ========================================= -->
+        <section class="section countdown-section">
+
+            <div class="fade-up">
+                <p class="section-en-title">OUR WEDDING DAY</p>
+                <h2>우리의 소중한 날</h2>
+            </div>
+
+            <!-- D-Day -->
+            <div class="d-day fade-up" id="dDay">
+                D-DAY
+            </div>
+
+            <!-- Countdown -->
+            <div class="countdown fade-up">
+
+                <div class="count-item">
+                    <strong id="days">00</strong>
+                    <span>DAYS</span>
+                </div>
+
+                <div class="count-item">
+                    <strong id="hours">00</strong>
+                    <span>HOURS</span>
+                </div>
+
+                <div class="count-item">
+                    <strong id="minutes">00</strong>
+                    <span>MIN</span>
+                </div>
+
+                <div class="count-item">
+                    <strong id="seconds">00</strong>
+                    <span>SEC</span>
+                </div>
+
+            </div>
+
+            <p class="count-message fade-up">
+                민혁 ♥ 서영의 결혼식이<br>
+                <strong id="remainingText">다가오고 있습니다.</strong>
+            </p>
+
+        </section>
+
+
+        <!-- ========================================
+             05. 결혼식 정보
+        ========================================= -->
+        <section class="section wedding-info">
+
+            <div class="fade-up">
+                <p class="section-en-title">WEDDING DAY</p>
+                <h2>예식 안내</h2>
+            </div>
+
+            <div class="calendar-card fade-up">
+
+                <p class="calendar-month">
+                    SEPTEMBER
+                </p>
+
+                <strong class="calendar-day">
+                    01
+                </strong>
+
+                <p class="calendar-year">
+                    2026
+                </p>
+
+            </div>
+
+            <div class="wedding-info-text fade-up">
+                <strong>2026년 9월 1일 화요일</strong>
+
+                <p>낮 12시</p>
+
+                <p>
+                    서울 신라호텔<br>
+                    영빈관 1층
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             06. 웨딩 갤러리
+        ========================================= -->
+        <section class="section gallery-section">
+
+            <div class="fade-up">
+                <p class="section-en-title">GALLERY</p>
+                <h2>우리의 순간</h2>
+            </div>
+
+            <div class="gallery">
+
+                <button
+                    class="gallery-item fade-up"
+                    data-image="./images/gallery01.jpg"
+                >
+                    <img
+                        src="./images/ss1.png"
+                        alt="웨딩 사진 1"
+                        loading="lazy"
+                    >
+                </button>
+
+                <button
+                    class="gallery-item fade-up"
+                    data-image="./images/gallery02.jpg"
+                >
+                    <img
+                        src="./images/ss2.png"
+                        alt="웨딩 사진 2"
+                        loading="lazy"
+                    >
+                </button>
+
+                <button
+                    class="gallery-item fade-up"
+                    data-image="./images/gallery03.jpg"
+                >
+                    <img
+                        src="./images/ss3.png"
+                        alt="웨딩 사진 3"
+                        loading="lazy"
+                    >
+                </button>
+
+                <button
+                    class="gallery-item fade-up"
+                    data-image="./images/gallery04.jpg"
+                >
+                    <img
+                        src="./images/ss4.png"
+                        alt="웨딩 사진 4"
+                        loading="lazy"
+                    >
+                </button>
+
+                <button
+                    class="gallery-item fade-up"
+                    data-image="./images/gallery05.jpg"
+                >
+                    <img
+                        src="./images/ss5.png"
+                        alt="웨딩 사진 5"
+                        loading="lazy"
+                    >
+                </button>
+
+                <button
+                    class="gallery-item fade-up"
+                    data-image="./images/gallery06.jpg"
+                >
+                    <img
+                        src="./images/ss6.png"
+                        alt="웨딩 사진 6"
+                        loading="lazy"
+                    >
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             07. 연락하기
+        ========================================= -->
+        <section class="section contact-section">
+
+            <div class="fade-up">
+                <p class="section-en-title">CONTACT</p>
+                <h2>연락하기</h2>
+
+                <p class="section-description">
+                    축하의 마음을 전해주세요.
+                </p>
+            </div>
+
+
+            <!-- 신랑 연락 -->
+            <div class="contact-card fade-up">
+
+                <span class="contact-label">GROOM</span>
+
+                <strong>김민혁</strong>
+
+                <button
+                    type="button"
+                    class="main-button call-button"
+                    data-person="groom"
+                >
+                    지금 신랑에게 연락하세요
+                </button>
+
+            </div>
+
+
+            <!-- 신부 연락 -->
+            <div class="contact-card fade-up">
+
+                <span class="contact-label">BRIDE</span>
+
+                <strong>이서영</strong>
+
+                <button
+                    type="button"
+                    class="main-button call-button"
+                    data-person="bride"
+                >
+                    지금 신부에게 연락하세요
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             08. 오시는 길
+        ========================================= -->
+        <section class="section location-section">
+
+            <div class="fade-up">
+                <p class="section-en-title">LOCATION</p>
+                <h2>오시는 길</h2>
+            </div>
+
+            <div class="location-info fade-up">
+
+                <h3>서울 신라호텔 영빈관</h3>
+
+                <p>
+                    서울특별시 중구 동호로 249<br>
+                    영빈관 1층
+                </p>
+
+            </div>
+
+            <!-- 지도 대체 영역 -->
+            <div class="map-box fade-up">
+
+                <div class="map-placeholder">
+                    <span>MAP</span>
+                    <p>서울 신라호텔 영빈관</p>
+                </div>
+
+            </div>
+
+            <a
+                href="https://map.kakao.com/link/search/서울%20신라호텔%20영빈관"
+                target="_blank"
+                class="main-button route-button fade-up"
+            >
+                길찾기
+            </a>
+
+
+            <!-- 교통 안내 -->
+            <div class="traffic-info fade-up">
+
+                <div class="traffic-item">
+                    <h4>지하철</h4>
+                    <p>
+                        지하철 3호선 동대입구역 이용 후
+                        신라호텔 방향으로 이동해주세요.
+                    </p>
+                </div>
+
+                <div class="traffic-item">
+                    <h4>자가용</h4>
+                    <p>
+                        내비게이션에
+                        '서울 신라호텔 영빈관'을 검색해주세요.
+                    </p>
+                </div>
+
+                <div class="traffic-item">
+                    <h4>주차</h4>
+                    <p>
+                        예식 당일 호텔 주차장을 이용하실 수 있습니다.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             09. 마음을 전하시는 곳
+        ========================================= -->
+        <section class="section account-section">
+
+            <div class="fade-up">
+                <p class="section-en-title">ACCOUNT</p>
+                <h2>마음을 전하시는 곳</h2>
+
+                <p class="section-description">
+                    참석이 어려우신 분들을 위해<br>
+                    계좌번호를 안내드립니다.
+                </p>
+            </div>
+
+
+            <!-- 신랑 측 -->
+            <div class="account-card fade-up">
+
+                <span>신랑 측</span>
+
+                <strong>농협은행</strong>
+
+                <p>392-0897-5992-89</p>
+
+                <button
+                    class="copy-button"
+                    data-account="392-0897-5992-89"
+                >
+                    계좌번호 복사
+                </button>
+
+            </div>
+
+
+            <!-- 신부 측 -->
+            <div class="account-card fade-up">
+
+                <span>신부 측</span>
+
+                <strong>농협은행</strong>
+
+                <p>392-0897-5992-89</p>
+
+                <button
+                    class="copy-button"
+                    data-account="392-0897-5992-89"
+                >
+                    계좌번호 복사
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             10. 방명록
+        ========================================= -->
+        <section class="section guestbook-section">
+
+            <div class="fade-up">
+                <p class="section-en-title">GUEST BOOK</p>
+                <h2>축하의 마음을 남겨주세요</h2>
+            </div>
+
+
+            <!-- 방명록 작성 폼 -->
+            <form
+                id="guestbookForm"
+                class="guestbook-form fade-up"
+            >
+
+                <div class="form-group">
+                    <label for="guestName">
+                        이름
+                    </label>
+
+                    <input
+                        type="text"
+                        id="guestName"
+                        name="name"
+                        placeholder="이름을 입력해주세요"
+                        maxlength="20"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="guestPassword">
+                        비밀번호
+                    </label>
+
+                    <input
+                        type="password"
+                        id="guestPassword"
+                        name="password"
+                        placeholder="비밀번호 4자리 이상"
+                        minlength="4"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="guestMessage">
+                        축하 메시지
+                    </label>
+
+                    <textarea
+                        id="guestMessage"
+                        name="message"
+                        placeholder="따뜻한 축하 메시지를 남겨주세요."
+                        maxlength="300"
+                        required
+                    ></textarea>
+                </div>
+
+                <button
+                    id="submitGuestbook"
+                    type="submit"
+                    class="main-button"
+                >
+                    축하 메시지 남기기
+                </button>
+
+            </form>
+
+
+            <!-- 등록된 방명록 -->
+            <div class="guestbook-list fade-up">
+
+                <div class="guestbook-header">
+                    <h3>축하 메시지</h3>
+
+                    <button
+                        type="button"
+                        id="refreshGuestbook"
+                    >
+                        새로고침
+                    </button>
+                </div>
+
+                <div id="guestbookItems">
+
+                    <p class="empty-message">
+                        방명록을 불러오는 중입니다.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             Footer
+        ========================================= -->
+        <footer class="footer fade-up">
+
+            <p class="footer-heart">♥</p>
+
+            <h2>
+                김민혁 & 이서영
+            </h2>
+
+            <p>
+                저희의 새로운 시작을<br>
+                함께 축복해 주셔서 감사합니다.
+            </p>
+
+            <small>
+                SEPTEMBER 01, 2026
+            </small>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ========================================
+         갤러리 이미지 확대 Modal
+    ========================================= -->
+    <div
+        id="galleryModal"
+        class="gallery-modal"
+        aria-hidden="true"
+    >
+
+        <button
+            type="button"
+            id="modalClose"
+            class="modal-close"
+            aria-label="사진 닫기"
+        >
+            ×
+        </button>
+
+        <button
+            type="button"
+            id="modalPrev"
+            class="modal-nav modal-prev"
+            aria-label="이전 사진"
+        >
+            ‹
+        </button>
+
+        <img
+            id="modalImage"
+            src=""
+            alt="확대된 웨딩 사진"
+        >
+
+        <button
+            type="button"
+            id="modalNext"
+            class="modal-nav modal-next"
+            aria-label="다음 사진"
+        >
+            ›
+        </button>
+
+    </div>
+
+
+    <!-- 계좌 복사 Toast -->
+    <div
+        id="toast"
+        class="toast"
+    >
+        계좌번호가 복사되었습니다.
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="./js/main.js"></script>
+
+</body>
+</html>
