@@ -12,7 +12,7 @@
     생성되는 /exec 주소를 입력합니다.
 */
 const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycby08osC_UWPhv-6KCkwFOB7sdXlqJQwBDWxCu165sk_gLBzSvH2fWgt4RC3uSVObCWrZw/exec;
+    "https://script.google.com/macros/s/AKfycby08osC_UWPhv-6KCkwFOB7sdXlqJQwBDWxCu165sk_gLBzSvH2fWgt4RC3uSVObCWrZw/exec";
 
 
 /*
