@@ -1810,3 +1810,780 @@ body {
 
     color: #000;
 }
+/* =========================================
+   EATZ TV SECTION
+========================================= */
+
+.eatz-tv-section {
+    /* 전체 가로 크기 */
+    width: 100%;
+
+    /* 첨부 시안 기준 높이 */
+    height: 420px;
+
+    /* 첨부 시안과 비슷한 어두운 배경 */
+    background: #1d252b;
+}
+
+
+/* =========================================
+   EATZ TV INNER
+========================================= */
+
+.eatz-tv-inner {
+    /* 기존 페이지 inner와 동일하게 설정 */
+    width: 1150px;
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    /* 위쪽 여백 */
+    padding-top: 68px;
+}
+
+
+/* =========================================
+   EATZ TV 제목 영역
+========================================= */
+
+.eatz-tv-title {
+    width: 100%;
+
+    margin-bottom: 24px;
+}
+
+
+/* 제목 링크 */
+.eatz-tv-title a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #fff;
+}
+
+
+/* =========================================
+   EATZ TV 제목
+========================================= */
+
+.eatz-tv-title h2 {
+    margin: 0;
+
+    /* 첨부 시안 기준 글자 크기 */
+    font-size: 24px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    color: #fff;
+}
+
+
+/* 제목 오른쪽 화살표 */
+.eatz-tv-title span {
+    font-size: 24px;
+
+    font-weight: 300;
+
+    line-height: 1;
+
+    color: #fff;
+}
+
+
+/* =========================================
+   EATZ TV 카드 목록
+========================================= */
+
+.eatz-tv-list {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    /* 카드 사이 간격 */
+    gap: 14px;
+}
+
+
+/* =========================================
+   EATZ TV 카드
+========================================= */
+
+.eatz-tv-card {
+    /*
+        1150px 안에서 카드 4개 배치
+    */
+    width: calc((100% - 42px) / 4);
+
+    display: block;
+
+    color: #fff;
+}
+
+
+/* =========================================
+   썸네일 영역
+========================================= */
+
+.eatz-tv-thumb {
+    width: 100%;
+
+    /* 첨부 시안 비율 */
+    height: 152px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: #111;
+}
+
+
+/* =========================================
+   썸네일 이미지
+========================================= */
+
+.eatz-tv-thumb img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    /*
+        사용자가 교체한 이미지가
+        박스를 꽉 채우도록 설정
+    */
+    object-fit: cover;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* =========================================
+   이미지 Hover
+========================================= */
+
+.eatz-tv-card:hover
+.eatz-tv-thumb img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   영상 제목
+========================================= */
+
+.eatz-tv-card p {
+    /* 썸네일과 글 사이 여백 */
+    margin-top: 11px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1.45;
+
+    letter-spacing: -0.4px;
+
+    color: #f2f2f2;
+
+
+    /*
+        긴 제목은 최대 2줄까지만 표시
+    */
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: 2;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   제목 Hover
+========================================= */
+
+.eatz-tv-title a:hover {
+    opacity: 0.8;
+}
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    width: 100%;
+
+    /* 첨부 시안 기준 높이 */
+    min-height: 420px;
+
+    background: #f8f8f8;
+
+    border-top: 1px solid #e7e7e7;
+}
+
+
+/* =========================================
+   FOOTER INNER
+========================================= */
+
+.footer-inner {
+    /* 첨부 시안 기준 */
+    width: 1150px;
+
+    margin: 0 auto;
+
+    padding: 42px 0 35px;
+}
+
+
+/* =========================================
+   FOOTER TOP
+========================================= */
+
+.footer-top {
+    width: 100%;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+}
+
+
+/* =========================================
+   FOOTER 왼쪽
+========================================= */
+
+.footer-left {
+    width: 930px;
+}
+
+
+/* =========================================
+   정책 메뉴
+========================================= */
+
+.footer-policy {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 0;
+
+    margin-bottom: 26px;
+}
+
+
+/* 정책 메뉴 li */
+.footer-policy li {
+    position: relative;
+}
+
+
+/* 메뉴 구분선 */
+.footer-policy li + li::before {
+    content: "";
+
+    display: inline-block;
+
+    width: 1px;
+    height: 11px;
+
+    margin: 0 10px;
+
+    background: #dddddd;
+
+    vertical-align: middle;
+}
+
+
+/* 정책 메뉴 링크 */
+.footer-policy a {
+    font-size: 13px;
+
+    color: #333;
+
+    white-space: nowrap;
+}
+
+
+/* 강조 메뉴 */
+.footer-policy a.point {
+    color: #009eb4;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   FOOTER ROW
+========================================= */
+
+.footer-row {
+    display: flex;
+
+    align-items: flex-start;
+
+    margin-bottom: 18px;
+}
+
+
+/* 왼쪽 항목 제목 */
+.footer-label {
+    width: 145px;
+
+    flex-shrink: 0;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 30px;
+
+    color: #111;
+}
+
+
+/* =========================================
+   버튼 리스트
+========================================= */
+
+.footer-buttons {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+/* 버튼 */
+.footer-buttons a {
+    min-width: 70px;
+
+    height: 32px;
+
+    padding: 0 14px;
+
+    border: 1px solid #d7d7d7;
+
+    border-radius: 3px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fff;
+
+    font-size: 12px;
+
+    color: #222;
+
+    transition:
+        background-color 0.2s,
+        border-color 0.2s;
+}
+
+
+/* 버튼 hover */
+.footer-buttons a:hover {
+    background: #f3f3f3;
+
+    border-color: #bbb;
+}
+
+
+/* =========================================
+   사업자 / 문의 정보
+========================================= */
+
+.footer-info-row {
+    margin-top: 5px;
+}
+
+
+/* 상세 정보 */
+.footer-info {
+    padding-top: 5px;
+
+    color: #777;
+}
+
+
+/* 상세 문단 */
+.footer-info p {
+    margin-bottom: 6px;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+
+    color: #777;
+}
+
+
+/* 상세 정보 내부 간격 */
+.footer-info span {
+    margin-left: 12px;
+}
+
+
+/* 사업자 정보 확인 */
+.footer-info a {
+    margin-left: 8px;
+
+    color: #333;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   인증 정보
+========================================= */
+
+.footer-cert {
+    display: flex;
+
+    align-items: center;
+
+    gap: 70px;
+
+    margin-top: 25px;
+}
+
+
+/* 인증 한 묶음 */
+.cert-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* 인증 이미지 */
+.cert-item img {
+    width: 55px;
+    height: 55px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* 인증 텍스트 */
+.cert-item p {
+    margin-bottom: 4px;
+
+    font-size: 12px;
+
+    color: #666;
+}
+
+
+.cert-item span {
+    font-size: 11px;
+
+    color: #888;
+}
+
+
+/* =========================================
+   COPYRIGHT / SNS
+========================================= */
+
+.footer-bottom {
+    display: flex;
+
+    align-items: center;
+
+    margin-top: 22px;
+}
+
+
+/* copyright */
+.copyright {
+    font-size: 12px;
+
+    color: #999;
+}
+
+
+/* SNS */
+.footer-sns {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-left: 25px;
+}
+
+
+/* SNS 이미지 */
+.footer-sns img {
+    width: 20px;
+    height: 20px;
+
+    display: block;
+
+    object-fit: contain;
+
+    opacity: 0.6;
+}
+
+
+/* SNS hover */
+.footer-sns a:hover img {
+    opacity: 1;
+}
+
+
+/* =========================================
+   FAMILY SITE
+========================================= */
+
+.family-site-wrap {
+    width: 180px;
+
+    position: relative;
+}
+
+
+/* Family Site 버튼 */
+.family-site-btn {
+    width: 180px;
+    height: 44px;
+
+    padding: 0 16px;
+
+    border: 1px solid #d8d8d8;
+
+    border-radius: 3px;
+
+    background: #fff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #222;
+}
+
+
+/* 오른쪽 화살표 */
+.family-arrow {
+    font-size: 10px;
+
+    color: #222;
+}
+
+
+/* =========================================
+   FAMILY SITE 목록
+========================================= */
+
+.family-site-list {
+    /*
+        처음에는 숨김
+        jQuery slideToggle로 표시
+    */
+    display: none;
+
+    position: absolute;
+
+    left: 0;
+
+    /*
+        버튼 위쪽으로 펼쳐지도록 설정
+    */
+    bottom: 48px;
+
+    width: 180px;
+
+    border: 1px solid #d8d8d8;
+
+    border-radius: 3px;
+
+    background: #fff;
+
+    overflow: hidden;
+
+    z-index: 100;
+}
+
+
+/* Family Site 리스트 */
+.family-site-list li {
+    width: 100%;
+}
+
+
+/* 리스트 링크 */
+.family-site-list a {
+    display: block;
+
+    width: 100%;
+
+    padding: 10px 15px;
+
+    font-size: 12px;
+
+    color: #444;
+
+    background: #fff;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+/* 마지막 border 제거 */
+.family-site-list li:last-child a {
+    border-bottom: none;
+}
+
+
+/* hover */
+.family-site-list a:hover {
+    background: #f5f5f5;
+
+    color: #00a0b4;
+}
+/* =========================================
+   TOP BUTTON
+========================================= */
+
+.top-btn {
+    /* 화면 오른쪽 아래에 고정 */
+    position: fixed;
+
+    right: 40px;
+    bottom: 40px;
+
+    /* 첨부 시안과 비슷한 크기 */
+    width: 64px;
+    height: 64px;
+
+    /* 원형 버튼 */
+    border-radius: 50%;
+
+    /* 테두리 제거 */
+    border: none;
+
+    /* 시안과 비슷한 청록색 */
+    background: #00a0b4;
+
+    /* 내부 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* 글자색 */
+    color: #fff;
+
+    /* 버튼 커서 */
+    cursor: pointer;
+
+    /* 다른 요소보다 위에 표시 */
+    z-index: 9999;
+
+    /* 그림자 */
+    box-shadow:
+        0 6px 18px rgba(0, 160, 180, 0.35);
+
+    /* 처음에는 숨김 */
+    opacity: 0;
+    visibility: hidden;
+
+    /* 살짝 아래에 위치 */
+    transform: translateY(10px);
+
+    /* 부드러운 효과 */
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease,
+        background-color 0.2s ease;
+}
+
+
+/* =========================================
+   TOP 버튼 표시 상태
+========================================= */
+
+.top-btn.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   TOP 버튼 hover
+========================================= */
+
+.top-btn:hover {
+    background: #008da0;
+}
+
+
+/* =========================================
+   위쪽 화살표
+========================================= */
+
+.top-arrow {
+    display: block;
+
+    margin-bottom: 2px;
+
+    font-size: 22px;
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+/* =========================================
+   TOP 글자
+========================================= */
+
+.top-text {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    line-height: 1;
+}
