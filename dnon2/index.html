@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>동네ON - 생활 편의시설 찾기</title>
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- =========================================================
+       [카카오맵 API 키 입력 위치]
+       아래 YOUR_KAKAO_JAVASCRIPT_KEY 부분을
+       카카오 디벨로퍼스에서 발급받은 "JavaScript 키"로 교체하세요.
+
+       예:
+       appkey=1234567890abcdef1234567890abcdef
+
+       주의:
+       - REST API 키가 아니라 JavaScript 키를 사용해야 합니다.
+       - 카카오 디벨로퍼스 > 내 애플리케이션 > 앱 키 > JavaScript 키
+       - 플랫폼 > Web 사이트 도메인 등록 필요
+       ========================================================= -->
+  <script
+    type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=df248d44c279e1becb804df0b4f68a1d&libraries=services&autoload=false"
+  ></script>
+</head>
+<body>
+  <div class="app">
+    <!-- 공통 상단 헤더 -->
+    <header class="topbar">
+      <button class="icon-btn back-btn" id="backBtn" type="button" aria-label="뒤로가기">‹</button>
+      <div>
+        <strong class="brand">동네ON</strong>
+        <p class="location-text" id="locationText">우리 동네 생활시설 찾기</p>
+      </div>
+      <button class="location-btn" id="locationBtn" type="button">내 위치</button>
+    </header>
+
+    <!-- 01. 홈 -->
+    <main class="screen active" id="homeScreen" data-screen="home">
+      <section class="hero">
+        <p class="eyebrow">우리 동네 필요한 곳, 한 번에</p>
+        <h1>지금 필요한<br />생활시설을 찾아보세요.</h1>
+
+        <form class="search-box" id="homeSearchForm">
+          <input id="homeSearchInput" type="search" placeholder="시설명 또는 카테고리 검색" autocomplete="off" />
+          <button type="submit">검색</button>
+        </form>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>주변에서 무엇을 찾나요?</h2>
+        </div>
+        <div class="category-grid" id="homeCategories"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>가까운 시설</h2>
+          <button class="text-btn" id="refreshNearbyBtn" type="button">내 주변 추천</button>
+        </div>
+        <p class="nearby-guide" id="nearbyGuide">
+          ‘내 주변 추천’을 누르면 현재 위치를 기준으로 실제 주변 시설을 검색합니다.
+        </p>
+        <div class="card-list" id="nearFacilityList"></div>
+        <div class="empty small" id="homeNearbyEmpty">
+          현재 위치를 확인하면 가까운 시설이 표시됩니다.
+        </div>
+      </section>
+    </main>
+
+    <!-- 02. 주변시설 -->
+    <main class="screen" id="nearbyScreen" data-screen="nearby">
+      <section class="section nearby-head">
+        <h1 class="page-title">주변시설</h1>
+        <form class="search-box compact" id="nearbySearchForm">
+          <input id="nearbySearchInput" type="search" placeholder="주변 시설 검색" autocomplete="off" />
+          <button type="submit">검색</button>
+        </form>
+        <div class="filter-row" id="filterRow"></div>
+      </section>
+
+      <!-- 카카오맵 표시 영역 -->
+      <section class="map-wrap">
+        <div id="kakaoMap" class="kakao-map" aria-label="카카오맵 주변시설 지도"></div>
+
+        <!-- API 키 미입력 또는 지도 로딩 실패 시 표시 -->
+        <div class="map-message" id="mapMessage">
+          <strong>카카오맵 API 키를 입력해주세요.</strong>
+          <span>index.html 상단의 YOUR_KAKAO_JAVASCRIPT_KEY를 교체하면 지도가 표시됩니다.</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2 id="resultTitle">주변 시설</h2>
+          <span class="count" id="resultCount">0개</span>
+        </div>
+        <div class="card-list" id="facilityList"></div>
+        <div class="empty" id="facilityEmpty">검색 결과가 없습니다.</div>
+      </section>
+    </main>
+
+    <!-- 03. 시설 상세 -->
+    <main class="screen" id="detailScreen" data-screen="detail">
+      <article id="detailContent"></article>
+    </main>
+
+    <!-- 04. 즐겨찾기 -->
+    <main class="screen" id="favoriteScreen" data-screen="favorite">
+      <section class="section">
+        <h1 class="page-title">즐겨찾기</h1>
+        <p class="sub-copy">자주 찾는 장소를 빠르게 확인하세요.</p>
+        <div class="card-list top-gap" id="favoriteList"></div>
+        <div class="empty" id="favoriteEmpty">저장한 장소가 없습니다.</div>
+      </section>
+    </main>
+
+    <!-- 05. MY -->
+    <main class="screen" id="myScreen" data-screen="my">
+      <section class="section">
+        <h1 class="page-title">MY</h1>
+        <p class="sub-copy">동네ON에서 저장한 나의 활동을 관리합니다.</p>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <strong id="favoriteCount">0</strong>
+            <span>즐겨찾기</span>
+          </div>
+          <div class="stat-card">
+            <strong id="reviewCount">0</strong>
+            <span>작성 후기</span>
+          </div>
+        </div>
+
+        <div class="my-panel">
+          <div class="section-title">
+            <h2>최근 검색</h2>
+            <button id="clearHistoryBtn" class="text-btn danger" type="button">전체 삭제</button>
+          </div>
+          <div class="history-list" id="historyList"></div>
+          <div class="empty small" id="historyEmpty">최근 검색 기록이 없습니다.</div>
+        </div>
+
+        <div class="my-panel">
+          <h2>데이터 관리</h2>
+          <p>즐겨찾기, 후기, 검색기록은 브라우저 LocalStorage에 저장됩니다.</p>
+          <button id="resetDataBtn" class="outline-btn danger-outline" type="button">사용자 데이터 초기화</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- 하단 탭 메뉴 -->
+    <nav class="bottom-nav" aria-label="주요 메뉴">
+      <button class="nav-btn active" type="button" data-go="home"><span>⌂</span><b>홈</b></button>
+      <button class="nav-btn" type="button" data-go="nearby"><span>⌖</span><b>주변시설</b></button>
+      <button class="nav-btn" type="button" data-go="favorite"><span>♡</span><b>즐겨찾기</b></button>
+      <button class="nav-btn" type="button" data-go="my"><span>○</span><b>MY</b></button>
+    </nav>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
