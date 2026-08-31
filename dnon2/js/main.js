@@ -18,42 +18,42 @@ const categoryConfigs = {
   "약국": {
     type: "category",
     code: "PM9",
-    image: "./images/pharmacy01.jpg"
+    image: "./images/m1.png"
   },
   "병원": {
     type: "category",
     code: "HP8",
-    image: "./images/hospital01.jpg"
+    image: "./images/h1.png"
   },
   "편의점": {
     type: "category",
     code: "CS2",
-    image: "./images/store01.jpg"
+    image: "./images/c1.png"
   },
   "주차장": {
     type: "category",
     code: "PK6",
-    image: "./images/parking01.jpg"
+    image: "./images/p1.png"
   },
   "카페": {
     type: "category",
     code: "CE7",
-    image: "./images/cafe01.jpg"
+    image: "./images/f1.png"
   },
   "공공화장실": {
     type: "keyword",
     keyword: "공공화장실",
-    image: "./images/toilet01.jpg"
+    image: "./images/t1.png"
   },
   "세탁소": {
     type: "keyword",
     keyword: "세탁소",
-    image: "./images/laundry01.jpg"
+    image: "./images/w1.png"
   },
   "ATM": {
     type: "keyword",
     keyword: "ATM",
-    image: "./images/atm01.jpg"
+    image: "./images/a1.png"
   }
 };
 
