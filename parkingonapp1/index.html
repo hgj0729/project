@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2563eb">
+  <title>파킹온 - 공영주차장 검색</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <button class="header-back hidden" id="backButton" type="button" aria-label="이전 화면">‹</button>
+      <h1 id="headerTitle">파킹온</h1>
+      <button class="header-action" id="refreshButton" type="button" aria-label="데이터 새로고침">↻</button>
+    </header>
+
+    <main>
+      <!-- 1. 홈 화면 -->
+      <section class="screen active" id="homeScreen" data-title="파킹온">
+        <div class="hero">
+          <span class="hero-badge">PUBLIC DATA</span>
+          <h2>공영주차장을<br>쉽고 빠르게 찾아보세요.</h2>
+          <p>공공데이터포털의 전국주차장정보를 이용해 주차장 위치와 이용 정보를 확인합니다.</p>
+          <button class="primary-button" data-go="search" type="button">주차장 찾기</button>
+        </div>
+
+        <div class="api-status-card">
+          <div>
+            <span class="status-dot" id="apiStatusDot"></span>
+            <strong id="apiStatusText">데이터 준비 중</strong>
+          </div>
+          <small id="apiStatusDescription">공공데이터 API 연결 상태를 확인합니다.</small>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <small>QUICK FILTER</small>
+            <h3>지역으로 빠르게 찾기</h3>
+          </div>
+        </div>
+
+        <div class="region-grid">
+          <button class="region-button" data-region="서울" type="button">서울</button>
+          <button class="region-button" data-region="부산" type="button">부산</button>
+          <button class="region-button" data-region="대전" type="button">대전</button>
+          <button class="region-button" data-region="광주" type="button">광주</button>
+          <button class="region-button" data-region="대구" type="button">대구</button>
+          <button class="region-button" data-region="인천" type="button">인천</button>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <small>RECOMMENDED</small>
+            <h3>추천 주차장</h3>
+          </div>
+          <button class="text-button" data-go="list" type="button">전체보기</button>
+        </div>
+        <div class="card-list" id="homeParkingList"></div>
+      </section>
+
+      <!-- 2. 검색 화면 -->
+      <section class="screen" id="searchScreen" data-title="주차장 검색">
+        <div class="search-panel">
+          <label for="searchInput">주차장명 또는 주소</label>
+          <div class="search-input-wrap">
+            <input id="searchInput" type="search" placeholder="예: 강남, 서울역, 공영주차장">
+            <button id="searchSubmitButton" type="button">검색</button>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>지역</h3>
+          <div class="chip-group" id="regionFilter">
+            <button class="chip active" data-value="전체" type="button">전체</button>
+            <button class="chip" data-value="서울" type="button">서울</button>
+            <button class="chip" data-value="부산" type="button">부산</button>
+            <button class="chip" data-value="대전" type="button">대전</button>
+            <button class="chip" data-value="광주" type="button">광주</button>
+            <button class="chip" data-value="대구" type="button">대구</button>
+            <button class="chip" data-value="인천" type="button">인천</button>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>주차장 유형</h3>
+          <div class="chip-group" id="typeFilter">
+            <button class="chip active" data-value="전체" type="button">전체</button>
+            <button class="chip" data-value="노상" type="button">노상</button>
+            <button class="chip" data-value="노외" type="button">노외</button>
+            <button class="chip" data-value="부설" type="button">부설</button>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>요금</h3>
+          <div class="chip-group" id="feeFilter">
+            <button class="chip active" data-value="전체" type="button">전체</button>
+            <button class="chip" data-value="무료" type="button">무료</button>
+            <button class="chip" data-value="유료" type="button">유료</button>
+          </div>
+        </div>
+
+        <button class="primary-button full" id="applyFilterButton" type="button">검색 결과 보기</button>
+        <button class="secondary-button full" id="resetFilterButton" type="button">검색 조건 초기화</button>
+      </section>
+
+      <!-- 3. 검색 결과 화면 -->
+      <section class="screen" id="listScreen" data-title="검색 결과">
+        <div class="result-toolbar">
+          <div>
+            <strong id="resultCount">0개</strong>
+            <span>주차장을 찾았습니다.</span>
+          </div>
+          <select id="sortSelect" aria-label="정렬">
+            <option value="name">이름순</option>
+            <option value="spaces">주차면 많은순</option>
+          </select>
+        </div>
+
+        <div class="current-filter" id="currentFilterText">전체 데이터</div>
+        <div class="card-list" id="parkingList"></div>
+
+        <div class="empty-state hidden" id="emptyState">
+          <div class="empty-icon">P</div>
+          <h3>검색 결과가 없습니다.</h3>
+          <p>검색어나 필터 조건을 변경해서 다시 찾아보세요.</p>
+          <button class="secondary-button" data-go="search" type="button">검색 조건 변경</button>
+        </div>
+      </section>
+
+      <!-- 4. 상세 화면 -->
+      <section class="screen" id="detailScreen" data-title="주차장 상세">
+        <article class="detail-card">
+          <div class="detail-top">
+            <div>
+              <div class="badge-row" id="detailBadges"></div>
+              <h2 id="detailName">주차장명</h2>
+              <p id="detailAddress">주소</p>
+            </div>
+            <button class="favorite-circle" id="detailFavoriteButton" type="button" aria-label="즐겨찾기">☆</button>
+          </div>
+
+          <div class="detail-grid">
+            <div class="info-box">
+              <span>주차면수</span>
+              <strong id="detailSpaces">-</strong>
+            </div>
+            <div class="info-box">
+              <span>요금정보</span>
+              <strong id="detailFee">-</strong>
+            </div>
+          </div>
+
+          <dl class="detail-list">
+            <div><dt>운영요일</dt><dd id="detailDays">-</dd></div>
+            <div><dt>평일 운영시간</dt><dd id="detailWeekday">-</dd></div>
+            <div><dt>토요일 운영시간</dt><dd id="detailSaturday">-</dd></div>
+            <div><dt>공휴일 운영시간</dt><dd id="detailHoliday">-</dd></div>
+            <div><dt>기본요금</dt><dd id="detailBasicFee">-</dd></div>
+            <div><dt>추가요금</dt><dd id="detailExtraFee">-</dd></div>
+            <div><dt>결제방법</dt><dd id="detailPayment">-</dd></div>
+            <div><dt>관리기관</dt><dd id="detailInstitution">-</dd></div>
+            <div><dt>전화번호</dt><dd id="detailPhone">-</dd></div>
+            <div><dt>데이터 기준일</dt><dd id="detailDate">-</dd></div>
+          </dl>
+
+          <a class="primary-button full link-button" id="mapLink" href="#" target="_blank" rel="noopener">지도에서 위치 보기</a>
+        </article>
+      </section>
+
+      <!-- 5. 즐겨찾기 화면 -->
+      <section class="screen" id="favoriteScreen" data-title="즐겨찾기">
+        <div class="section-heading favorite-heading">
+          <div>
+            <small>MY PARKING</small>
+            <h3>저장한 주차장</h3>
+          </div>
+          <strong id="favoriteCount">0개</strong>
+        </div>
+
+        <div class="card-list" id="favoriteList"></div>
+
+        <div class="empty-state hidden" id="favoriteEmptyState">
+          <div class="empty-icon">☆</div>
+          <h3>저장한 주차장이 없습니다.</h3>
+          <p>마음에 드는 주차장을 상세 화면에서 저장해보세요.</p>
+          <button class="secondary-button" data-go="search" type="button">주차장 찾기</button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="주요 메뉴">
+      <button class="nav-item active" data-go="home" type="button">
+        <span>⌂</span><small>홈</small>
+      </button>
+      <button class="nav-item" data-go="search" type="button">
+        <span>⌕</span><small>검색</small>
+      </button>
+      <button class="nav-item" data-go="list" type="button">
+        <span>☷</span><small>목록</small>
+      </button>
+      <button class="nav-item" data-go="favorite" type="button">
+        <span>☆</span><small>저장</small>
+      </button>
+    </nav>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="./app.js?v=20260831-region10-fixed"></script>
+</body>
+</html>
