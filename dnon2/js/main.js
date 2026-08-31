@@ -205,18 +205,19 @@ function navigate(screenName) {
 
     setTimeout(() => {
       if (kakaoMap) {
+        // display:none 상태였던 지도 영역을 다시 계산합니다.
         kakaoMap.relayout();
 
-        if (hasUserLocation) {
-          kakaoMap.setCenter(
-            new kakao.maps.LatLng(
-              currentCoords.lat,
-              currentCoords.lng
-            )
-          );
-        }
+        // 위치 권한 여부와 상관없이 항상 현재 중심좌표를 다시 지정해야
+        // GitHub Pages/모바일에서도 빈 지도 현상을 줄일 수 있습니다.
+        kakaoMap.setCenter(
+          new kakao.maps.LatLng(
+            currentCoords.lat,
+            currentCoords.lng
+          )
+        );
       }
-    }, 120);
+    }, 150);
   }
 
   if (screenName === "favorite") renderFavorites();
@@ -320,13 +321,14 @@ function mergeUniquePlaces(placeGroups) {
 // 7. Kakao Maps 초기화
 // ---------------------------------------------------------
 function initKakaoMap() {
+  // autoload=false 사용 시에는 maps.load() 전에
+  // services 등 세부 객체를 검사하면 안 됩니다.
   if (
     typeof kakao === "undefined" ||
-    !kakao.maps ||
-    !kakao.maps.services
+    !kakao.maps
   ) {
     console.warn(
-      "카카오맵 SDK 또는 services 라이브러리를 불러오지 못했습니다."
+      "카카오맵 SDK를 불러오지 못했습니다."
     );
 
     mapMessage.classList.add("show");
@@ -335,16 +337,26 @@ function initKakaoMap() {
 
   kakao.maps.load(() => {
     try {
+      // services 라이브러리는 SDK 로딩이 끝난 뒤 검사합니다.
+      if (!kakao.maps.services) {
+        throw new Error(
+          "카카오 services 라이브러리가 로드되지 않았습니다. index.html의 libraries=services를 확인하세요."
+        );
+      }
+
       const container =
         document.getElementById("kakaoMap");
+
+      const center =
+        new kakao.maps.LatLng(
+          currentCoords.lat,
+          currentCoords.lng
+        );
 
       kakaoMap = new kakao.maps.Map(
         container,
         {
-          center: new kakao.maps.LatLng(
-            currentCoords.lat,
-            currentCoords.lng
-          ),
+          center: center,
           level: 4
         }
       );
@@ -358,6 +370,15 @@ function initKakaoMap() {
         });
 
       mapMessage.classList.remove("show");
+
+      // 주변시설 화면이 처음에는 display:none 상태이므로,
+      // 실제 화면에 표시될 때 relayout()으로 크기를 다시 계산합니다.
+      setTimeout(() => {
+        if (kakaoMap) {
+          kakaoMap.relayout();
+          kakaoMap.setCenter(center);
+        }
+      }, 0);
 
     } catch (error) {
       console.error(

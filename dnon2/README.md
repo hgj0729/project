@@ -130,3 +130,27 @@ js/main.js
 images/
 README.md
 ```
+
+
+---
+
+## 지도 미표시 문제 수정
+
+기존 dnon2 버전의 `initKakaoMap()`에서 `autoload=false`를 사용하면서
+`kakao.maps.load()` 실행 전에 `kakao.maps.services`를 검사하고 있었습니다.
+
+수정 버전은:
+
+1. 먼저 `kakao.maps.load()` 실행
+2. 로딩 완료 콜백 안에서 `kakao.maps.services` 확인
+3. 지도 생성
+4. 주변시설 화면이 보일 때 `kakaoMap.relayout()`
+5. `setCenter()`로 중심좌표 재설정
+
+순서로 변경했습니다.
+
+`index.html`의 SDK 주소에는 아래 항목이 그대로 있어야 합니다.
+
+```html
+&libraries=services&autoload=false
+```
