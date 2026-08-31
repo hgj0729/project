@@ -70,7 +70,7 @@ const categories = [
 ];
 
 // 내 위치 주변 검색 반경(m)
-const SEARCH_RADIUS = 3000;
+const SEARCH_RADIUS = 20000;
 
 // ---------------------------------------------------------
 // 2. LocalStorage
