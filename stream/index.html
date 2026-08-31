@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STREAM</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">STREAM</a>
+
+      <nav class="gnb">
+        <a href="#" class="active">홈</a>
+        <a href="#popular">인기 콘텐츠</a>
+        <a href="#movie">영화</a>
+        <a href="#series">시리즈</a>
+        <a href="#new">NEW</a>
+      </nav>
+
+      <div class="header-right">
+        <button class="search-btn" id="searchBtn" type="button" aria-label="검색">🔍</button>
+
+        
+        <button class="login-btn" id="loginBtn" type="button">로그인</button>
+
+        <button class="profile-btn" type="button" aria-label="프로필">
+          <img src="./images/profile.jpg" alt="프로필">
+        </button>
+
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="메뉴 열기">☰</button>
+      </div>
+    </div>
+
+    <div class="search-area" id="searchArea">
+      <div class="search-inner">
+        <input type="text" id="searchInput" placeholder="영화 또는 시리즈를 검색하세요.">
+        <button type="button" id="searchSubmit">검색</button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#">홈</a>
+      <a href="#popular">인기 콘텐츠</a>
+      <a href="#movie">영화</a>
+      <a href="#series">시리즈</a>
+      <a href="#new">NEW</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <img id="heroImage" src="./images/main-banner.jpg" alt="메인 콘텐츠">
+      </div>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <span class="hero-label">STREAM ORIGINAL</span>
+
+        <h1 id="heroTitle">새로운 이야기가<br>지금 시작됩니다</h1>
+
+        <div class="hero-meta">
+          <span class="hero-rating" id="heroRating">★ 0.0</span>
+          <span id="heroDate">2026</span>
+        </div>
+
+        <p id="heroDescription">
+          TMDB에서 콘텐츠 정보를 불러오고 있습니다.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="play-btn" id="playBtn" type="button">▶ 재생</button>
+          <button class="info-btn" id="infoBtn" type="button">ⓘ 상세 정보</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section first-section" id="popular">
+      <div class="section-title-area">
+        <h2>오늘의 인기 콘텐츠</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slide-btn prev-btn" type="button" aria-label="이전">‹</button>
+
+        <div class="content-slider" id="popularSlider">
+          <div class="loading">콘텐츠를 불러오는 중입니다.</div>
+        </div>
+
+        <button class="slide-btn next-btn" type="button" aria-label="다음">›</button>
+      </div>
+    </section>
+
+    <section class="content-section" id="movie">
+      <div class="section-title-area">
+        <h2>인기 영화</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slide-btn prev-btn" type="button">‹</button>
+
+        <div class="content-slider" id="movieSlider">
+          <div class="loading">영화를 불러오는 중입니다.</div>
+        </div>
+
+        <button class="slide-btn next-btn" type="button">›</button>
+      </div>
+    </section>
+
+    <section class="content-section" id="series">
+      <div class="section-title-area">
+        <h2>인기 시리즈</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slide-btn prev-btn" type="button">‹</button>
+
+        <div class="content-slider" id="seriesSlider">
+          <div class="loading">시리즈를 불러오는 중입니다.</div>
+        </div>
+
+        <button class="slide-btn next-btn" type="button">›</button>
+      </div>
+    </section>
+
+    <section class="content-section" id="new">
+      <div class="section-title-area">
+        <h2>지금 극장에서 상영 중</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slide-btn prev-btn" type="button">‹</button>
+
+        <div class="content-slider" id="newSlider">
+          <div class="loading">최신 콘텐츠를 불러오는 중입니다.</div>
+        </div>
+
+        <button class="slide-btn next-btn" type="button">›</button>
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         GENRE CATEGORIES
+         카테고리별 가로 슬라이드
+    ========================================== -->
+
+    <section class="content-section genre-section" id="action">
+      <div class="section-title-area">
+        <h2>액션 영화</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slide-btn prev-btn" type="button" aria-label="이전">‹</button>
+
+        <div class="content-slider genre-slider" id="actionGrid">
+          <div class="loading">액션 영화를 불러오는 중입니다.</div>
+        </div>
+
+        <button class="slide-btn next-btn" type="button" aria-label="다음">›</button>
+      </div>
+    </section>
+
+    <section class="content-section genre-section" id="comedy">
+      <div class="section-title-area">
+        <h2>코미디 영화</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slide-btn prev-btn" type="button" aria-label="이전">‹</button>
+
+        <div class="content-slider genre-slider" id="comedyGrid">
+          <div class="loading">코미디 영화를 불러오는 중입니다.</div>
+        </div>
+
+        <button class="slide-btn next-btn" type="button" aria-label="다음">›</button>
+      </div>
+    </section>
+
+    <section class="content-section genre-section" id="horror">
+      <div class="section-title-area">
+        <h2>Horror 공포 영화</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slide-btn prev-btn" type="button" aria-label="이전">‹</button>
+
+        <div class="content-slider genre-slider" id="horrorGrid">
+          <div class="loading">Horror 공포 영화를 불러오는 중입니다.</div>
+        </div>
+
+        <button class="slide-btn next-btn" type="button" aria-label="다음">›</button>
+      </div>
+    </section>
+
+    <section class="content-section genre-section" id="romance">
+      <div class="section-title-area">
+        <h2>로맨스 영화</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slide-btn prev-btn" type="button" aria-label="이전">‹</button>
+
+        <div class="content-slider genre-slider" id="romanceGrid">
+          <div class="loading">로맨스 영화를 불러오는 중입니다.</div>
+        </div>
+
+        <button class="slide-btn next-btn" type="button" aria-label="다음">›</button>
+      </div>
+    </section>
+
+    <section class="content-section genre-section" id="documentary">
+      <div class="section-title-area">
+        <h2>다큐멘터리 영화</h2>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slide-btn prev-btn" type="button" aria-label="이전">‹</button>
+
+        <div class="content-slider genre-slider" id="documentaryGrid">
+          <div class="loading">다큐멘터리 영화를 불러오는 중입니다.</div>
+        </div>
+
+        <button class="slide-btn next-btn" type="button" aria-label="다음">›</button>
+      </div>
+    </section>
+
+    <section class="content-section search-result-section" id="searchResultSection">
+      <div class="section-title-area">
+        <h2 id="searchResultTitle">검색 결과</h2>
+      </div>
+
+      <div class="search-result-grid" id="searchResult"></div>
+    </section>
+
+  </main>
+
+  
+  <!-- LOGIN -->
+  <div class="login-modal" id="loginModal" aria-hidden="true">
+    <div class="login-modal-overlay" id="loginModalOverlay"></div>
+
+    <section class="login-screen" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="login-close" id="loginClose" type="button" aria-label="로그인 화면 닫기">×</button>
+
+      <div class="login-tabs">
+        <button class="login-tab active" type="button">로그인</button>
+        <button class="login-tab" type="button">회원가입</button>
+      </div>
+
+      <h2 id="loginTitle">다시 만나서 반가워요.</h2>
+      <p class="login-subtext">STREAM 계정으로 로그인하고 감상을 이어보세요.</p>
+
+      <form class="login-form" id="loginForm">
+        <div class="login-field">
+          <label for="loginEmail">이메일</label>
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="name@example.com"
+            autocomplete="username"
+            required
+          >
+        </div>
+
+        <div class="login-field">
+          <label for="loginPassword">비밀번호</label>
+
+          <div class="password-wrap">
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="비밀번호"
+              autocomplete="current-password"
+              required
+            >
+            <button class="password-toggle" id="passwordToggle" type="button">보기</button>
+          </div>
+        </div>
+
+        <div class="login-row">
+          <label class="save-login">
+            <input type="checkbox" checked>
+            <span>로그인 정보 저장</span>
+          </label>
+
+          <a href="#" class="forgot-link">비밀번호를 잊으셨나요?</a>
+        </div>
+
+        <button class="login-submit" type="submit">로그인</button>
+      </form>
+
+      <p class="join-text">
+        STREAM이 처음이신가요?
+        <a href="#">지금 가입하기</a>
+      </p>
+
+      <p class="login-demo-note">
+        이 화면은 프론트엔드 데모입니다. 실제 서비스에서는 서버 인증과 암호화 저장이 필요합니다.
+      </p>
+    </section>
+  </div>
+
+<div class="modal" id="detailModal">
+    <div class="modal-overlay"></div>
+
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" type="button">×</button>
+
+      <div class="modal-image">
+        <img id="modalImage" src="./images/main-banner.jpg" alt="">
+        <div class="modal-image-overlay"></div>
+      </div>
+
+      <div class="modal-info">
+        <h2 id="modalTitle">콘텐츠 제목</h2>
+
+        <div class="modal-meta">
+          <span id="modalRating">★ 0</span>
+          <span id="modalDate">2026</span>
+        </div>
+
+        <p id="modalDescription">콘텐츠 설명</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div class="footer-sns">
+        <a href="#" aria-label="페이스북">f</a>
+        <a href="#" aria-label="인스타그램">◎</a>
+        <a href="#" aria-label="트위터">♥</a>
+        <a href="#" aria-label="유튜브">▶</a>
+      </div>
+
+      <div class="footer-menu">
+        <ul>
+          <li><a href="#">화면 해설</a></li>
+          <li><a href="#">투자 정보(IR)</a></li>
+          <li><a href="#">법적 고지</a></li>
+        </ul>
+
+        <ul>
+          <li><a href="#">고객 센터</a></li>
+          <li><a href="#">입사 정보</a></li>
+          <li><a href="#">쿠키 설정</a></li>
+        </ul>
+
+        <ul>
+          <li><a href="#">기프트카드</a></li>
+          <li><a href="#">이용 약관</a></li>
+          <li><a href="#">회사 정보</a></li>
+        </ul>
+
+        <ul>
+          <li><a href="#">미디어 센터</a></li>
+          <li><a href="#">개인정보</a></li>
+          <li><a href="#">문의하기</a></li>
+        </ul>
+      </div>
+
+      <button class="service-code" type="button">서비스 코드</button>
+
+      <div class="footer-info">
+        <p>대표이사: 홍길동 ｜ 이메일: contact@stream.com</p>
+        <p>주소: 서울특별시 강남구 ｜ 사업자등록번호: 123-45-67890</p>
+        <p>통신판매업 신고번호: 제2026-서울강남-0001호</p>
+        <p>고객센터: 00-000-0000</p>
+        <p>호스팅 서비스 제공자: STREAM Services Inc.</p>
+        <p class="tmdb-text">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+        <p class="copyright">© 2026 STREAM Corp.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
