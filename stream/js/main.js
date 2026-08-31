@@ -119,7 +119,15 @@ async function fetchTMDB(endpoint, params = {}) {
       throw new Error(`TMDB API 오류 : ${response.status}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+
+    console.log("[TMDB API]", {
+      endpoint: endpoint,
+      params: params,
+      data: data
+    });
+
+    return data;
   } catch (error) {
     console.error("TMDB 데이터를 불러오지 못했습니다.", error);
     return { results: [] };
@@ -133,13 +141,72 @@ async function loadTrending() {
     return item.media_type === "movie" || item.media_type === "tv";
   });
 
+  console.log("[TRENDING CONTENTS]", contents);
+
   renderSlider("popularSlider", contents, { rank: true });
 
-  if (contents.length > 0) {
-    renderHero(contents[0]);
+  if (!contents.length) {
+    return;
   }
-}
 
+  // 상위 콘텐츠의 영상 정보를 병렬 조회해서
+  // 실제 YouTube Trailer/Teaser가 존재하는 콘텐츠만 후보로 사용
+  const heroCandidates = await Promise.all(
+    contents.slice(0, 12).map(async function (item) {
+      const mediaType = item.media_type === "tv" ? "tv" : "movie";
+      const videoData = await fetchTMDB(`/${mediaType}/${item.id}/videos`);
+
+      const videos = Array.isArray(videoData.results)
+        ? videoData.results
+        : [];
+
+      const youtubeVideo =
+        videos.find(function (video) {
+          return video.site === "YouTube" && video.type === "Trailer";
+        }) ||
+        videos.find(function (video) {
+          return video.site === "YouTube" && video.type === "Teaser";
+        });
+
+      if (!youtubeVideo) {
+        return null;
+      }
+
+      return {
+        item: item,
+        video: youtubeVideo
+      };
+    })
+  );
+
+  const playableCandidates = heroCandidates.filter(Boolean);
+
+  console.log("[HERO VIDEO CANDIDATES]", playableCandidates);
+
+  // 영상 후보가 있으면 그 중 랜덤 선택
+  if (playableCandidates.length > 0) {
+    const randomIndex = Math.floor(
+      Math.random() * playableCandidates.length
+    );
+
+    const selected = playableCandidates[randomIndex];
+
+    console.log("[SELECTED RANDOM HERO]", selected);
+
+    renderHero(selected.item);
+    playHeroPreview(selected.item, selected.video);
+
+    return;
+  }
+
+  // 영상이 전혀 없을 경우에만 이미지 배너를 랜덤 표시
+  const randomIndex = Math.floor(Math.random() * contents.length);
+  const randomHero = contents[randomIndex];
+
+  console.log("[FALLBACK RANDOM HERO]", randomHero);
+
+  renderHero(randomHero);
+}
 async function loadPopularMovies() {
   const data = await fetchTMDB("/movie/popular", { page: 1 });
 
@@ -213,6 +280,50 @@ async function loadDocumentaryMovies() {
   await loadGenreMovies("documentaryGrid", 99);
 }
 
+/* =========================================
+   HERO VIDEO PREVIEW
+========================================= */
+
+function playHeroPreview(item, video) {
+  const videoWrap = document.getElementById("heroVideoWrap");
+  const videoFrame = document.getElementById("heroVideo");
+
+  if (!videoWrap || !videoFrame || !video || !video.key) {
+    return;
+  }
+
+  const isHttpPage =
+    window.location.protocol === "http:" ||
+    window.location.protocol === "https:";
+
+  // file://에서는 YouTube 오류 153 방지를 위해 영상 대신 이미지 사용
+  if (!isHttpPage) {
+    console.warn(
+      "[HERO VIDEO] YouTube 자동재생은 Live Server, localhost 또는 GitHub Pages에서 확인해주세요."
+    );
+    return;
+  }
+
+  const videoKey = encodeURIComponent(video.key);
+  const pageOrigin = encodeURIComponent(window.location.origin);
+
+  console.log("[PLAY HERO VIDEO]", {
+    content: item,
+    video: video
+  });
+
+  videoFrame.onload = function () {
+    videoWrap.classList.add("active");
+  };
+
+  videoFrame.src =
+    `https://www.youtube-nocookie.com/embed/${videoKey}` +
+    `?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1` +
+    `&playsinline=1&loop=1&playlist=${videoKey}` +
+    `&origin=${pageOrigin}`;
+}
+
+
 function renderHero(item) {
   currentHeroData = item;
 
@@ -221,6 +332,13 @@ function renderHero(item) {
   const heroRating = document.getElementById("heroRating");
   const heroDate = document.getElementById("heroDate");
   const heroDescription = document.getElementById("heroDescription");
+  const heroVideoWrap = document.getElementById("heroVideoWrap");
+  const heroVideo = document.getElementById("heroVideo");
+
+  if (heroVideoWrap && heroVideo) {
+    heroVideoWrap.classList.remove("active");
+    heroVideo.src = "";
+  }
 
   const title = getTitle(item);
 
@@ -332,6 +450,12 @@ function createContentCard(item, options = {}) {
       <span class="card-rating">
         ★ ${rating}
       </span>
+
+      <div class="card-overview">
+        <p>${escapeHTML(
+          item.overview || "등록된 줄거리 정보가 없습니다."
+        )}</p>
+      </div>
     </div>
 
     <div class="card-info">
