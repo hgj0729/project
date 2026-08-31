@@ -283,24 +283,40 @@
     }
 
     try {
-      const params = new URLSearchParams({
-        serviceKey: API_KEY,
-        pageNo: "1",
-        numOfRows: "500",
-        type: "json"
-      });
+      /*
+       * 공공데이터포털에서 제공하는 Encoding 인증키는
+       * 이미 %2F, %3D 등의 형태로 URL 인코딩되어 있습니다.
+       *
+       * URLSearchParams에 serviceKey를 넣으면 '%'가 '%25'로 다시
+       * 인코딩되어 인증 오류가 발생할 수 있으므로 serviceKey는
+       * URL에 직접 연결합니다.
+       */
+      const requestUrl =
+        `${API_URL}?serviceKey=${API_KEY}` +
+        `&pageNo=1` +
+        `&numOfRows=500` +
+        `&type=json`;
 
-      const requestUrl = `${API_URL}?${params.toString()}`;
-
-      console.log("[파킹온] API 요청 URL:", requestUrl.replace(API_KEY, "***API_KEY***"));
+      console.log(
+        "[파킹온] API 요청 URL:",
+        requestUrl.replace(API_KEY, "***ENCODING_SERVICE_KEY***")
+      );
 
       const response = await fetch(requestUrl);
 
       if (!response.ok) {
-        throw new Error(`HTTP 오류: ${response.status}`);
+        throw new Error(`HTTP 오류: ${response.status} ${response.statusText}`);
       }
 
-      const data = await response.json();
+      const responseText = await response.text();
+
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (jsonError) {
+        console.error("[파킹온] JSON 변환 실패. 서버 원문:", responseText);
+        throw new Error("서버 응답이 JSON 형식이 아닙니다.");
+      }
 
       // 요구사항: 서버에서 받은 데이터를 Console.log()로 확인
       console.log("[파킹온] 서버에서 받은 원본 데이터:", data);

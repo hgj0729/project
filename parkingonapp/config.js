@@ -1,12 +1,8 @@
 /*
-  공공데이터포털에서 발급받은 "일반 인증키(Decoding)" 또는 서비스키를 아래 값에 넣으세요.
+  공공데이터포털 - 전국주차장정보표준데이터
 
-  예)
-  window.PARKING_API_KEY = "AbCdEf123456...";
-
-  주의:
-  - 실제 제출 전 공공데이터포털에서 '전국주차장정보표준데이터' 활용신청이 필요합니다.
-  - 키가 비어 있으면 앱은 데모 데이터를 사용하므로 UI 기능을 바로 테스트할 수 있습니다.
+  중요:
+  아래 키는 공공데이터포털 화면에 표시된 "일반 인증키(Encoding)" 형식입니다.
+  %2F, %3D 같은 문자를 디코딩하거나 encodeURIComponent()로 다시 인코딩하지 않습니다.
 */
-window.PARKING_API_KEY = "
-nwy3yX99FuAiOzZBy%2FFfva9B080mn85VkQCIKMZEOKkUvizNmMM4GkJD3ADXs5xApBt9Sf5rpfrqSHasnFqbVQ%3D%3D";
+window.PARKING_API_KEY = "nwy3yX99FuAiOzZBy%2FEfva9B080mn85VkQCIKMZEOKkUvizNmMM4GkJD3ADXs5xApBt9Sf5rpfrqSHasnFqbVQ%3D%3D";

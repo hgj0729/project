@@ -62,3 +62,33 @@ VS Code Live Server 예:
 - `style.css` : 모바일 UI 스타일
 - `config.js` : API 키
 - `app.js` : API/검색/필터/상세/즐겨찾기/화면이동
+
+
+## Encoding 인증키 처리 방식
+
+현재 버전은 공공데이터포털 화면에 표시되는 일반 인증키(Encoding)를
+그대로 사용할 수 있도록 수정되어 있습니다.
+
+인증키 안에 `%2F`, `%3D` 등이 포함되어 있을 경우 `URLSearchParams`나
+`encodeURIComponent()`로 서비스키를 다시 인코딩하면 `%`가 `%25`로 변환되어
+인증 오류가 발생할 수 있습니다.
+
+따라서 현재 `app.js`에서는 다음 형태로 요청합니다.
+
+```js
+const requestUrl =
+  `${API_URL}?serviceKey=${API_KEY}` +
+  `&pageNo=1` +
+  `&numOfRows=500` +
+  `&type=json`;
+```
+
+개발자도구(F12) Console에서 다음 항목을 확인할 수 있습니다.
+
+- API 요청 URL(키는 마스킹)
+- 서버 원본 데이터
+- 화면에 사용할 가공 데이터 배열
+- 검색/필터 결과
+- 상세 데이터
+
+실제 키는 공개 저장소(GitHub 등)에 올리지 않는 것을 권장합니다.
